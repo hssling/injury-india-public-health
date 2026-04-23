@@ -2,17 +2,13 @@
 
 Date: 24 April 2026
 
-Major issues identified in the prior package:
-- author and repository placeholders were still present in submission assets
-- several figure files were stale placeholders rather than data-driven outputs
-- references were not clearly indexed in the manuscript text
-- figure citations and figure legends were inconsistent with the available assets
-- the package mixed hard-coded manuscript claims with outdated plotting scripts
+This rebuild restored the fuller manuscript structure after an earlier compressed rewrite reduced content depth, dropped keywords and shortened the reference list. The current package:
 
-Corrective actions completed:
-- repository created and linked publicly: https://github.com/hssling/injury-india-public-health
-- figures rebuilt from the available local data extract where support existed
-- unsupported age-sex figure removed from the submission package
-- manuscript rebuilt with indexed citations, cited figures, and declarations before references
-- separate figures document added for upload as the journal's figure file
-- data-sharing statement added to the repository
+- restores a longer Introduction, Results and Discussion
+- restores a 20-item reference list cited in textual order
+- restores keywords in the manuscript
+- restores ordered citations to Tables 1-4 and Figs 1-6
+- removes unsupported figure claims
+- keeps all generated submission assets linked to the public repository
+
+Repository: https://github.com/hssling/injury-india-public-health
