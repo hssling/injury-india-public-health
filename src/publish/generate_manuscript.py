@@ -219,7 +219,7 @@ def build_title_page(m) -> None:
     para(doc, "Corresponding author", size=11, bold=True, space_before=8)
     para(doc, f"{AUTHOR_NAME}\n{CORR_ADDRESS}\nEmail: {CORR_EMAIL}\nPhone: {CORR_PHONE}\nORCID: {ORCID}", size=11)
     para(doc, "Article type: Original article", size=11)
-    para(doc, "Word count: Abstract ~290 words; main text ~3200 words", size=11)
+    para(doc, "Word count: Abstract ~290 words; main text ~5000 words", size=11)
     para(doc, "Tables: 4 main", size=11)
     para(doc, "Figures: 6", size=11)
     para(doc, "Supplementary tables: 4", size=11)
@@ -264,7 +264,7 @@ def build_manuscript(m) -> None:
     )
     para(
         doc,
-        "Keywords: injuries; disability-adjusted life years; public health; India; epidemiology; health inequality; surveillance; road injuries",
+        "Keywords: injuries; disability-adjusted life years; public health; India; epidemiology; burden of disease; health inequality; surveillance",
         size=11,
         italic=True,
         space_after=12,
@@ -296,7 +296,7 @@ def build_manuscript(m) -> None:
         "This study therefore aimed to: (i) quantify state-level injury burden in India using DALYs, deaths, YLDs and YLLs; (ii) identify states with disproportionate disability burden using a Hidden Disability Burden Index; (iii) assess inter-state inequality; and (iv) compare modelled health burden with road-injury surveillance rankings from official administrative data."
     )
 
-    heading(doc, "Methods")
+    heading(doc, "Materials and Methods")
     subheading(doc, "Study design and data sources")
     body(
         doc,
@@ -305,15 +305,19 @@ def build_manuscript(m) -> None:
     )
     body(
         doc,
-        "We focused on 2021 for the main burden estimates because that year was available consistently in the local processed outputs. Measures extracted were DALYs, deaths, YLDs, YLLs, incidence and prevalence, using both number and rate metrics. Administrative data were used for contextualisation and surveillance comparison, not for direct numerical pooling with GBD estimates."
+        "The original analytical framework was designed as an ecological longitudinal secondary-data analysis using GBD 2021 estimates across 2000-2021, with administrative sources used as supplementary comparators for surveillance-burden mismatch. For the present submission package, the most stable and fully validated local processed outputs consistently supported 2021 state-level burden estimation, while the locally available multi-year extract remained suitable for a shorter descriptive trend display rather than a full historical reconstruction."
     )
     body(
         doc,
-        "The analysis retained both number and age-standardised rate measures because the former communicate the national scale of burden, whereas the latter allow fairer interstate comparison. All principal summaries in the manuscript use both sexes combined and all ages, because the local processed state-level outputs were most complete for those strata."
+        "Measures extracted or derived from the processed state outputs included DALYs, deaths, YLDs, YLLs, incidence and prevalence, using both numbers and rates. The analysis retained both count and age-standardised rate measures because counts communicate the national scale of burden whereas rates provide a fairer basis for interstate comparison. All principal summaries in the manuscript use both sexes combined and all ages because the local processed state-level outputs were most complete and internally consistent for those strata."
     )
     body(
         doc,
         "The locally available processed extract included state-level values for DALYs, deaths, YLDs, YLLs, incidence and prevalence. These outputs had already passed through the project pipeline for source validation, state-name reconciliation, master-dataset assembly and quality checking before manuscript tables were generated."
+    )
+    body(
+        doc,
+        "Up to 36 Indian states and union territories were represented in the processed analytical files. A master state crosswalk was maintained to harmonise naming conventions across all sources. Because smaller union territories may show instability in modelled rates, the broader analytical framework had anticipated sensitivity analyses excluding them; in the present submission package, harmonised display and cautious interpretation were used instead."
     )
 
     subheading(doc, "State harmonisation and cause grouping")
@@ -325,20 +329,32 @@ def build_manuscript(m) -> None:
         doc,
         "This harmonisation step was necessary because the same jurisdiction can appear under different labels across sources, and because the mapping layer predates later administrative bifurcations. The final analytical unit therefore prioritised internal consistency across datasets over exact reproduction of every current administrative boundary."
     )
+    body(
+        doc,
+        "Administrative cause categories were interpreted against the same broad grouping logic wherever possible so that comparisons between modelled burden and official reporting remained epidemiologically coherent, even when exact category boundaries differed across source systems."
+    )
 
     subheading(doc, "Outcome measures and derived metrics")
     body(
         doc,
-        "State-level burden was summarised using age-standardised DALY, death, YLD and YLL rates per 100,000 population. The YLD fraction was calculated as YLDs divided by DALYs. The Hidden Disability Burden Index (HDBI) was defined as the state-specific z-score of YLD rate minus the state-specific z-score of death rate; positive values identify states where disability burden is relatively more prominent than mortality burden."
+        "The primary outcome measures were deaths, DALYs, YLLs and YLDs, summarised as numbers and age-standardised rates per 100,000 population. Fatal-non-fatal decomposition was assessed using the YLD fraction and YLL fraction, calculated as YLDs divided by DALYs and YLLs divided by DALYs, respectively, for each state and injury cause."
     )
     body(
         doc,
-        "Inter-state inequality was quantified using NCRB accidental death rates through the mean, median, interquartile range, coefficient of variation, Gini coefficient and top-to-bottom ratio. Surveillance-burden mismatch was assessed by comparing state rankings on GBD road DALYs with state rankings on MoRTH road deaths. Because the compared sources differ in year and method, this comparison was interpreted qualitatively.",
+        "The Hidden Disability Burden Index (HDBI) was defined as: HDBI = z(YLD rate) - z(death rate), where z-scores were computed across all states for each metric. A positive HDBI indicates that a state's disability burden is disproportionately high relative to its injury death rate, representing a hidden disability gap not captured by mortality surveillance alone. A complementary rank-based definition was also retained in the analytical framework as the difference between the state rank on YLD rate and the state rank on death rate; this was used as a sensitivity lens rather than the primary reported metric.",
+    )
+    body(
+        doc,
+        "States were classified as disability-prominent when HDBI exceeded 0.5, mortality-prominent when HDBI was below -0.5, and balanced otherwise. State typology was additionally explored through the joint distribution of YLD and death rates, so that states could be interpreted not only by relative prominence but also by the absolute level of fatal and non-fatal burden."
+    )
+    body(
+        doc,
+        "Cause-specific decomposition was undertaken for road injuries, falls, drowning, burns, poisoning, self-harm, interpersonal violence and other unintentional injuries. This allowed identification of mechanisms that were predominantly mortality-driven versus disability-driven, which is central to the manuscript's public-health framing."
+    )
+    body(
+        doc,
+        "Inter-state inequality was quantified using NCRB accidental death rates through the mean, median, interquartile range, coefficient of variation, Gini coefficient and top-to-bottom ratio. The surveillance-burden mismatch analysis was designed as a rank-based comparison between state rankings on GBD road DALYs and state rankings on MoRTH road deaths. Direct comparison of raw values would have been misleading because GBD road DALYs and MoRTH road deaths reflect different constructs, years and estimation methods; rank discordance is a more defensible way to identify states where administrative salience and health burden diverge.",
         "16",
-    )
-    body(
-        doc,
-        "Cause-specific decomposition was undertaken for road injuries, falls, drowning, burns, poisoning, self-harm, interpersonal violence and other unintentional injuries. This allowed identification of mechanisms that were predominantly mortality-driven versus disability-driven, which is central to the manuscript’s public-health framing."
     )
     body(
         doc,
@@ -346,7 +362,15 @@ def build_manuscript(m) -> None:
     )
     body(
         doc,
-        "The surveillance-burden mismatch analysis was similarly designed as a rank-based comparison. Direct comparison of raw values would have been misleading because GBD road DALYs and MoRTH road deaths reflect different constructs; rank discordance is a more defensible way to identify states where administrative salience and health burden diverge."
+        "The surveillance-burden mismatch analysis is therefore best interpreted as a qualitative signal rather than as a direct numerical validation exercise."
+    )
+    body(
+        doc,
+        "The wider analytical plan had also specified sensitivity analyses around alternate HDBI definitions, exclusion of smaller jurisdictions, crude versus age-standardised rates and alternate state-typology thresholds. Not all of these are displayed in the main manuscript because the most stable local outputs supported a tighter 2021-centred presentation, but the manuscript retains that methodological logic so the analytical choices are transparent."
+    )
+    body(
+        doc,
+        "Descriptive statistics, rank computations and inequality metrics were generated within the local Python workflow used for the project pipeline. Running analysis and document assembly from the same source outputs reduced manual transfer error and helped maintain alignment between the manuscript, tables, figures and supplementary files."
     )
 
     subheading(doc, "Ethics and reproducibility")
@@ -371,7 +395,7 @@ def build_manuscript(m) -> None:
     )
     body(
         doc,
-        "The composition of national burden further underscores why injuries cannot be treated as a death-only problem. More than ten million YLDs were attributable to injuries across the included states, confirming that survivorship with disability contributes materially to aggregate health loss."
+        "The composition of national burden underscores why injuries cannot be treated as a death-only problem. More than ten million YLDs were attributable to injuries across the included states, confirming that survivorship with disability contributes materially to aggregate health loss."
     )
     body(
         doc,
@@ -402,7 +426,7 @@ def build_manuscript(m) -> None:
     )
     body(
         doc,
-        "From a service-planning perspective, this means that a state can appear less urgent on a death-only metric while still carrying a large need for fracture care, rehabilitation, follow-up and social support. That is precisely the pattern a broader injury public-health framework needs to capture."
+        "From a service-planning perspective, this means that a state can appear less urgent on a death-only metric while still carrying a large need for fracture care, rehabilitation, follow-up and social support."
     )
 
     subheading(doc, "Hidden Disability Burden Index")
@@ -420,7 +444,7 @@ def build_manuscript(m) -> None:
     )
     body(
         doc,
-        "The disability-prominent cluster included several states with comparatively strong tertiary-care footprints, suggesting that survivorship from serious injury may contribute more visibly to their burden profile. In contrast, mortality-prominent states may reflect combinations of higher injury severity, delayed access to care, weaker pre-hospital systems or other structural factors that keep fatality proportions high."
+        "The disability-prominent cluster included several states with comparatively strong tertiary-care footprints, suggesting that survivorship from serious injury may contribute more visibly to their burden profile. In contrast, mortality-prominent states may reflect combinations of higher injury severity, delayed access to care or weaker pre-hospital systems that keep fatality proportions high."
     )
 
     subheading(doc, "State-cause distribution")
@@ -464,7 +488,7 @@ def build_manuscript(m) -> None:
     )
     body(
         doc,
-        "The inequality pattern was driven by both very high-rate jurisdictions and very low-rate jurisdictions rather than by a narrow band of moderate variation. This means that a national average substantially conceals the operational reality faced by states at the top and bottom of the distribution."
+        "The inequality pattern was driven by both very high-rate jurisdictions and very low-rate jurisdictions rather than by a narrow band of moderate variation. A national average therefore conceals the operational reality faced by states at the top and bottom of the distribution."
     )
     body(
         doc,
@@ -488,13 +512,14 @@ def build_manuscript(m) -> None:
     )
 
     heading(doc, "Discussion")
+    subheading(doc, "Principal findings")
     body(
         doc,
-        "This analysis highlights three central findings. First, injury burden in India is geographically unequal, with a limited set of states carrying disproportionately high DALY rates. Second, disability contributes a large enough share of injury burden to alter priority-setting when DALYs rather than deaths are used. Third, administrative road-injury surveillance and modelled health burden are not interchangeable at the state level.",
+        "This analysis highlights three central findings. First, injury burden in India is geographically unequal, with a limited set of states carrying disproportionately high DALY rates. Second, disability contributes enough of the total burden to alter priority-setting when DALYs rather than deaths are used. Third, administrative road-injury surveillance and modelled health burden are not interchangeable at the state level.",
     )
     body(
         doc,
-        "Together, these findings support a shift from a narrow injury-control narrative toward a broader injury public-health framework. In practical terms, deaths, disability, prevention, acute care and rehabilitation should be treated as linked parts of the same burden problem rather than as disconnected programme areas."
+        "Together, these findings support a shift from a narrow injury-control narrative toward a broader injury public-health framework. Deaths, disability, prevention, acute care and rehabilitation should be treated as linked parts of the same burden problem rather than as disconnected programme areas."
     )
     body(
         doc,
@@ -516,13 +541,40 @@ def build_manuscript(m) -> None:
     )
     body(
         doc,
-        "The surveillance mismatch findings should be interpreted cautiously because GBD and MoRTH differ in scope, year and estimation method. Even so, the rank discordance is informative. It is consistent with the possibility that police-based systems incompletely capture the broader health burden of road injury or capture it differently from modelled estimates based on multiple data sources and correction procedures.",
+        "The surveillance mismatch findings should be interpreted cautiously because GBD and MoRTH differ in scope, year and estimation method. Even so, the rank discordance is informative and is consistent with the possibility that police-based systems incompletely capture the broader health burden of road injury or capture it differently from modelled estimates based on multiple data sources and correction procedures.",
         "16-18",
     )
     body(
         doc,
         "For this reason, the mismatch analysis is best seen as a surveillance signal rather than a winner-loser validation exercise. Its value lies in identifying where the administrative picture and the health-burden picture are sufficiently different to merit closer scrutiny."
     )
+    subheading(doc, "Comparison with existing literature")
+    body(
+        doc,
+        "The finding that non-fatal injury burden is substantial is consistent with prior global and Indian burden-of-disease work showing that injuries cannot be adequately interpreted through mortality statistics alone. Earlier India State-Level Disease Burden analyses similarly highlighted the importance of road injuries and falls, but the present manuscript extends that literature by explicitly separating disability prominence from mortality prominence at the state level.",
+        "2-4",
+    )
+    body(
+        doc,
+        "The present analysis also reinforces a pattern noted in earlier Indian injury literature: state rankings can shift materially depending on whether deaths, DALYs or disability-sensitive measures are used. That is precisely why the HDBI is useful as a public-health prioritisation lens rather than merely as a statistical curiosity.",
+        "3,8,9",
+    )
+    subheading(doc, "Implications for Indian public health policy")
+    body(
+        doc,
+        "The policy implications extend beyond conventional road-safety messaging. A death-centric injury agenda will tend to underrecognise rehabilitation needs, longer-term functional loss and the burden generated by causes such as falls, burns, poisoning and self-harm. A DALY-based framework provides a more defensible basis for balancing prevention, acute trauma care and post-acute rehabilitation.",
+        "11,12",
+    )
+    body(
+        doc,
+        "For disability-prominent states, the operational implications include stronger rehabilitation services, orthopaedic follow-up, physiotherapy, occupational therapy, assistive-device access and mental-health support where relevant. For mortality-prominent states, the immediate emphasis may need to remain on prevention of severe injury, emergency transport, timely trauma care and reduction of case fatality.",
+        "11,17",
+    )
+    body(
+        doc,
+        "The inter-state inequality observed here also argues against a one-size-fits-all national injury strategy. State-specific burden profiles should guide priority setting, because the epidemiology and service implications of injury burden differ too sharply across jurisdictions to be managed well through uniform planning assumptions."
+    )
+    subheading(doc, "Strengths and limitations")
     body(
         doc,
         "This study has limitations. The repository’s processed extract did not support a full age-sex analysis suitable for a defensible main figure, so that display was not retained. The available-year trend series was shorter than originally envisaged. GBD values are modelled estimates and administrative figures are subject to under-registration, definitional differences and varying data quality. Nevertheless, the core burden, disability fraction, inequality and surveillance mismatch findings were reproducible from the local analysis outputs."
@@ -533,7 +585,7 @@ def build_manuscript(m) -> None:
     )
     body(
         doc,
-        "The study also has notable strengths. It integrates modelled burden estimates with two official Indian administrative sources, it uses reproducible local outputs rather than hand-entered headline numbers, and it explicitly separates mortality prominence from disability prominence rather than treating all injury burden as homogeneous."
+        "The study also has notable strengths. It integrates modelled burden estimates with two official Indian administrative sources, uses reproducible local outputs rather than hand-entered headline numbers, and explicitly separates mortality prominence from disability prominence rather than treating all injury burden as homogeneous."
     )
     body(
         doc,
@@ -653,7 +705,7 @@ def build_manuscript(m) -> None:
             ]
         )
     build_table(doc, ["State/UT", "YLD rate", "Death rate", "HDBI z-score", "Profile"], hdbi_rows, widths=[2.1, 0.8, 0.8, 0.9, 1.5])
-    para(doc, "HDBI = z(YLD rate) - z(death rate). Positive values indicate relatively greater disability burden.", size=9, italic=True)
+    para(doc, "HDBI = z(YLD rate) - z(death rate). Positive values indicate relatively greater disability burden. States were classified as disability-prominent (>0.5), mortality-prominent (<-0.5), or balanced otherwise.", size=9, italic=True)
 
     table_title(doc, "Table 4. Inter-state inequality in accidental death rates, India 2023.")
     ineq = m["inequality"]
