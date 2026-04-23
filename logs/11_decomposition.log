@@ -1,0 +1,13 @@
+2026-04-23 13:08:02,471 INFO === Decomposition Analysis: Start ===
+2026-04-23 13:08:02,472 ERROR Master dataset not found. Run assembly step first.
+2026-04-23 22:54:28,463 INFO === Decomposition Analysis: Start ===
+2026-04-23 22:54:28,587 INFO Decomposition computed: 29 rows
+2026-04-23 22:54:28,600 INFO Output: D:\Injury research\injury_india_public_health\outputs\decomposition.csv
+2026-04-23 22:54:30,171 INFO Table 2: D:\Injury research\injury_india_public_health\tables\Table2_decomposition.xlsx
+2026-04-23 22:54:30,173 INFO === Decomposition Analysis: Complete ===
+2026-04-24 00:05:23,905 INFO === Decomposition Analysis: Start ===
+2026-04-24 00:05:24,398 INFO Decomposition computed: 403 rows
+2026-04-24 00:05:24,415 INFO Output: D:\Injury research\injury_india_public_health\outputs\decomposition.csv
+2026-04-24 00:05:25,835 INFO Table 2: D:\Injury research\injury_india_public_health\tables\Table2_decomposition.xlsx
+2026-04-24 00:05:25,844 INFO Median YLD fraction (all injuries, states): 0.189
+2026-04-24 00:05:25,845 INFO === Decomposition Analysis: Complete ===

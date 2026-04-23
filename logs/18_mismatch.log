@@ -1,0 +1,207 @@
+2026-04-23 13:09:52,084 INFO === Mismatch Analysis: Start ===
+2026-04-23 13:09:52,085 ERROR Master dataset not found.
+2026-04-23 22:55:42,663 INFO === Mismatch Analysis: Start ===
+2026-04-23 22:55:42,777 INFO Spearman correlation (GBD DALY rank vs MoRTH death rank): ρ=nan, p=nan
+2026-04-23 22:55:42,777 INFO NOTE: Year mismatch (GBD 2021 vs MoRTH 2023) — interpret qualitatively only
+2026-04-23 22:55:42,786 INFO States with notable rank mismatch (≥5 positions):
+2026-04-23 22:55:42,803 INFO   state_name_harmonized  rank_gbd_road_dalys  rank_morth_road_deaths  rank_mismatch_daly_vs_morth
+9             Telangana                  6.0                    11.0                         -5.0
+0             All India                  6.0                     1.0                          5.0
+2026-04-23 22:55:42,819 INFO Mismatch output: D:\Injury research\injury_india_public_health\outputs\mismatch.csv
+2026-04-23 22:55:44,213 INFO === Mismatch Analysis: Complete ===
+2026-04-23 22:55:44,214 INFO IMPORTANT: MoRTH 2023 vs GBD 2021 — all comparisons are qualitative (rank-based) only.
+2026-04-24 00:05:48,503 INFO === Mismatch Analysis: Start ===
+2026-04-24 00:05:48,917 INFO Spearman correlation (GBD DALY rank vs MoRTH death rank): ρ=nan, p=nan
+2026-04-24 00:05:48,917 INFO NOTE: Year mismatch (GBD 2021 vs MoRTH 2023) — interpret qualitatively only
+2026-04-24 00:05:48,919 INFO States with notable rank mismatch (≥5 positions):
+2026-04-24 00:05:48,954 INFO           state_name_harmonized  rank_gbd_road_dalys  rank_morth_road_deaths  rank_mismatch_daly_vs_morth
+7             Arunachal Pradesh                 94.0                   124.5                        -30.5
+14                        Assam                 94.0                   124.5                        -30.5
+13                        Assam                 94.0                   124.5                        -30.5
+12            Arunachal Pradesh                 94.0                   124.5                        -30.5
+11            Arunachal Pradesh                 94.0                   124.5                        -30.5
+10            Arunachal Pradesh                 94.0                   124.5                        -30.5
+9             Arunachal Pradesh                 94.0                   124.5                        -30.5
+8             Arunachal Pradesh                 94.0                   124.5                        -30.5
+15                        Assam                 94.0                   124.5                        -30.5
+26                 Chhattisgarh                 94.0                   124.5                        -30.5
+27                 Chhattisgarh                 94.0                   124.5                        -30.5
+28                 Chhattisgarh                 94.0                   124.5                        -30.5
+30                 Chhattisgarh                 94.0                   124.5                        -30.5
+18                        Assam                 94.0                   124.5                        -30.5
+17                        Assam                 94.0                   124.5                        -30.5
+16                        Assam                 94.0                   124.5                        -30.5
+31                        Delhi                 94.0                   124.5                        -30.5
+29                 Chhattisgarh                 94.0                   124.5                        -30.5
+25                 Chhattisgarh                 94.0                   124.5                        -30.5
+52                      Haryana                 94.0                   124.5                        -30.5
+54                      Haryana                 94.0                   124.5                        -30.5
+42                          Goa                 94.0                   124.5                        -30.5
+41                          Goa                 94.0                   124.5                        -30.5
+40                          Goa                 94.0                   124.5                        -30.5
+39                          Goa                 94.0                   124.5                        -30.5
+38                          Goa                 94.0                   124.5                        -30.5
+37                          Goa                 94.0                   124.5                        -30.5
+36                        Delhi                 94.0                   124.5                        -30.5
+35                        Delhi                 94.0                   124.5                        -30.5
+34                        Delhi                 94.0                   124.5                        -30.5
+33                        Delhi                 94.0                   124.5                        -30.5
+32                        Delhi                 94.0                   124.5                        -30.5
+60             Himachal Pradesh                 94.0                   124.5                        -30.5
+57             Himachal Pradesh                 94.0                   124.5                        -30.5
+58             Himachal Pradesh                 94.0                   124.5                        -30.5
+59             Himachal Pradesh                 94.0                   124.5                        -30.5
+62   Jammu & Kashmir and Ladakh                 94.0                   124.5                        -30.5
+53                      Haryana                 94.0                   124.5                        -30.5
+55             Himachal Pradesh                 94.0                   124.5                        -30.5
+56             Himachal Pradesh                 94.0                   124.5                        -30.5
+63   Jammu & Kashmir and Ladakh                 94.0                   124.5                        -30.5
+61   Jammu & Kashmir and Ladakh                 94.0                   124.5                        -30.5
+50                      Haryana                 94.0                   124.5                        -30.5
+49                      Haryana                 94.0                   124.5                        -30.5
+51                      Haryana                 94.0                   124.5                        -30.5
+109                     Mizoram                 94.0                   124.5                        -30.5
+111                     Mizoram                 94.0                   124.5                        -30.5
+112                     Mizoram                 94.0                   124.5                        -30.5
+120                    Nagaland                 94.0                   124.5                        -30.5
+80                       Kerala                 94.0                   124.5                        -30.5
+82                       Kerala                 94.0                   124.5                        -30.5
+83                       Kerala                 94.0                   124.5                        -30.5
+84                       Kerala                 94.0                   124.5                        -30.5
+81                       Kerala                 94.0                   124.5                        -30.5
+79                       Kerala                 94.0                   124.5                        -30.5
+72                    Jharkhand                 94.0                   124.5                        -30.5
+71                    Jharkhand                 94.0                   124.5                        -30.5
+70                    Jharkhand                 94.0                   124.5                        -30.5
+69                    Jharkhand                 94.0                   124.5                        -30.5
+68                    Jharkhand                 94.0                   124.5                        -30.5
+67                    Jharkhand                 94.0                   124.5                        -30.5
+66   Jammu & Kashmir and Ladakh                 94.0                   124.5                        -30.5
+65   Jammu & Kashmir and Ladakh                 94.0                   124.5                        -30.5
+64   Jammu & Kashmir and Ladakh                 94.0                   124.5                        -30.5
+124                      Odisha                 94.0                   124.5                        -30.5
+113                     Mizoram                 94.0                   124.5                        -30.5
+114                     Mizoram                 94.0                   124.5                        -30.5
+115                    Nagaland                 94.0                   124.5                        -30.5
+116                    Nagaland                 94.0                   124.5                        -30.5
+117                    Nagaland                 94.0                   124.5                        -30.5
+118                    Nagaland                 94.0                   124.5                        -30.5
+119                    Nagaland                 94.0                   124.5                        -30.5
+126                      Odisha                 94.0                   124.5                        -30.5
+121                      Odisha                 94.0                   124.5                        -30.5
+122                      Odisha                 94.0                   124.5                        -30.5
+123                      Odisha                 94.0                   124.5                        -30.5
+127     Other Union Territories                 94.0                   124.5                        -30.5
+125                      Odisha                 94.0                   124.5                        -30.5
+98                      Manipur                 94.0                   124.5                        -30.5
+97                      Manipur                 94.0                   124.5                        -30.5
+104                   Meghalaya                 94.0                   124.5                        -30.5
+103                   Meghalaya                 94.0                   124.5                        -30.5
+101                     Manipur                 94.0                   124.5                        -30.5
+110                     Mizoram                 94.0                   124.5                        -30.5
+107                   Meghalaya                 94.0                   124.5                        -30.5
+106                   Meghalaya                 94.0                   124.5                        -30.5
+105                   Meghalaya                 94.0                   124.5                        -30.5
+108                   Meghalaya                 94.0                   124.5                        -30.5
+100                     Manipur                 94.0                   124.5                        -30.5
+99                      Manipur                 94.0                   124.5                        -30.5
+102                     Manipur                 94.0                   124.5                        -30.5
+132     Other Union Territories                 94.0                   124.5                        -30.5
+131     Other Union Territories                 94.0                   124.5                        -30.5
+176                 Uttarakhand                 94.0                   124.5                        -30.5
+185                 West Bengal                 94.0                   124.5                        -30.5
+186                 West Bengal                 94.0                   124.5                        -30.5
+163                     Tripura                 94.0                   124.5                        -30.5
+166                     Tripura                 94.0                   124.5                        -30.5
+165                     Tripura                 94.0                   124.5                        -30.5
+164                     Tripura                 94.0                   124.5                        -30.5
+167                     Tripura                 94.0                   124.5                        -30.5
+168                     Tripura                 94.0                   124.5                        -30.5
+175                 Uttarakhand                 94.0                   124.5                        -30.5
+184                 West Bengal                 94.0                   124.5                        -30.5
+183                 West Bengal                 94.0                   124.5                        -30.5
+182                 West Bengal                 94.0                   124.5                        -30.5
+181                 West Bengal                 94.0                   124.5                        -30.5
+180                 Uttarakhand                 94.0                   124.5                        -30.5
+179                 Uttarakhand                 94.0                   124.5                        -30.5
+178                 Uttarakhand                 94.0                   124.5                        -30.5
+177                 Uttarakhand                 94.0                   124.5                        -30.5
+149                      Sikkim                 94.0                   124.5                        -30.5
+145                      Sikkim                 94.0                   124.5                        -30.5
+146                      Sikkim                 94.0                   124.5                        -30.5
+147                      Sikkim                 94.0                   124.5                        -30.5
+148                      Sikkim                 94.0                   124.5                        -30.5
+150                      Sikkim                 94.0                   124.5                        -30.5
+138                      Punjab                 94.0                   124.5                        -30.5
+137                      Punjab                 94.0                   124.5                        -30.5
+136                      Punjab                 94.0                   124.5                        -30.5
+135                      Punjab                 94.0                   124.5                        -30.5
+134                      Punjab                 94.0                   124.5                        -30.5
+133                      Punjab                 94.0                   124.5                        -30.5
+128     Other Union Territories                 94.0                   124.5                        -30.5
+129     Other Union Territories                 94.0                   124.5                        -30.5
+130     Other Union Territories                 94.0                   124.5                        -30.5
+162                   Telangana                 94.0                    58.5                         35.5
+160                   Telangana                 94.0                    58.5                         35.5
+158                   Telangana                 94.0                    58.5                         35.5
+159                   Telangana                 94.0                    58.5                         35.5
+157                   Telangana                 94.0                    58.5                         35.5
+161                   Telangana                 94.0                    58.5                         35.5
+43                      Gujarat                 94.0                    52.5                         41.5
+46                      Gujarat                 94.0                    52.5                         41.5
+47                      Gujarat                 94.0                    52.5                         41.5
+44                      Gujarat                 94.0                    52.5                         41.5
+45                      Gujarat                 94.0                    52.5                         41.5
+48                      Gujarat                 94.0                    52.5                         41.5
+4                Andhra Pradesh                 94.0                    46.5                         47.5
+5                Andhra Pradesh                 94.0                    46.5                         47.5
+3                Andhra Pradesh                 94.0                    46.5                         47.5
+2                Andhra Pradesh                 94.0                    46.5                         47.5
+6                Andhra Pradesh                 94.0                    46.5                         47.5
+1                Andhra Pradesh                 94.0                    46.5                         47.5
+20                        Bihar                 94.0                    40.5                         53.5
+23                        Bihar                 94.0                    40.5                         53.5
+21                        Bihar                 94.0                    40.5                         53.5
+22                        Bihar                 94.0                    40.5                         53.5
+19                        Bihar                 94.0                    40.5                         53.5
+24                        Bihar                 94.0                    40.5                         53.5
+142                   Rajasthan                 94.0                    34.5                         59.5
+141                   Rajasthan                 94.0                    34.5                         59.5
+140                   Rajasthan                 94.0                    34.5                         59.5
+143                   Rajasthan                 94.0                    34.5                         59.5
+144                   Rajasthan                 94.0                    34.5                         59.5
+139                   Rajasthan                 94.0                    34.5                         59.5
+78                    Karnataka                 94.0                    28.5                         65.5
+74                    Karnataka                 94.0                    28.5                         65.5
+75                    Karnataka                 94.0                    28.5                         65.5
+77                    Karnataka                 94.0                    28.5                         65.5
+76                    Karnataka                 94.0                    28.5                         65.5
+73                    Karnataka                 94.0                    28.5                         65.5
+88               Madhya Pradesh                 94.0                    22.5                         71.5
+87               Madhya Pradesh                 94.0                    22.5                         71.5
+89               Madhya Pradesh                 94.0                    22.5                         71.5
+85               Madhya Pradesh                 94.0                    22.5                         71.5
+86               Madhya Pradesh                 94.0                    22.5                         71.5
+90               Madhya Pradesh                 94.0                    22.5                         71.5
+92                  Maharashtra                 94.0                    16.5                         77.5
+96                  Maharashtra                 94.0                    16.5                         77.5
+94                  Maharashtra                 94.0                    16.5                         77.5
+93                  Maharashtra                 94.0                    16.5                         77.5
+91                  Maharashtra                 94.0                    16.5                         77.5
+95                  Maharashtra                 94.0                    16.5                         77.5
+156                  Tamil Nadu                 94.0                    10.5                         83.5
+151                  Tamil Nadu                 94.0                    10.5                         83.5
+152                  Tamil Nadu                 94.0                    10.5                         83.5
+153                  Tamil Nadu                 94.0                    10.5                         83.5
+154                  Tamil Nadu                 94.0                    10.5                         83.5
+155                  Tamil Nadu                 94.0                    10.5                         83.5
+174               Uttar Pradesh                 94.0                     4.5                         89.5
+170               Uttar Pradesh                 94.0                     4.5                         89.5
+169               Uttar Pradesh                 94.0                     4.5                         89.5
+171               Uttar Pradesh                 94.0                     4.5                         89.5
+172               Uttar Pradesh                 94.0                     4.5                         89.5
+173               Uttar Pradesh                 94.0                     4.5                         89.5
+0                     All India                 94.0                     1.0                         93.0
+2026-04-24 00:05:48,966 INFO Mismatch output: D:\Injury research\injury_india_public_health\outputs\mismatch.csv
+2026-04-24 00:05:50,325 INFO === Mismatch Analysis: Complete ===
+2026-04-24 00:05:50,325 INFO IMPORTANT: MoRTH 2023 vs GBD 2021 — all comparisons are qualitative (rank-based) only.

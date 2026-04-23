@@ -1,0 +1,53 @@
+2026-04-23 13:06:18,757 INFO === GBD 2021 Parser: Start ===
+2026-04-23 13:06:18,760 WARNING No CSV files found in D:\Injury research\injury_india_public_health\data_raw\gbd. Download GBD data first.
+2026-04-23 13:06:18,761 WARNING Instructions: run src/ingest/01_download_plan.py --instructions
+2026-04-23 13:06:18,776 WARNING No GBD data to process. Please download GBD files first.
+2026-04-23 13:06:18,777 WARNING See instructions in src/ingest/01_download_plan.py
+2026-04-23 13:06:18,794 INFO Placeholder schema written to: D:\Injury research\injury_india_public_health\data_interim\gbd_raw_combined.csv
+2026-04-23 22:50:25,991 INFO === GBD 2021 Parser: Start ===
+2026-04-23 22:50:25,993 INFO Found 1 CSV file(s) in D:\Injury research\injury_india_public_health\data_raw\gbd
+2026-04-23 22:50:25,995 INFO Reading: IHME-GBD_2023_DATA-47b91818-1.csv
+2026-04-23 22:50:26,050 INFO   → 2,880 rows, columns: ['population_group_id', 'population_group_name', 'measure_id', 'measure_name', 'location_id', 'location_name', 'sex_id', 'sex_name', 'age_id', 'age_name', 'cause_id', 'cause_name', 'metric_id', 'metric_name', 'year', 'val', 'upper', 'lower', '_source_file']
+2026-04-23 22:50:26,051 INFO Combined GBD data: 2,880 rows
+2026-04-23 22:50:26,097 INFO Filtered to India locations: 2,880 → 2,700 rows
+2026-04-23 22:50:26,106 INFO Filtered to injury/all-causes: 2,700 → 2,700 rows
+2026-04-23 22:50:26,111 WARNING DATA GAP: Only 'All causes' GBD data present. Re-download GBD with injury cause filters for full analysis. See docs/redownload_gbd_instructions.md
+2026-04-23 22:50:26,152 INFO Data validation passed.
+2026-04-23 22:50:26,211 INFO Output written: D:\Injury research\injury_india_public_health\data_interim\gbd_raw_combined.csv (2,700 rows)
+2026-04-23 22:50:27,761 INFO Parquet written: D:\Injury research\injury_india_public_health\data_interim\gbd_raw_combined.parquet
+2026-04-23 22:50:27,762 INFO === GBD 2021 Parser: Complete ===
+2026-04-24 00:02:46,467 INFO === GBD 2021 Parser: Start ===
+2026-04-24 00:02:46,470 INFO Found 2 CSV file(s) in D:\Injury research\injury_india_public_health\data_raw\gbd
+2026-04-24 00:02:46,471 INFO Reading: IHME-GBD_2023_DATA-467618ec-1.csv
+2026-04-24 00:02:47,005 INFO   → 82,176 rows, columns: ['population_group_id', 'population_group_name', 'measure_id', 'measure_name', 'location_id', 'location_name', 'sex_id', 'sex_name', 'age_id', 'age_name', 'cause_id', 'cause_name', 'metric_id', 'metric_name', 'year', 'val', 'upper', 'lower', '_source_file']
+2026-04-24 00:02:47,006 INFO Reading: IHME-GBD_2023_DATA-47b91818-1.csv
+2026-04-24 00:02:47,039 INFO   → 2,880 rows, columns: ['population_group_id', 'population_group_name', 'measure_id', 'measure_name', 'location_id', 'location_name', 'sex_id', 'sex_name', 'age_id', 'age_name', 'cause_id', 'cause_name', 'metric_id', 'metric_name', 'year', 'val', 'upper', 'lower', '_source_file']
+2026-04-24 00:02:47,066 INFO Combined GBD data: 85,056 rows
+2026-04-24 00:02:47,257 INFO Filtered to India locations: 85,056 → 79,740 rows
+2026-04-24 00:02:47,402 INFO Filtered to injury/all-causes: 79,740 → 54,540 rows
+2026-04-24 00:02:47,415 WARNING DATA GAP: Only 'All causes' GBD data present. Re-download GBD with injury cause filters for full analysis. See docs/redownload_gbd_instructions.md
+2026-04-24 00:02:47,448 WARNING Unmapped GBD causes (will be labeled 'other_unclassified'): ['Self-harm by firearm' 'Physical violence by firearm'
+ 'Environmental heat and cold exposure' 'Unintentional firearm injuries'
+ 'Self-harm by other specified means' 'Pedestrian road injuries'
+ 'Cyclist road injuries' 'Motorcyclist road injuries'
+ 'Motor vehicle road injuries' 'Other road injuries']
+2026-04-24 00:02:47,526 WARNING Data validation issues found:
+2026-04-24 00:02:47,527 WARNING   - Duplicate rows: 2160
+2026-04-24 00:02:48,428 INFO Output written: D:\Injury research\injury_india_public_health\data_interim\gbd_raw_combined.csv (54,540 rows)
+2026-04-24 00:02:48,974 INFO Parquet written: D:\Injury research\injury_india_public_health\data_interim\gbd_raw_combined.parquet
+2026-04-24 00:02:48,974 INFO === GBD 2021 Parser: Complete ===
+2026-04-24 00:04:07,567 INFO === GBD 2021 Parser: Start ===
+2026-04-24 00:04:07,568 INFO Found 2 CSV file(s) in D:\Injury research\injury_india_public_health\data_raw\gbd
+2026-04-24 00:04:07,569 INFO Reading: IHME-GBD_2023_DATA-467618ec-1.csv
+2026-04-24 00:04:08,105 INFO   → 82,176 rows, columns: ['population_group_id', 'population_group_name', 'measure_id', 'measure_name', 'location_id', 'location_name', 'sex_id', 'sex_name', 'age_id', 'age_name', 'cause_id', 'cause_name', 'metric_id', 'metric_name', 'year', 'val', 'upper', 'lower', '_source_file']
+2026-04-24 00:04:08,105 INFO Reading: IHME-GBD_2023_DATA-47b91818-1.csv
+2026-04-24 00:04:08,134 INFO   → 2,880 rows, columns: ['population_group_id', 'population_group_name', 'measure_id', 'measure_name', 'location_id', 'location_name', 'sex_id', 'sex_name', 'age_id', 'age_name', 'cause_id', 'cause_name', 'metric_id', 'metric_name', 'year', 'val', 'upper', 'lower', '_source_file']
+2026-04-24 00:04:08,155 INFO Combined GBD data: 85,056 rows
+2026-04-24 00:04:08,312 INFO Filtered to India locations: 85,056 → 85,056 rows
+2026-04-24 00:04:08,489 INFO Filtered to injury/all-causes: 85,056 → 82,752 rows
+2026-04-24 00:04:08,498 INFO Injury-specific causes present: 34 cause types
+2026-04-24 00:04:08,557 INFO Dropped 5184 'All causes' rows (superseded by injury-specific data)
+2026-04-24 00:04:08,676 INFO Data validation passed.
+2026-04-24 00:04:09,992 INFO Output written: D:\Injury research\injury_india_public_health\data_interim\gbd_raw_combined.csv (77,568 rows)
+2026-04-24 00:04:10,462 INFO Parquet written: D:\Injury research\injury_india_public_health\data_interim\gbd_raw_combined.parquet
+2026-04-24 00:04:10,463 INFO === GBD 2021 Parser: Complete ===

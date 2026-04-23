@@ -1,0 +1,3 @@
+2026-04-23 13:06:23,059 INFO === MoRTH Parser: Start ===
+2026-04-23 13:06:23,063 WARNING No MoRTH PDF and no manual template found.
+2026-04-23 13:06:25,077 INFO Manual extraction template written to: D:\Injury research\injury_india_public_health\data_raw\morth\manual_extraction_morth.xlsx

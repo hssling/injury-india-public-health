@@ -1,0 +1,37 @@
+state_name_harmonized,iso_code,state_code_num,gbd_name,morth_name,ncrb_name,region_who,region_india,state_type,notes
+Andhra Pradesh,IN-AP,28,Andhra Pradesh,Andhra Pradesh,Andhra Pradesh,South-East Asia,South,State,Post-2014 bifurcated state
+Arunachal Pradesh,IN-AR,12,Arunachal Pradesh,Arunachal Pradesh,Arunachal Pradesh,South-East Asia,North-East,State,
+Assam,IN-AS,18,Assam,Assam,Assam,South-East Asia,North-East,State,
+Bihar,IN-BR,10,Bihar,Bihar,Bihar,South-East Asia,East,State,
+Chhattisgarh,IN-CT,22,Chhattisgarh,Chhattisgarh,Chhattisgarh,South-East Asia,Central,State,Formed 2000
+Goa,IN-GA,30,Goa,Goa,Goa,South-East Asia,West,State,
+Gujarat,IN-GJ,24,Gujarat,Gujarat,Gujarat,South-East Asia,West,State,
+Haryana,IN-HR,6,Haryana,Haryana,Haryana,South-East Asia,North,State,
+Himachal Pradesh,IN-HP,2,Himachal Pradesh,Himachal Pradesh,Himachal Pradesh,South-East Asia,North,State,
+Jharkhand,IN-JH,20,Jharkhand,Jharkhand,Jharkhand,South-East Asia,East,State,Formed 2000
+Karnataka,IN-KA,29,Karnataka,Karnataka,Karnataka,South-East Asia,South,State,
+Kerala,IN-KL,32,Kerala,Kerala,Kerala,South-East Asia,South,State,
+Madhya Pradesh,IN-MP,23,Madhya Pradesh,Madhya Pradesh,Madhya Pradesh,South-East Asia,Central,State,
+Maharashtra,IN-MH,27,Maharashtra,Maharashtra,Maharashtra,South-East Asia,West,State,
+Manipur,IN-MN,14,Manipur,Manipur,Manipur,South-East Asia,North-East,State,
+Meghalaya,IN-ML,17,Meghalaya,Meghalaya,Meghalaya,South-East Asia,North-East,State,
+Mizoram,IN-MZ,15,Mizoram,Mizoram,Mizoram,South-East Asia,North-East,State,
+Nagaland,IN-NL,13,Nagaland,Nagaland,Nagaland,South-East Asia,North-East,State,
+Odisha,IN-OD,21,Odisha,Odisha,Odisha,South-East Asia,East,State,Also spelled Orissa in older sources
+Punjab,IN-PB,3,Punjab,Punjab,Punjab,South-East Asia,North,State,
+Rajasthan,IN-RJ,8,Rajasthan,Rajasthan,Rajasthan,South-East Asia,North,State,
+Sikkim,IN-SK,11,Sikkim,Sikkim,Sikkim,South-East Asia,North-East,State,
+Tamil Nadu,IN-TN,33,Tamil Nadu,Tamil Nadu,Tamil Nadu,South-East Asia,South,State,
+Telangana,IN-TG,36,Telangana,Telangana,Telangana,South-East Asia,South,State,Bifurcated from AP in 2014; GBD may have limited pre-2014 subnational data
+Tripura,IN-TR,16,Tripura,Tripura,Tripura,South-East Asia,North-East,State,
+Uttar Pradesh,IN-UP,9,Uttar Pradesh,Uttar Pradesh,Uttar Pradesh,South-East Asia,North,State,
+Uttarakhand,IN-UT,5,Uttarakhand,Uttarakhand,Uttarakhand,South-East Asia,North,State,Formed 2000; also Uttaranchal in older sources
+West Bengal,IN-WB,19,West Bengal,West Bengal,West Bengal,South-East Asia,East,State,
+Andaman and Nicobar Islands,IN-AN,35,Andaman and Nicobar Islands,A & N Islands,A & N Islands,South-East Asia,Union Territory,UT,Small population; GBD estimate may be unreliable
+Chandigarh,IN-CH,4,Chandigarh,Chandigarh,Chandigarh,South-East Asia,Union Territory,UT,City UT; small population
+Dadra and Nagar Haveli and Daman and Diu,IN-DH,26,Dadra & Nagar Haveli and Daman & Diu,D & N Haveli,D & N Haveli,South-East Asia,Union Territory,UT,Merged UT since 2020; check GBD name carefully
+Delhi,IN-DL,7,Delhi,Delhi,Delhi,South-East Asia,Union Territory,UT,NCT Delhi; large population; reliable estimates
+Jammu and Kashmir,IN-JK,1,Jammu & Kashmir,Jammu & Kashmir,Jammu & Kashmir,South-East Asia,Union Territory,UT,UT status since 2019; check GBD name
+Ladakh,IN-LA,37,Ladakh,,Ladakh,South-East Asia,Union Territory,UT,New UT since 2019; may not have independent GBD estimate
+Lakshadweep,IN-LD,31,Lakshadweep,Lakshadweep,Lakshadweep,South-East Asia,Union Territory,UT,Very small population; GBD estimate likely unreliable
+Puducherry,IN-PY,34,Puducherry,Puducherry,Puducherry,South-East Asia,Union Territory,UT,Also Pondicherry in older sources

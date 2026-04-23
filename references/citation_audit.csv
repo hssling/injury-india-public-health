@@ -1,0 +1,13 @@
+ref_id,authors,year,title_short,journal,doi,doi_verified,url,url_verified,pmid,pmid_verified,notes,status
+GBD2019DI,"GBD 2019 Diseases and Injuries Collaborators",2020,"Global burden of 369 diseases and injuries","Lancet","10.1016/S0140-6736(20)30925-9",PENDING,,NA,33069327,PENDING,,DRAFT
+GBD2021DI,"GBD 2021 Diseases and Injuries Collaborators",2024,"Global incidence prevalence YLDs DALYs HALE 2021","Lancet","10.1016/S0140-6736(24)00757-8",PENDING,,NA,,PENDING,,DRAFT
+MoRTH2023,"Ministry of Road Transport and Highways",2024,"Road Accidents in India 2023",,NA,NA,"https://road.transport.gov.in",PENDING,NA,NA,Check exact report URL,DRAFT
+NCRB2023,"National Crime Records Bureau",2024,"Accidental Deaths and Suicides in India 2023",,NA,NA,"https://ncrb.gov.in",PENDING,NA,NA,Check exact report URL,DRAFT
+SLDB2020,"India State-Level Disease Burden Initiative Injuries Collaborators",2020,"Burden of injuries in India 1990-2017 GBD 2017","Lancet Public Health","10.1016/S2468-2667(20)30010-4",PENDING,,NA,,PENDING,,DRAFT
+SLDB2017,"India State-Level Disease Burden Initiative Collaborators",2017,"Burden of diseases in states of India GBD 2016","Lancet","10.1016/S0140-6736(17)32571-1",PENDING,,NA,,PENDING,,DRAFT
+IHME_GHDx,"Institute for Health Metrics and Evaluation",2022,"GBD 2021 Results",,NA,NA,"https://ghdx.healthdata.org/gbd-results",PENDING,NA,NA,Data access date needed,DRAFT
+GBD2019Trauma,"GBD 2019 Trauma Collaborators",2021,"Global burden of bone fractures","Lancet Healthy Longevity","10.1016/S2666-7568(21)00172-0",PENDING,,NA,,PENDING,,DRAFT
+RaoCMNR2020,"Rao C et al",2020,"Road injuries in India recent trends","National Medical Journal of India",,PENDING,,NA,,PENDING,Need volume/page/doi verification,DRAFT
+Dandona2020,"Dandona R et al",2020,"Patterns and outcomes of road traffic crashes in India","Health Policy","10.1016/j.healthpol.2020.10.012",PENDING,,NA,,PENDING,,DRAFT
+Gururaj2013,"Gururaj G",2013,"Road traffic deaths injuries disabilities India","National Medical Journal of India",,PENDING,,NA,,PENDING,Need doi or pmid,DRAFT
+WHO_VR_2023,"World Health Organization",2023,"Global Status Report on Road Safety 2023",,"",NA,"https://www.who.int/publications/i/item/9789240086517",PENDING,NA,NA,,DRAFT

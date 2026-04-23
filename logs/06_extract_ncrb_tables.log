@@ -1,0 +1,86 @@
+2026-04-23 18:49:57,849 INFO ============================================================
+2026-04-23 18:49:57,851 INFO NCRB ADSI 2023 Extraction
+2026-04-23 18:49:57,852 INFO ============================================================
+2026-04-23 18:49:57,878 INFO Built cause-specific table: 216 rows
+2026-04-23 18:49:57,878 INFO Validating cause_specific...
+2026-04-23 18:49:57,906 INFO   Rows: 216 | Null deaths: 0
+2026-04-23 18:49:57,944 INFO   Cause=drowning: n_states=36, sum_deaths=37,738
+2026-04-23 18:49:57,946 INFO   Cause=falls: n_states=36, sum_deaths=25,150
+2026-04-23 18:49:57,947 INFO   Cause=fire_burns: n_states=36, sum_deaths=6,891
+2026-04-23 18:49:57,949 INFO   Cause=poisoning: n_states=36, sum_deaths=21,785
+2026-04-23 18:49:57,952 INFO   Cause=road_accidents: n_states=36, sum_deaths=173,826
+2026-04-23 18:49:57,953 INFO   Cause=total_accidental: n_states=36, sum_deaths=437,660
+2026-04-23 18:49:57,973 INFO Saved: D:\Injury research\injury_india_public_health\data_interim\ncrb_accidental_deaths_2023.csv
+2026-04-23 18:49:57,976 INFO Built timeseries table: 72 rows
+2026-04-23 18:49:57,983 INFO Saved: D:\Injury research\injury_india_public_health\data_interim\ncrb_total_accidents_2022_2023.csv
+2026-04-23 18:49:57,986 INFO Built rates table: 36 rows
+2026-04-23 18:49:57,992 INFO Saved: D:\Injury research\injury_india_public_health\data_interim\ncrb_accidental_death_rates_2023.csv
+2026-04-23 18:49:58,450 INFO Attempting live suicide table extraction (pages 200-298)...
+2026-04-23 18:49:58,966 WARNING Failed to import jpype dependencies. Fallback to subprocess.
+2026-04-23 18:49:58,966 WARNING No module named 'jpype'
+2026-04-23 18:53:59,635 INFO Found 91 tables in pages 200-298
+2026-04-23 18:53:59,684 INFO Found candidate suicide table T0 shape=(47, 6)
+2026-04-23 18:53:59,717 INFO Validating suicide...
+2026-04-23 18:53:59,725 INFO   Rows: 35 | Null deaths: 0
+2026-04-23 18:53:59,751 INFO   Cause=suicide_total: n_states=35, sum_deaths=173,745
+2026-04-23 18:53:59,760 INFO Saved: D:\Injury research\injury_india_public_health\data_interim\ncrb_suicides_2023.csv
+2026-04-23 18:53:59,761 INFO ============================================================
+2026-04-23 18:53:59,761 INFO NCRB extraction complete
+2026-04-23 18:53:59,761 INFO 
+--- EXTRACTION SUMMARY ---
+2026-04-23 18:53:59,761 INFO National totals (2023):
+2026-04-23 18:53:59,761 INFO   Drowning:       37,738
+2026-04-23 18:53:59,762 INFO   Falls:          25,150
+2026-04-23 18:53:59,762 INFO   Fire/Burns:      6,891
+2026-04-23 18:53:59,762 INFO   Road (NCRB):   173,826
+2026-04-23 18:53:59,762 INFO   Poisoning:      21,785
+2026-04-23 18:53:59,762 INFO   Total Acc.:    437,660
+2026-04-23 18:53:59,762 INFO   Acc. rate:    31.9 per lakh
+2026-04-23 18:53:59,762 INFO 
+Top 5 states by total accidental deaths (2023):
+2026-04-23 18:53:59,763 INFO   Maharashtra                                69,497
+2026-04-23 18:53:59,763 INFO   Madhya Pradesh                             42,531
+2026-04-23 18:53:59,763 INFO   Uttar Pradesh                              42,355
+2026-04-23 18:53:59,763 INFO   Tamil Nadu                                 32,679
+2026-04-23 18:53:59,763 INFO   Rajasthan                                  30,004
+2026-04-23 18:56:40,038 INFO ============================================================
+2026-04-23 18:56:40,040 INFO NCRB ADSI 2023 Extraction
+2026-04-23 18:56:40,041 INFO ============================================================
+2026-04-23 18:56:40,050 INFO Built cause-specific table: 252 rows
+2026-04-23 18:56:40,051 INFO Validating cause_specific...
+2026-04-23 18:56:40,063 INFO   Rows: 252 | Null deaths: 0
+2026-04-23 18:56:40,071 INFO   Cause=drowning: n_states=36, sum_deaths=37,738
+2026-04-23 18:56:40,074 INFO   Cause=falls: n_states=36, sum_deaths=25,150
+2026-04-23 18:56:40,075 INFO   Cause=fire_burns: n_states=36, sum_deaths=6,891
+2026-04-23 18:56:40,078 INFO   Cause=poisoning: n_states=36, sum_deaths=21,785
+2026-04-23 18:56:40,080 INFO   Cause=road_accidents: n_states=36, sum_deaths=173,826
+2026-04-23 18:56:40,081 INFO   Cause=suicide_total: n_states=36, sum_deaths=171,418
+2026-04-23 18:56:40,084 INFO   Cause=total_accidental: n_states=36, sum_deaths=437,660
+2026-04-23 18:56:40,113 INFO Saved: D:\Injury research\injury_india_public_health\data_interim\ncrb_accidental_deaths_2023.csv
+2026-04-23 18:56:40,116 INFO Built timeseries table: 72 rows
+2026-04-23 18:56:40,123 INFO Saved: D:\Injury research\injury_india_public_health\data_interim\ncrb_total_accidents_2022_2023.csv
+2026-04-23 18:56:40,128 INFO Built rates table: 36 rows
+2026-04-23 18:56:40,137 INFO Saved: D:\Injury research\injury_india_public_health\data_interim\ncrb_accidental_death_rates_2023.csv
+2026-04-23 18:56:40,142 INFO Validating suicide...
+2026-04-23 18:56:40,144 INFO   Rows: 36 | Null: 0 | Total deaths: 171,418
+2026-04-23 18:56:40,151 INFO Saved: D:\Injury research\injury_india_public_health\data_interim\ncrb_suicides_2023.csv
+2026-04-23 18:56:40,152 INFO ============================================================
+2026-04-23 18:56:40,153 INFO NCRB extraction complete
+2026-04-23 18:56:40,154 INFO 
+--- EXTRACTION SUMMARY ---
+2026-04-23 18:56:40,154 INFO National totals (2023):
+2026-04-23 18:56:40,154 INFO   Drowning:       37,738
+2026-04-23 18:56:40,155 INFO   Falls:          25,150
+2026-04-23 18:56:40,155 INFO   Fire/Burns:      6,891
+2026-04-23 18:56:40,156 INFO   Road (NCRB):   173,826
+2026-04-23 18:56:40,156 INFO   Poisoning:      21,785
+2026-04-23 18:56:40,157 INFO   Total Acc.:    437,660
+2026-04-23 18:56:40,157 INFO   Suicide tot:   171,418
+2026-04-23 18:56:40,157 INFO   Acc. rate:    31.9 per lakh
+2026-04-23 18:56:40,157 INFO 
+Top 5 states by total accidental deaths (2023):
+2026-04-23 18:56:40,157 INFO   Maharashtra                                69,497
+2026-04-23 18:56:40,158 INFO   Madhya Pradesh                             42,531
+2026-04-23 18:56:40,158 INFO   Uttar Pradesh                              42,355
+2026-04-23 18:56:40,158 INFO   Tamil Nadu                                 32,679
+2026-04-23 18:56:40,158 INFO   Rajasthan                                  30,004

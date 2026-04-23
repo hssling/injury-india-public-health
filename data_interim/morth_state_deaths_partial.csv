@@ -1,0 +1,12 @@
+state_name_harmonized,year,road_deaths_n,source,note
+Uttar Pradesh,2023,23652,morth2023,top10_extracted
+Tamil Nadu,2023,18347,morth2023,top10_extracted
+Maharashtra,2023,15366,morth2023,top10_extracted
+Madhya Pradesh,2023,13798,morth2023,top10_extracted
+Karnataka,2023,12321,morth2023,top10_extracted
+Rajasthan,2023,11762,morth2023,top10_extracted
+Bihar,2023,8873,morth2023,top10_extracted
+Andhra Pradesh,2023,8137,morth2023,top10_extracted
+Gujarat,2023,7854,morth2023,top10_extracted
+Telangana,2023,7660,morth2023,top10_extracted
+All India,2023,172890,morth2023,national_total_confirmed

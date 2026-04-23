@@ -1,0 +1,117 @@
+2026-04-23 13:06:38,145 INFO === State Harmonization: Start ===
+2026-04-23 13:06:38,260 INFO Crosswalk loaded: 36 states/UTs, 80 name variants
+2026-04-23 13:06:38,413 INFO Harmonized dataset: D:\Injury research\injury_india_public_health\data_interim\gbd_harmonized.csv (0 rows)
+2026-04-23 13:06:38,428 WARNING File not found: D:\Injury research\injury_india_public_health\data_interim\morth_raw.csv (skipping — will process when available)
+2026-04-23 13:06:38,435 WARNING File not found: D:\Injury research\injury_india_public_health\data_interim\ncrb_accidental_raw.csv (skipping — will process when available)
+2026-04-23 13:06:38,436 WARNING File not found: D:\Injury research\injury_india_public_health\data_interim\ncrb_suicide_raw.csv (skipping — will process when available)
+2026-04-23 13:06:38,472 INFO Harmonization audit log: D:\Injury research\injury_india_public_health\logs\state_name_harmonization_log.csv (0 entries)
+2026-04-23 13:06:38,474 INFO All state names successfully harmonized.
+2026-04-23 13:06:38,478 INFO === State Harmonization: Complete ===
+2026-04-23 22:50:42,946 INFO === State Harmonization: Start ===
+2026-04-23 22:50:43,021 INFO Crosswalk loaded: 36 states/UTs, 80 name variants
+2026-04-23 22:50:43,087 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,087 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,087 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,087 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,088 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,088 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,088 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,088 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,088 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,089 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,089 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,089 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,090 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,091 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,091 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,092 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,092 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,092 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,092 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,093 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,093 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,094 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,094 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,095 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,096 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,096 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,096 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,097 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,097 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,097 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,097 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,097 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,097 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,097 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,097 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,098 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,098 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,098 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,098 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,098 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,098 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,098 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,100 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,100 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,100 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,102 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,102 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,103 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,103 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,103 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,104 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,104 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,104 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,104 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,104 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,104 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,104 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,105 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,105 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,105 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,106 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,106 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,106 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,107 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,107 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,107 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,108 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,108 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,108 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,108 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,108 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,108 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,109 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,109 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,109 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,110 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,110 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,110 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,110 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,110 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,111 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,111 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,111 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,111 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,112 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,112 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,112 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,112 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,112 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,112 WARNING [gbd] UNMATCHED state name: 'India'
+2026-04-23 22:50:43,174 INFO Harmonized dataset: D:\Injury research\injury_india_public_health\data_interim\gbd_harmonized.csv (2,700 rows)
+2026-04-23 22:50:43,175 WARNING File not found: D:\Injury research\injury_india_public_health\data_interim\morth_raw.csv (skipping — will process when available)
+2026-04-23 22:50:43,176 WARNING File not found: D:\Injury research\injury_india_public_health\data_interim\ncrb_accidental_raw.csv (skipping — will process when available)
+2026-04-23 22:50:43,176 WARNING File not found: D:\Injury research\injury_india_public_health\data_interim\ncrb_suicide_raw.csv (skipping — will process when available)
+2026-04-23 22:50:43,178 INFO Harmonization audit log: D:\Injury research\injury_india_public_health\logs\state_name_harmonization_log.csv (90 entries)
+2026-04-23 22:50:43,179 WARNING Total unmatched state names: 90 — review harmonization log
+2026-04-23 22:50:43,179 INFO === State Harmonization: Complete ===
+2026-04-24 00:04:14,241 INFO === State Harmonization: Start ===
+2026-04-24 00:04:14,262 INFO Crosswalk loaded: 36 states/UTs, 84 name variants
+2026-04-24 00:04:16,542 INFO Harmonized dataset: D:\Injury research\injury_india_public_health\data_interim\gbd_harmonized.csv (77,568 rows)
+2026-04-24 00:04:16,544 WARNING File not found: D:\Injury research\injury_india_public_health\data_interim\morth_raw.csv (skipping — will process when available)
+2026-04-24 00:04:16,545 WARNING File not found: D:\Injury research\injury_india_public_health\data_interim\ncrb_accidental_raw.csv (skipping — will process when available)
+2026-04-24 00:04:16,546 WARNING File not found: D:\Injury research\injury_india_public_health\data_interim\ncrb_suicide_raw.csv (skipping — will process when available)
+2026-04-24 00:04:16,563 INFO Harmonization audit log: D:\Injury research\injury_india_public_health\logs\state_name_harmonization_log.csv (2424 entries)
+2026-04-24 00:04:16,565 INFO All state names successfully harmonized.
+2026-04-24 00:04:16,565 INFO === State Harmonization: Complete ===

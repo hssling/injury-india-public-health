@@ -1,0 +1,73 @@
+2026-04-23 13:05:42,187 INFO 
+============================================================
+2026-04-23 13:05:42,188 INFO RUNNING: Phase 1A: Download instructions and file validation
+2026-04-23 13:05:42,188 INFO Script: D:\Injury research\injury_india_public_health\src\ingest\01_download_plan.py
+2026-04-23 13:05:42,188 INFO ============================================================
+2026-04-23 13:05:42,636 INFO [OK] Phase 1A: Download instructions and file validation completed successfully.
+2026-04-23 13:06:03,874 INFO 
+============================================================
+2026-04-23 13:06:03,875 INFO RUNNING: Phase 2A: Parse GBD CSV files
+2026-04-23 13:06:03,875 INFO Script: D:\Injury research\injury_india_public_health\src\ingest\02_parse_gbd.py
+2026-04-23 13:06:03,876 INFO ============================================================
+2026-04-23 13:06:19,402 INFO [OK] Phase 2A: Parse GBD CSV files completed successfully.
+2026-04-23 13:06:19,403 INFO 
+============================================================
+2026-04-23 13:06:19,403 INFO RUNNING: Phase 2B: Parse MoRTH PDF
+2026-04-23 13:06:19,403 INFO Script: D:\Injury research\injury_india_public_health\src\ingest\03_parse_morth.py
+2026-04-23 13:06:19,403 INFO ============================================================
+2026-04-23 13:06:25,598 INFO [OK] Phase 2B: Parse MoRTH PDF completed successfully.
+2026-04-23 13:06:25,599 INFO 
+============================================================
+2026-04-23 13:06:25,599 INFO RUNNING: Phase 2C: Parse NCRB PDF
+2026-04-23 13:06:25,599 INFO Script: D:\Injury research\injury_india_public_health\src\ingest\04_parse_ncrb.py
+2026-04-23 13:06:25,599 INFO ============================================================
+2026-04-23 13:06:31,495 ERROR [FAIL] Phase 2C: Parse NCRB PDF exited with code 1
+2026-04-23 13:06:31,496 WARNING Step failed: Phase 2C: Parse NCRB PDF — continuing to next step
+2026-04-23 13:06:31,496 INFO 
+============================================================
+2026-04-23 13:06:31,496 INFO RUNNING: Phase 2D: Harmonize state names
+2026-04-23 13:06:31,496 INFO Script: D:\Injury research\injury_india_public_health\src\clean\05_harmonize_states.py
+2026-04-23 13:06:31,496 INFO ============================================================
+2026-04-23 13:06:45,745 INFO [OK] Phase 2D: Harmonize state names completed successfully.
+2026-04-23 13:06:45,746 INFO 
+============================================================
+2026-04-23 13:06:45,829 INFO RUNNING: Phase 2E: Assemble master dataset
+2026-04-23 13:06:45,863 INFO Script: D:\Injury research\injury_india_public_health\src\clean\08_assemble_master.py
+2026-04-23 13:06:45,863 INFO ============================================================
+2026-04-23 13:07:47,811 INFO [OK] Phase 2E: Assemble master dataset completed successfully.
+2026-04-23 13:07:48,883 INFO 
+============================================================
+2026-04-23 13:07:48,884 INFO RUNNING: Phase 3A: State burden analysis
+2026-04-23 13:07:48,885 INFO Script: D:\Injury research\injury_india_public_health\src\analysis\10_state_burden.py
+2026-04-23 13:07:48,885 INFO ============================================================
+2026-04-23 13:07:58,361 INFO [OK] Phase 3A: State burden analysis completed successfully.
+2026-04-23 13:07:58,362 INFO 
+============================================================
+2026-04-23 13:07:58,363 INFO RUNNING: Phase 3B: Fatal/non-fatal decomposition
+2026-04-23 13:07:58,363 INFO Script: D:\Injury research\injury_india_public_health\src\analysis\11_decomposition.py
+2026-04-23 13:07:58,363 INFO ============================================================
+2026-04-23 13:08:03,278 INFO [OK] Phase 3B: Fatal/non-fatal decomposition completed successfully.
+2026-04-23 13:08:03,278 INFO 
+============================================================
+2026-04-23 13:08:03,278 INFO RUNNING: Phase 3C: Hidden disability burden index
+2026-04-23 13:08:03,278 INFO Script: D:\Injury research\injury_india_public_health\src\analysis\12_hdbi.py
+2026-04-23 13:08:03,278 INFO ============================================================
+2026-04-23 13:09:23,803 INFO [OK] Phase 3C: Hidden disability burden index completed successfully.
+2026-04-23 13:09:23,804 INFO 
+============================================================
+2026-04-23 13:09:23,804 INFO RUNNING: Phase 3D: Inequality metrics
+2026-04-23 13:09:23,805 INFO Script: D:\Injury research\injury_india_public_health\src\analysis\17_inequality.py
+2026-04-23 13:09:23,806 INFO ============================================================
+2026-04-23 13:09:32,158 INFO [OK] Phase 3D: Inequality metrics completed successfully.
+2026-04-23 13:09:32,159 INFO 
+============================================================
+2026-04-23 13:09:32,159 INFO RUNNING: Phase 3E: Surveillance-burden mismatch
+2026-04-23 13:09:32,161 INFO Script: D:\Injury research\injury_india_public_health\src\analysis\18_mismatch.py
+2026-04-23 13:09:32,162 INFO ============================================================
+2026-04-23 13:09:57,379 INFO [OK] Phase 3E: Surveillance-burden mismatch completed successfully.
+2026-04-23 13:09:58,442 INFO 
+============================================================
+2026-04-23 13:09:58,443 INFO RUNNING: Phase 5: Full QC report
+2026-04-23 13:09:58,443 INFO Script: D:\Injury research\injury_india_public_health\src\qc\21_qc_full.py
+2026-04-23 13:09:58,443 INFO ============================================================
+2026-04-23 13:10:06,225 INFO [OK] Phase 5: Full QC report completed successfully.

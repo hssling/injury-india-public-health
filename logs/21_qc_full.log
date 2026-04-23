@@ -1,0 +1,90 @@
+2026-04-23 13:10:05,446 INFO === Full QC: Start ===
+2026-04-23 13:10:05,528 INFO QC report: D:\Injury research\injury_india_public_health\outputs\qc_report.html
+2026-04-23 13:10:05,530 INFO   ✗ Data Acquisition: FAIL
+2026-04-23 13:10:05,532 INFO   ✗ Master Dataset: FAIL
+2026-04-23 13:10:05,533 INFO   ⚠ Output Files: WARN
+2026-04-23 13:10:05,533 INFO   ⚠ Table Files: WARN
+2026-04-23 13:10:05,534 INFO   ⚠ Figure Files: WARN
+2026-04-23 13:10:05,534 INFO 
+Overall QC status: FAIL
+2026-04-23 13:10:05,534 INFO === Full QC: Complete ===
+2026-04-23 13:10:30,695 INFO === Full QC: Start ===
+2026-04-23 13:10:30,723 INFO QC report: D:\Injury research\injury_india_public_health\outputs\qc_report.html
+2026-04-23 13:10:30,724 INFO   ✗ Data Acquisition: FAIL
+2026-04-23 13:10:30,725 INFO   ✗ Master Dataset: FAIL
+2026-04-23 13:10:30,726 INFO   ⚠ Output Files: WARN
+2026-04-23 13:10:30,726 INFO   ⚠ Table Files: WARN
+2026-04-23 13:10:30,726 INFO   ✓ Figure Files: PASS
+2026-04-23 13:10:30,726 INFO 
+Overall QC status: FAIL
+2026-04-23 13:10:30,726 INFO === Full QC: Complete ===
+2026-04-23 23:02:26,488 INFO === Full QC: Start ===
+2026-04-23 23:02:27,816 INFO QC report: D:\Injury research\injury_india_public_health\outputs\qc_report.html
+2026-04-23 23:02:27,831 INFO   ✗ Data Acquisition: FAIL
+2026-04-23 23:02:27,831 INFO   ✓ Master Dataset: PASS
+2026-04-23 23:02:27,831 INFO   ⚠ Output Files: WARN
+2026-04-23 23:02:27,831 INFO   ⚠ Table Files: WARN
+2026-04-23 23:02:27,831 INFO   ✓ Figure Files: PASS
+2026-04-23 23:02:27,832 INFO 
+Overall QC status: FAIL
+2026-04-23 23:02:27,832 INFO === Full QC: Complete ===
+2026-04-23 23:02:57,900 INFO === Full QC: Start ===
+2026-04-23 23:02:59,132 INFO QC report: D:\Injury research\injury_india_public_health\outputs\qc_report.html
+2026-04-23 23:02:59,132 INFO   ✗ Data Acquisition: FAIL
+2026-04-23 23:02:59,132 INFO   ✓ Master Dataset: PASS
+2026-04-23 23:02:59,139 INFO   ⚠ Output Files: WARN
+2026-04-23 23:02:59,139 INFO   ⚠ Table Files: WARN
+2026-04-23 23:02:59,139 INFO   ✓ Figure Files: PASS
+2026-04-23 23:02:59,139 INFO 
+Overall QC status: FAIL
+2026-04-23 23:02:59,140 INFO === Full QC: Complete ===
+2026-04-23 23:06:35,735 INFO === Full QC: Start ===
+2026-04-23 23:06:37,162 INFO QC report: D:\Injury research\injury_india_public_health\outputs\qc_report.html
+2026-04-23 23:06:37,186 INFO   ✗ Data Acquisition: FAIL
+2026-04-23 23:06:37,187 INFO   ✓ Master Dataset: PASS
+2026-04-23 23:06:37,187 INFO   ✓ Output Files: PASS
+2026-04-23 23:06:37,187 INFO   ⚠ Table Files: WARN
+2026-04-23 23:06:37,187 INFO   ✓ Figure Files: PASS
+2026-04-23 23:06:37,187 INFO 
+Overall QC status: FAIL
+2026-04-23 23:06:37,188 INFO === Full QC: Complete ===
+2026-04-23 23:08:53,963 INFO === Full QC: Start ===
+2026-04-23 23:08:54,541 INFO QC report: D:\Injury research\injury_india_public_health\outputs\qc_report.html
+2026-04-23 23:08:54,548 INFO   ✗ Data Acquisition: FAIL
+2026-04-23 23:08:54,550 INFO   ✓ Master Dataset: PASS
+2026-04-23 23:08:54,552 INFO   ✓ Output Files: PASS
+2026-04-23 23:08:54,565 INFO   ⚠ Table Files: WARN
+2026-04-23 23:08:54,567 INFO   ✓ Figure Files: PASS
+2026-04-23 23:08:54,568 INFO 
+Overall QC status: FAIL
+2026-04-23 23:08:54,568 INFO === Full QC: Complete ===
+2026-04-23 23:12:12,587 INFO === Full QC: Start ===
+2026-04-23 23:12:12,812 INFO QC report: D:\Injury research\injury_india_public_health\outputs\qc_report.html
+2026-04-23 23:12:12,813 INFO   ✗ Data Acquisition: FAIL
+2026-04-23 23:12:12,813 INFO   ✓ Master Dataset: PASS
+2026-04-23 23:12:12,813 INFO   ✓ Output Files: PASS
+2026-04-23 23:12:12,814 INFO   ✓ Table Files: PASS
+2026-04-23 23:12:12,814 INFO   ✓ Figure Files: PASS
+2026-04-23 23:12:12,814 INFO 
+Overall QC status: FAIL
+2026-04-23 23:12:12,814 INFO === Full QC: Complete ===
+2026-04-23 23:12:13,938 INFO === Full QC: Start ===
+2026-04-23 23:12:13,998 INFO QC report: D:\Injury research\injury_india_public_health\outputs\qc_report.html
+2026-04-23 23:12:13,998 INFO   ✗ Data Acquisition: FAIL
+2026-04-23 23:12:13,999 INFO   ✓ Master Dataset: PASS
+2026-04-23 23:12:13,999 INFO   ✓ Output Files: PASS
+2026-04-23 23:12:13,999 INFO   ✓ Table Files: PASS
+2026-04-23 23:12:13,999 INFO   ✓ Figure Files: PASS
+2026-04-23 23:12:13,999 INFO 
+Overall QC status: FAIL
+2026-04-23 23:12:13,999 INFO === Full QC: Complete ===
+2026-04-23 23:13:06,817 INFO === Full QC: Start ===
+2026-04-23 23:13:06,953 INFO QC report: D:\Injury research\injury_india_public_health\outputs\qc_report.html
+2026-04-23 23:13:06,954 INFO   ⚠ Data Acquisition: WARN
+2026-04-23 23:13:06,954 INFO   ✓ Master Dataset: PASS
+2026-04-23 23:13:06,954 INFO   ✓ Output Files: PASS
+2026-04-23 23:13:06,955 INFO   ✓ Table Files: PASS
+2026-04-23 23:13:06,955 INFO   ✓ Figure Files: PASS
+2026-04-23 23:13:06,955 INFO 
+Overall QC status: WARN
+2026-04-23 23:13:06,955 INFO === Full QC: Complete ===

@@ -1,0 +1,49 @@
+variable_name,label,definition,source,unit,type,possible_values,notes
+state_name_harmonized,State/UT name,Standardized state or union territory name,Crosswalk,Text,Identifier,"28 states + 8 UTs","Master crosswalk in docs/state_crosswalk.csv"
+state_code,State ISO code,ISO 3166-2:IN code,ISO,Text,Identifier,"IN-AP, IN-GJ etc.",Used for map joins
+year,Year,Calendar year of estimate,GBD / Admin,Integer,Time,2000–2021 (GBD); 2023 (Admin),GBD uses point estimates for each year
+sex,Sex,Sex category,GBD / Admin,Text,Categorical,"both, male, female",GBD provides all three
+age_group,Age group,Age group label,GBD,Text,Categorical,"all ages, age-standardized, 0–4, 5–14, 15–29, 30–49, 50–69, 70+",Derived groups: 15–49 and 15–64 computed by aggregation
+cause_gbd,GBD cause name,Exact GBD cause hierarchy name,GBD,Text,Categorical,See cause hierarchy in protocol,L1/L2/L3 of GBD hierarchy
+cause_group,Analysis cause group,Harmonized cause group for analysis,Derived,Text,Categorical,"all_injuries, road, falls, self_harm, drowning, burns, poisoning, violence, other_transport, other_unintentional, other_intentional",
+deaths_n,Deaths (count),Number of injury deaths,GBD,Integer/Float,Outcome,≥0,GBD modeled estimate
+deaths_lower,Deaths (lower UI),Lower 95% uncertainty interval for deaths,GBD,Integer/Float,Outcome,≥0,
+deaths_upper,Deaths (upper UI),Upper 95% uncertainty interval for deaths,GBD,Integer/Float,Outcome,≥0,
+deaths_rate,Deaths per 100k,Deaths per 100,000 population,GBD,Float,Outcome,>0,
+deaths_asr,Deaths age-std rate,Age-standardized death rate per 100k,GBD,Float,Outcome,>0,
+dalys_n,DALYs (count),Total DALYs (YLL+YLD),GBD,Float,Outcome,≥0,
+dalys_lower,DALYs (lower UI),Lower 95% UI for DALYs,GBD,Float,Outcome,≥0,
+dalys_upper,DALYs (upper UI),Upper 95% UI for DALYs,GBD,Float,Outcome,≥0,
+dalys_rate,DALY rate per 100k,DALYs per 100,000,GBD,Float,Outcome,>0,
+dalys_asr,DALY age-std rate,Age-standardized DALY rate per 100k,GBD,Float,Outcome,>0,
+ylls_n,YLLs (count),Years of life lost to premature mortality,GBD,Float,Outcome,≥0,
+ylls_rate,YLL rate per 100k,YLLs per 100,000,GBD,Float,Outcome,>0,
+ylds_n,YLDs (count),Years lived with disability,GBD,Float,Outcome,≥0,
+ylds_rate,YLD rate per 100k,YLDs per 100,000,GBD,Float,Outcome,>0,
+incidence_n,Incidence (count),Incident injury cases,GBD,Float,Outcome,≥0,
+yll_fraction,YLL fraction of DALYs,YLL/DALY ratio,Derived,Float,Derived,"0–1","yll_n / dalys_n"
+yld_fraction,YLD fraction of DALYs,YLD/DALY ratio,Derived,Float,Derived,"0–1","yld_n / dalys_n"
+yld_yll_ratio,YLD:YLL ratio,Ratio of disability to mortality burden,Derived,Float,Derived,>0,"yld_n / yll_n"
+hdbi_z,HDBI (z-score),Hidden disability burden index using z-scores,Derived,Float,Derived,Any real number,"z(yld_rate) - z(deaths_rate)"
+hdbi_rank,HDBI (rank),Hidden disability burden index using ranks,Derived,Integer,Derived,Any integer,"rank(yld_rate) - rank(deaths_rate)"
+productive_age_daly_frac_1549,Productive age DALY fraction (15–49),Fraction of all-age DALYs in age 15–49,Derived,Float,Derived,"0–1",
+productive_age_daly_frac_1564,Productive age DALY fraction (15–64),Fraction of all-age DALYs in age 15–64,Derived,Float,Derived,"0–1",
+typology_quad,State typology quadrant,2x2 classification: YLL x YLD burden,Derived,Text,Categorical,"Q1_HH, Q2_HL, Q3_LH, Q4_LL","H=above median; L=below median"
+morth_accidents,MoRTH road accidents,Total road accidents by state,MoRTH 2023,Integer,Admin,≥0,Not directly comparable to GBD
+morth_deaths,MoRTH road deaths,Road injury deaths by state,MoRTH 2023,Integer,Admin,≥0,
+morth_injured,MoRTH injured persons,Injured persons by state,MoRTH 2023,Integer,Admin,≥0,
+ncrb_acc_deaths_total,NCRB accidental deaths,Total accidental deaths by state,NCRB 2023,Integer,Admin,≥0,
+ncrb_acc_drowning,NCRB drowning deaths,Accidental deaths: drowning,NCRB 2023,Integer,Admin,≥0,
+ncrb_acc_falls,NCRB fall deaths,Accidental deaths: falls,NCRB 2023,Integer,Admin,≥0,
+ncrb_acc_poisoning,NCRB poisoning deaths,Accidental deaths: poisoning,NCRB 2023,Integer,Admin,≥0,
+ncrb_acc_fire,NCRB fire deaths,Accidental deaths: fire/burns,NCRB 2023,Integer,Admin,≥0,
+ncrb_acc_electrocution,NCRB electrocution deaths,Accidental deaths: electrocution,NCRB 2023,Integer,Admin,≥0,
+ncrb_suicide_total,NCRB suicide total,Total suicides by state,NCRB 2023,Integer,Admin,≥0,
+ncrb_suicide_hanging,NCRB suicide hanging,Suicides by hanging,NCRB 2023,Integer,Admin,≥0,
+ncrb_suicide_poisoning,NCRB suicide poisoning,Suicides by poisoning,NCRB 2023,Integer,Admin,≥0,
+rank_morth_deaths,MoRTH state rank,State rank by MoRTH road deaths,Derived,Integer,Derived,1–N,1 = highest
+rank_gbd_road_dalys,GBD road DALY rank,State rank by GBD road injury DALYs,Derived,Integer,Derived,1–N,1 = highest
+rank_mismatch_road,Rank mismatch (road),MoRTH rank - GBD road DALY rank,Derived,Integer,Derived,Any integer,Positive = state ranked higher on deaths than DALYs
+source,Data source,Source system for the record,Various,Text,Metadata,"gbd2021, morth2023, ncrb2023, derived",
+data_year,Data year,Calendar year of source data,Various,Integer,Metadata,Variable,
+note,Note,Flags or QC notes,QC,Text,Metadata,,

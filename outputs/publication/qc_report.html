@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QC Report — Burden of Injuries in India</title>
+  <style>
+    body {font-family: Arial, sans-serif; margin: 30px; color: #333;}
+    h1 {color: #2c3e50;}
+    table {border-collapse: collapse; width: 100%;}
+    th, td {border: 1px solid #ddd; padding: 8px; text-align: left;}
+    th {background-color: #2c3e50; color: white;}
+    tr:nth-child(even) {background-color: #f9f9f9;}
+    .overall {font-size: 1.5em; font-weight: bold; color: #ffc107;}
+  </style>
+</head>
+<body>
+  <h1>QC Report — Burden of Injuries in India Study</h1>
+  <p>Generated: 2026-04-23 23:13:06</p>
+  <p class='overall'>Overall status: WARN</p>
+  <table>
+    <tr><th>Section</th><th>Check</th><th>Result</th><th>Detail</th></tr>
+    <tr><td>Data Acquisition</td><td>Mandatory files present</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>3 present, 0 missing, 1 optional-missing</td></tr><tr><td>Data Acquisition</td><td>OPTIONAL not downloaded: India State Boundaries — GADM Level 1</td><td style='color:#ffc107;font-weight:bold'>WARN</td><td>Shapefile optional — maps use placeholder; download from gadm.org for publication-quality choropleth</td></tr><tr><td>Master Dataset</td><td>File exists</td><td style='color:#28a745;font-weight:bold'>PASS</td><td></td></tr><tr><td>Master Dataset</td><td>Row count</td><td style='color:#17a2b8;font-weight:bold'>INFO</td><td>3,106 rows</td></tr><tr><td>Master Dataset</td><td>Duplicate rows</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>0 duplicates</td></tr><tr><td>Master Dataset</td><td>Null values: state_name_harmonized</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>0 nulls (0.0%)</td></tr><tr><td>Master Dataset</td><td>Null values: measure</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>0 nulls (0.0%)</td></tr><tr><td>Master Dataset</td><td>Null values: value</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>0 nulls (0.0%)</td></tr><tr><td>Master Dataset</td><td>Null values: source</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>0 nulls (0.0%)</td></tr><tr><td>Master Dataset</td><td>Negative values</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>0 negative values</td></tr><tr><td>Master Dataset</td><td>GBD data present</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>2,700 GBD rows</td></tr><tr><td>Master Dataset</td><td>Administrative data present</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>406 admin rows</td></tr><tr><td>Output Files</td><td>Output: state_burden_2021.csv</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>5,333 bytes</td></tr><tr><td>Output Files</td><td>Output: decomposition.csv</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>5,610 bytes</td></tr><tr><td>Output Files</td><td>Output: hdbi.csv</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>11,055 bytes</td></tr><tr><td>Output Files</td><td>Output: inequality.csv</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>397 bytes</td></tr><tr><td>Output Files</td><td>Output: mismatch.csv</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>755 bytes</td></tr><tr><td>Output Files</td><td>Output: master_dataset.csv</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>395,942 bytes</td></tr><tr><td>Table Files</td><td>Table: Table1_state_burden.xlsx</td><td style='color:#28a745;font-weight:bold'>PASS</td><td></td></tr><tr><td>Table Files</td><td>Table: Table2_decomposition.xlsx</td><td style='color:#28a745;font-weight:bold'>PASS</td><td></td></tr><tr><td>Table Files</td><td>Table: Table2b_hdbi.xlsx</td><td style='color:#28a745;font-weight:bold'>PASS</td><td></td></tr><tr><td>Table Files</td><td>Table: Table5_mismatch.xlsx</td><td style='color:#28a745;font-weight:bold'>PASS</td><td></td></tr><tr><td>Table Files</td><td>Table: Table_S2_inequality.xlsx</td><td style='color:#28a745;font-weight:bold'>PASS</td><td></td></tr><tr><td>Figure Files</td><td>Figure: fig1_daly_map</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>PNG+SVG+PDF</td></tr><tr><td>Figure Files</td><td>Figure: fig2_hdbi_map</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>PNG+SVG+PDF</td></tr><tr><td>Figure Files</td><td>Figure: fig3_heatmap</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>PNG+SVG+PDF</td></tr><tr><td>Figure Files</td><td>Figure: fig4_trends</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>PNG+SVG+PDF</td></tr><tr><td>Figure Files</td><td>Figure: fig5_quadrant</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>PNG+SVG+PDF</td></tr><tr><td>Figure Files</td><td>Figure: fig6_mismatch</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>PNG+SVG+PDF</td></tr><tr><td>Figure Files</td><td>Figure: fig7_age_sex</td><td style='color:#28a745;font-weight:bold'>PASS</td><td>PNG+SVG+PDF</td></tr>
+  </table>
+  <hr>
+  <p><small>QC script: src/qc/21_qc_full.py</small></p>
+</body>
+</html>

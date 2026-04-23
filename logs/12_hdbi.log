@@ -1,0 +1,52 @@
+2026-04-23 13:09:17,755 INFO === HDBI Analysis: Start ===
+2026-04-23 13:09:17,776 ERROR Master dataset not found.
+2026-04-23 22:55:28,478 INFO === HDBI Analysis: Start ===
+2026-04-23 22:55:28,526 WARNING No GBD data for HDBI (year=2021, cause=all_injuries)
+2026-04-23 22:55:28,528 WARNING No HDBI results — data not yet available.
+2026-04-23 22:55:28,534 WARNING No GBD data for HDBI (year=2021, cause=road)
+2026-04-23 22:55:28,540 WARNING No GBD data for HDBI (year=2021, cause=falls)
+2026-04-23 22:55:28,545 WARNING No GBD data for HDBI (year=2021, cause=self_harm)
+2026-04-23 22:55:28,546 INFO === HDBI Analysis: Complete ===
+2026-04-24 00:05:34,400 INFO === HDBI Analysis: Start ===
+2026-04-24 00:05:34,979 INFO HDBI computed: 31 states
+2026-04-24 00:05:34,980 INFO Disability-prominent states: 9
+2026-04-24 00:05:34,981 INFO Mortality-prominent states: 10
+2026-04-24 00:05:35,001 INFO Top 5 hidden disability states:
+measure       state_name_harmonized    hdbi_z  hdbi_rank
+25                       Tamil Nadu  1.856696       -7.0
+9                  Himachal Pradesh  1.771997      -16.0
+15                      Maharashtra  1.725785      -17.0
+13                           Kerala  1.704538      -17.0
+10       Jammu & Kashmir and Ladakh  1.544601      -17.0
+2026-04-24 00:05:35,016 INFO HDBI output: D:\Injury research\injury_india_public_health\outputs\hdbi.csv
+2026-04-24 00:05:36,283 INFO HDBI computed: 31 states
+2026-04-24 00:05:36,285 INFO Disability-prominent states: 9
+2026-04-24 00:05:36,286 INFO Mortality-prominent states: 10
+2026-04-24 00:05:36,302 INFO Top 5 hidden disability states:
+measure    state_name_harmonized    hdbi_z  hdbi_rank
+0                 Andhra Pradesh  2.163476      -12.0
+21       Other Union Territories  2.053801      -12.0
+7                        Gujarat  1.888618      -17.0
+11                     Jharkhand  1.534843       -9.0
+25                    Tamil Nadu  1.312679       -7.0
+2026-04-24 00:05:36,382 INFO HDBI computed: 31 states
+2026-04-24 00:05:36,385 INFO Disability-prominent states: 9
+2026-04-24 00:05:36,387 INFO Mortality-prominent states: 9
+2026-04-24 00:05:36,405 INFO Top 5 hidden disability states:
+measure state_name_harmonized    hdbi_z  hdbi_rank
+25                 Tamil Nadu  1.914993       -8.0
+30                West Bengal  1.577195      -14.0
+15                Maharashtra  1.571098      -13.0
+24                     Sikkim  1.018355      -13.0
+23                  Rajasthan  0.912458      -11.0
+2026-04-24 00:05:36,478 INFO HDBI computed: 31 states
+2026-04-24 00:05:36,480 INFO Disability-prominent states: 6
+2026-04-24 00:05:36,481 INFO Mortality-prominent states: 4
+2026-04-24 00:05:36,495 INFO Top 5 hidden disability states:
+measure    state_name_harmonized    hdbi_z  hdbi_rank
+13                        Kerala  1.694490      -15.0
+30                   West Bengal  1.172052       -6.0
+23                     Rajasthan  1.101126       -7.0
+21       Other Union Territories  0.962293       -7.0
+9               Himachal Pradesh  0.782661      -11.0
+2026-04-24 00:05:36,515 INFO === HDBI Analysis: Complete ===

@@ -1,0 +1,78 @@
+2026-04-23 13:07:44,201 INFO === Master Assembly: Start ===
+2026-04-23 13:07:45,000 INFO GBD loaded: 0 rows
+2026-04-23 13:07:45,214 WARNING No MoRTH data found. Run ingest steps first.
+2026-04-23 13:07:45,230 WARNING No NCRB data found. Run ingest steps first.
+2026-04-23 13:07:45,244 ERROR No data loaded. Run ingest and harmonization steps first.
+2026-04-23 22:52:23,448 INFO === Master Assembly: Start ===
+2026-04-23 22:52:23,535 INFO GBD loaded: 2,700 rows
+2026-04-23 22:52:23,637 INFO MoRTH accidents loaded: 143 state-year rows
+2026-04-23 22:52:23,677 INFO MoRTH deaths loaded from morth_state_deaths_partial.csv: 11 rows
+2026-04-23 22:52:23,684 INFO MoRTH total long-format rows: 154
+2026-04-23 22:52:23,757 INFO NCRB accidental deaths loaded: 252 rows
+2026-04-23 22:52:23,797 INFO NCRB suicides loaded: 36 rows
+2026-04-23 22:52:23,801 INFO NCRB total long-format rows: 252
+2026-04-23 22:52:51,745 INFO === Master Assembly: Start ===
+2026-04-23 22:52:51,790 INFO GBD loaded: 2,700 rows
+2026-04-23 22:52:51,821 INFO MoRTH accidents loaded: 143 state-year rows
+2026-04-23 22:52:51,831 INFO MoRTH deaths loaded from morth_state_deaths_partial.csv: 11 rows
+2026-04-23 22:52:51,837 INFO MoRTH total long-format rows: 154
+2026-04-23 22:52:51,876 INFO NCRB accidental deaths loaded: 252 rows
+2026-04-23 22:52:51,889 INFO NCRB suicides loaded: 36 rows
+2026-04-23 22:52:51,896 INFO NCRB total long-format rows: 252
+2026-04-23 22:54:01,585 INFO === Master Assembly: Start ===
+2026-04-23 22:54:01,630 INFO GBD loaded: 2,700 rows
+2026-04-23 22:54:01,667 INFO MoRTH accidents loaded: 143 state-year rows
+2026-04-23 22:54:01,680 INFO MoRTH deaths loaded from morth_state_deaths_partial.csv: 11 rows
+2026-04-23 22:54:01,688 INFO MoRTH total long-format rows: 154
+2026-04-23 22:54:01,733 INFO NCRB accidental deaths loaded: 252 rows
+2026-04-23 22:54:01,748 INFO NCRB suicides loaded: 36 rows
+2026-04-23 22:54:01,753 INFO NCRB total long-format rows: 252
+2026-04-23 22:54:01,768 INFO Master dataset assembled: 3,106 rows
+2026-04-23 22:54:01,776 INFO Sources: {'gbd2021': 2700, 'ncrb2023': 252, 'morth2023': 154}
+2026-04-23 22:54:01,777 INFO Measures: ['Deaths' 'DALYs (Disability-Adjusted Life Years)'
+ 'YLDs (Years Lived with Disability)' 'YLLs (Years of Life Lost)'
+ 'Prevalence' 'Incidence' 'Accidents' 'Accidental Deaths' 'Suicides']
+2026-04-23 22:54:01,778 INFO Years: [np.int64(2019), np.int64(2020), np.int64(2021), np.int64(2022), np.int64(2023)]
+2026-04-23 22:54:01,786 INFO [QC] Master dataset passed all checks.
+2026-04-23 22:54:01,826 INFO Master CSV: D:\Injury research\injury_india_public_health\data_processed\master_dataset.csv
+2026-04-23 22:54:01,945 WARNING Parquet write failed: ("Could not convert '' with type str: tried to convert to double", 'Conversion failed for column lower_ui with type object')
+2026-04-23 22:54:01,950 INFO QC log: D:\Injury research\injury_india_public_health\logs\master_qc_log.txt
+2026-04-23 22:54:01,950 INFO === Master Assembly: Complete ===
+2026-04-24 00:04:28,407 INFO === Master Assembly: Start ===
+2026-04-24 00:04:29,151 INFO GBD loaded: 77,568 rows
+2026-04-24 00:04:29,299 INFO MoRTH accidents loaded: 143 state-year rows
+2026-04-24 00:04:29,311 INFO MoRTH deaths loaded from morth_state_deaths_partial.csv: 11 rows
+2026-04-24 00:04:29,318 INFO MoRTH total long-format rows: 154
+2026-04-24 00:04:29,339 INFO NCRB accidental deaths loaded: 252 rows
+2026-04-24 00:04:29,350 INFO NCRB suicides loaded: 36 rows
+2026-04-24 00:04:29,355 INFO NCRB total long-format rows: 252
+2026-04-24 00:04:29,440 INFO Master dataset assembled: 77,974 rows
+2026-04-24 00:04:29,450 INFO Sources: {'gbd2021': 77568, 'ncrb2023': 252, 'morth2023': 154}
+2026-04-24 00:04:29,457 INFO Measures: ['Deaths' 'DALYs (Disability-Adjusted Life Years)'
+ 'YLDs (Years Lived with Disability)' 'YLLs (Years of Life Lost)'
+ 'Prevalence' 'Incidence' 'Accidents' 'Accidental Deaths' 'Suicides']
+2026-04-24 00:04:29,460 INFO Years: [np.int64(2020), np.int64(2021), np.int64(2022), np.int64(2023)]
+2026-04-24 00:04:29,518 WARNING [QC] Duplicate rows: 47616
+2026-04-24 00:04:30,414 INFO Master CSV: D:\Injury research\injury_india_public_health\data_processed\master_dataset.csv
+2026-04-24 00:04:30,615 WARNING Parquet write failed: ("Could not convert '' with type str: tried to convert to double", 'Conversion failed for column lower_ui with type object')
+2026-04-24 00:04:30,624 INFO QC log: D:\Injury research\injury_india_public_health\logs\master_qc_log.txt
+2026-04-24 00:04:30,625 INFO === Master Assembly: Complete ===
+2026-04-24 00:05:11,708 INFO === Master Assembly: Start ===
+2026-04-24 00:05:12,308 INFO GBD loaded: 77,568 rows
+2026-04-24 00:05:12,506 INFO MoRTH accidents loaded: 143 state-year rows
+2026-04-24 00:05:12,530 INFO MoRTH deaths loaded from morth_state_deaths_partial.csv: 11 rows
+2026-04-24 00:05:12,537 INFO MoRTH total long-format rows: 154
+2026-04-24 00:05:12,560 INFO NCRB accidental deaths loaded: 252 rows
+2026-04-24 00:05:12,574 INFO NCRB suicides loaded: 36 rows
+2026-04-24 00:05:12,579 INFO NCRB total long-format rows: 252
+2026-04-24 00:05:12,646 INFO Master dataset assembled: 77,974 rows
+2026-04-24 00:05:12,653 INFO Sources: {'gbd2021': 77568, 'ncrb2023': 252, 'morth2023': 154}
+2026-04-24 00:05:12,659 INFO Measures: ['Deaths' 'DALYs (Disability-Adjusted Life Years)'
+ 'YLDs (Years Lived with Disability)' 'YLLs (Years of Life Lost)'
+ 'Prevalence' 'Incidence' 'Accidents' 'Accidental Deaths' 'Suicides']
+2026-04-24 00:05:12,662 INFO Years: [np.int64(2020), np.int64(2021), np.int64(2022), np.int64(2023)]
+2026-04-24 00:05:12,729 INFO [QC] Master dataset passed all checks.
+2026-04-24 00:05:13,419 INFO Master CSV: D:\Injury research\injury_india_public_health\data_processed\master_dataset.csv
+2026-04-24 00:05:13,584 WARNING Parquet write failed: ("Could not convert '' with type str: tried to convert to double", 'Conversion failed for column lower_ui with type object')
+2026-04-24 00:05:13,591 INFO QC log: D:\Injury research\injury_india_public_health\logs\master_qc_log.txt
+2026-04-24 00:05:13,591 INFO === Master Assembly: Complete ===

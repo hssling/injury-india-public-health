@@ -1,0 +1,35 @@
+2026-04-23 13:07:57,671 INFO === State Burden Analysis: Start ===
+2026-04-23 13:07:57,676 ERROR Master dataset not found: D:\Injury research\injury_india_public_health\data_processed\master_dataset.csv
+2026-04-23 13:07:57,677 ERROR Run: python src/clean/08_assemble_master.py
+2026-04-23 13:07:57,712 WARNING No data available. Outputs will be empty placeholders.
+2026-04-23 22:54:16,295 INFO === State Burden Analysis: Start ===
+2026-04-23 22:54:16,381 INFO Master dataset loaded: 3,106 rows
+2026-04-23 22:54:16,392 WARNING No GBD state data found for year=2021, cause=all_injuries, sex=Both, age=All ages
+2026-04-23 22:54:16,393 WARNING Check that GBD data has been downloaded and parsed correctly.
+2026-04-23 22:54:16,395 WARNING Cannot build state summary — no GBD data available.
+2026-04-23 22:54:16,396 WARNING Creating placeholder table structure for when data is added.
+2026-04-23 22:54:16,407 INFO State burden summary: D:\Injury research\injury_india_public_health\outputs\state_burden_2021.csv
+2026-04-23 22:54:18,842 INFO Table 1: D:\Injury research\injury_india_public_health\tables\Table1_state_burden.xlsx
+2026-04-23 22:54:18,865 INFO 
+Top 5 states by dalys_asr: []
+2026-04-23 22:54:18,876 INFO 
+Top 5 states by deaths_asr: []
+2026-04-23 22:54:18,884 INFO 
+Top 5 states by ylds_rate: []
+2026-04-23 22:54:18,884 INFO === State Burden Analysis: Complete ===
+2026-04-23 22:57:38,447 INFO === State Burden Analysis: Start ===
+2026-04-23 22:57:39,537 INFO Master dataset loaded: 3,106 rows
+2026-04-23 22:57:39,660 WARNING No GBD state data found for year=2021, cause=all_injuries, sex=Both, age=All ages
+2026-04-23 22:57:39,669 WARNING Check that GBD data has been downloaded and parsed correctly.
+2026-04-23 22:57:39,686 WARNING GBD injury-specific data not available — using NCRB 2023 deaths as fallback.
+2026-04-23 22:57:40,446 INFO NCRB fallback burden table: 36 states
+2026-04-23 22:57:40,593 INFO State burden summary: D:\Injury research\injury_india_public_health\outputs\state_burden_2021.csv
+2026-04-23 22:57:57,446 INFO Table 1: D:\Injury research\injury_india_public_health\tables\Table1_state_burden.xlsx
+2026-04-23 22:57:57,447 INFO === State Burden Analysis: Complete ===
+2026-04-24 00:05:17,552 INFO === State Burden Analysis: Start ===
+2026-04-24 00:05:17,983 INFO Master dataset loaded: 77,974 rows
+2026-04-24 00:05:18,094 INFO State burden summary: D:\Injury research\injury_india_public_health\outputs\state_burden_2021.csv
+2026-04-24 00:05:19,648 INFO Table 1: D:\Injury research\injury_india_public_health\tables\Table1_state_burden.xlsx
+2026-04-24 00:05:19,664 INFO 
+Top 5 states by ylds_rate: ['Tamil Nadu', 'Goa', 'Karnataka', 'Himachal Pradesh', 'Maharashtra']
+2026-04-24 00:05:19,665 INFO === State Burden Analysis: Complete ===

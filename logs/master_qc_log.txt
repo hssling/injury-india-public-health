@@ -1,0 +1,4 @@
+Master QC Report — 2026-04-24T00:05:13.585353
+Total rows: 77,974
+Sources: {'gbd2021': 77568, 'ncrb2023': 252, 'morth2023': 154}
+All QC checks passed.

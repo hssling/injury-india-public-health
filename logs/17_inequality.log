@@ -1,0 +1,29 @@
+2026-04-23 13:09:29,805 INFO === Inequality Analysis: Start ===
+2026-04-23 13:09:29,809 ERROR Master dataset not found.
+2026-04-23 22:54:40,695 INFO === Inequality Analysis: Start ===
+2026-04-23 22:54:40,748 WARNING No GBD DALY rate data for inequality analysis (cause=all_injuries)
+2026-04-23 22:54:40,752 WARNING No inequality results computed. GBD data needed.
+2026-04-23 22:54:40,758 WARNING No GBD DALY rate data for inequality analysis (cause=road)
+2026-04-23 22:54:40,769 WARNING No GBD DALY rate data for inequality analysis (cause=falls)
+2026-04-23 22:54:40,774 WARNING No GBD DALY rate data for inequality analysis (cause=self_harm)
+2026-04-23 22:54:40,776 INFO === Inequality Analysis: Complete ===
+2026-04-23 22:58:29,910 INFO === Inequality Analysis: Start ===
+2026-04-23 22:58:30,560 WARNING No GBD DALY rate data for inequality analysis (cause=all_injuries)
+2026-04-23 22:58:30,582 INFO Falling back to NCRB accidental death rate inequality...
+2026-04-23 22:58:30,890 INFO NCRB inequality: CV=0.569, Gini=0.318, top:bottom=23.6x
+2026-04-23 22:58:30,902 INFO   States: n=36, mean=31.9, range=[3.2–75.4]
+2026-04-23 22:58:47,722 INFO Inequality output: D:\Injury research\injury_india_public_health\outputs\inequality.csv
+2026-04-23 22:58:48,012 WARNING No GBD DALY rate data for inequality analysis (cause=road)
+2026-04-23 22:58:48,117 WARNING No GBD DALY rate data for inequality analysis (cause=falls)
+2026-04-23 22:58:48,262 WARNING No GBD DALY rate data for inequality analysis (cause=self_harm)
+2026-04-23 22:58:48,263 INFO === Inequality Analysis: Complete ===
+2026-04-24 00:05:40,462 INFO === Inequality Analysis: Start ===
+2026-04-24 00:05:40,862 WARNING No GBD DALY rate data for inequality analysis (cause=all_injuries)
+2026-04-24 00:05:40,863 INFO Falling back to NCRB accidental death rate inequality...
+2026-04-24 00:05:40,875 INFO NCRB inequality: CV=0.569, Gini=0.318, top:bottom=23.6x
+2026-04-24 00:05:40,876 INFO   States: n=36, mean=31.9, range=[3.2–75.4]
+2026-04-24 00:05:42,046 INFO Inequality output: D:\Injury research\injury_india_public_health\outputs\inequality.csv
+2026-04-24 00:05:42,114 WARNING No GBD DALY rate data for inequality analysis (cause=road)
+2026-04-24 00:05:42,164 WARNING No GBD DALY rate data for inequality analysis (cause=falls)
+2026-04-24 00:05:42,201 WARNING No GBD DALY rate data for inequality analysis (cause=self_harm)
+2026-04-24 00:05:42,202 INFO === Inequality Analysis: Complete ===

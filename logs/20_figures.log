@@ -1,0 +1,26 @@
+2026-04-23 13:08:19,241 INFO === Figure Generation: Start ===
+2026-04-23 13:08:19,242 WARNING Master dataset not found — generating all placeholder figures.
+2026-04-23 13:08:47,319 INFO Saved figure: fig1_daly_map (PNG/SVG/PDF)
+2026-04-23 13:08:57,957 INFO Saved figure: fig2_hdbi_map (PNG/SVG/PDF)
+2026-04-23 13:10:09,129 INFO === Figure Generation: Start ===
+2026-04-23 13:10:09,132 WARNING Master dataset not found — generating all placeholder figures.
+2026-04-23 13:10:12,694 INFO Saved figure: fig1_daly_map (PNG/SVG/PDF)
+2026-04-23 13:10:14,228 INFO Saved figure: fig2_hdbi_map (PNG/SVG/PDF)
+2026-04-23 13:10:15,747 INFO Saved figure: fig3_heatmap (PNG/SVG/PDF)
+2026-04-23 13:10:16,886 INFO Saved figure: fig4_trends (PNG/SVG/PDF)
+2026-04-23 13:10:18,128 INFO Saved figure: fig5_quadrant (PNG/SVG/PDF)
+2026-04-23 13:10:19,128 INFO Saved figure: fig6_mismatch (PNG/SVG/PDF)
+2026-04-23 13:10:20,264 INFO Saved figure: fig7_age_sex (PNG/SVG/PDF)
+2026-04-23 13:10:20,265 INFO All figures saved to: D:\Injury research\injury_india_public_health\figures
+2026-04-23 13:10:20,265 INFO === Figure Generation: Complete ===
+2026-04-23 22:59:35,561 INFO === Figure Generation: Start ===
+2026-04-23 22:59:35,615 INFO Master dataset loaded: 3,106 rows
+2026-04-23 22:59:42,231 INFO Saved figure: fig1_daly_map (PNG/SVG/PDF)
+2026-04-23 22:59:43,659 INFO Saved figure: fig2_hdbi_map (PNG/SVG/PDF)
+2026-04-23 22:59:55,824 INFO Saved figure: fig3_heatmap (PNG/SVG/PDF)
+2026-04-23 23:00:12,648 INFO Saved figure: fig4_trends (PNG/SVG/PDF)
+2026-04-23 23:00:31,286 INFO Saved figure: fig5_quadrant (PNG/SVG/PDF)
+2026-04-23 23:01:29,277 INFO Saved figure: fig6_mismatch (PNG/SVG/PDF)
+2026-04-23 23:01:51,900 INFO Saved figure: fig7_age_sex (PNG/SVG/PDF)
+2026-04-23 23:01:51,918 INFO All figures saved to: D:\Injury research\injury_india_public_health\figures
+2026-04-23 23:01:51,918 INFO === Figure Generation: Complete ===
