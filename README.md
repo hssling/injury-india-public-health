@@ -6,7 +6,7 @@
 **Backup journals:** Indian Journal of Community Medicine (IJCM); National Journal of Community Medicine (NJCM)  
 **Study type:** Ecological longitudinal secondary-data analysis  
 **Data period:** 2000–2021 (GBD); 2023 (administrative)  
-**Status:** Framework complete — awaiting data download
+**Status:** Analysis pipeline run completed; publication package rebuilt from available local data outputs
 
 ---
 
@@ -160,7 +160,7 @@ After successful pipeline run:
 - `outputs/inequality.csv` — Inter-state inequality metrics
 - `outputs/mismatch.csv` — Surveillance–burden mismatch ranking
 - `outputs/qc_report.html` — Full QC report
-- `figures/fig1_daly_map.*` through `fig7_age_sex.*` — Manuscript figures
+- `figures/fig1_daly_map.*` through `fig6_mismatch.*` — Rebuilt manuscript and supplementary figures
 - `tables/Table1_state_burden.xlsx` through `tables/Table6_sensitivity.xlsx`
 - `manuscript/manuscript_main_IJMR.md` — Manuscript with populated results
 
@@ -177,6 +177,14 @@ After successful pipeline run:
 
 ---
 
+## Repository
+
+Public repository: https://github.com/hssling/injury-india-public-health
+
+## Data Sharing
+
+See `DATA_SHARING_STATEMENT.md` for the repository-level data and code availability statement.
+
 ## Contact
 
-For questions about this analysis, contact: [Author details to be added]
+For questions about this analysis, contact: Siddalingaiah H S (`hssling@yahoo.com`).

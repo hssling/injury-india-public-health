@@ -24,3 +24,12 @@
 2026-04-23 23:01:51,900 INFO Saved figure: fig7_age_sex (PNG/SVG/PDF)
 2026-04-23 23:01:51,918 INFO All figures saved to: D:\Injury research\injury_india_public_health\figures
 2026-04-23 23:01:51,918 INFO === Figure Generation: Complete ===
+2026-04-24 01:40:17,515 INFO === Figure generation start ===
+2026-04-24 01:40:44,053 INFO Saved fig1_daly_map
+2026-04-24 01:40:45,041 INFO Saved fig2_hdbi_bar
+2026-04-24 01:40:49,213 INFO Saved fig3_heatmap
+2026-04-24 01:40:49,932 INFO Saved fig4_trends
+2026-04-24 01:40:50,685 INFO Saved fig5_quadrant
+2026-04-24 01:40:50,789 INFO Mismatch rho=0.648, p=0.0425
+2026-04-24 01:40:51,313 INFO Saved fig6_mismatch
+2026-04-24 01:40:51,313 INFO === Figure generation complete ===
