@@ -20,8 +20,7 @@ RNG = np.random.default_rng(7)
 
 def cv_cause(cause, k=5, draws=600, tune=600):
     d = prep(cause)
-    pos = d["anchor"]["pos"]; obs = d["anchor"]["obs"]
-    pop = d["pop"]
+    pos = d["anchor"]["pos"]; obs = d["anchor"]["obs"]; pop_a = d["anchor"]["pop_a"]
     order = RNG.permutation(len(pos))
     folds = np.array_split(order, k)
     rows = []
@@ -34,7 +33,7 @@ def cv_cause(cause, k=5, draws=600, tune=600):
         cdd = idata.posterior["c_d"].stack(s=("chain", "draw")).values
         for j in f:
             p = pos[j]
-            pred = pop[p] * lam[p] * cdd[p]           # posterior predictive deaths
+            pred = pop_a[j] * lam[p] * cdd[p]         # posterior predictive city deaths
             rows.append({"cause": cause, "pos": int(p), "observed": obs[j],
                          "pred_mean": pred.mean(),
                          "pred_lo": np.percentile(pred, 2.5),

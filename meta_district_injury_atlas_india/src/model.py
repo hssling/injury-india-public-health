@@ -40,6 +40,8 @@ def _anchor_positions(meta):
                    .str.strip().str.lower())
     lut = {n.lower(): i for i, n in zip(meta.index, meta["district_name"])}
     keys = list(lut)
+    citypop = pd.read_csv(LOCAL / "city_population_2023.csv")
+    citypop["pop_a"] = citypop["pop_lakh"] * 1e5          # NCRB city population as exposure
     pos, rows = [], []
     for _, r in wide.iterrows():
         hit = process.extractOne(r["key"], keys, scorer=fuzz.WRatio)
@@ -47,12 +49,19 @@ def _anchor_positions(meta):
             pos.append(lut[hit[0]]); rows.append(r)
     adf = pd.DataFrame(rows).reset_index(drop=True)
     adf["pos"] = pos
+    adf = adf.merge(citypop[["city_name", "pop_a"]], on="city_name", how="left")
     return adf
 
 
+def _load_frame():
+    g = gpd.read_parquet(LOCAL / "districts_frame.parquet").reset_index()
+    if "district_id" not in g.columns:
+        g = g.rename(columns={"index": "district_id"})
+    return g
+
+
 def prep(cause):
-    g = gpd.read_parquet(LOCAL / "districts_frame.parquet")
-    meta = g.reset_index(drop=True)
+    meta = _load_frame()
 
     # restrict to states with a finite GBD estimate for this cause (fusion needs it)
     si = state_inputs().reset_index()
@@ -94,8 +103,9 @@ def prep(cause):
     if cause in ANCHOR_CAUSES:
         adf = _anchor_positions(meta)
         obs = adf[cause].to_numpy(float)
-        keep = np.isfinite(obs)
-        anchor = dict(pos=adf["pos"].to_numpy()[keep], obs=obs[keep])
+        keep = np.isfinite(obs) & np.isfinite(adf["pop_a"].to_numpy())
+        anchor = dict(pos=adf["pos"].to_numpy()[keep], obs=obs[keep],
+                      pop_a=adf["pop_a"].to_numpy(float)[keep])
 
     return dict(meta=meta, states=states, sidx=sidx, pop=pop, X=X, urban=urban,
                 edges=edges, gbd=gbd, sig=sig, ncrb=ncrb, ncrb_mask=ncrb_mask,
@@ -138,10 +148,11 @@ def build_model(cause, d=None, hold_out_pos=None, eta_sd=0.5, fix_eta=False, use
         # ---- anchor likelihood ----
         if d["anchor"] is not None:
             pos, obs = d["anchor"]["pos"], d["anchor"]["obs"]
+            pop_a = d["anchor"]["pop_a"]
             if hold_out_pos is not None:
                 mask = ~np.isin(pos, np.atleast_1d(hold_out_pos))
-                pos, obs = pos[mask], obs[mask]
-            mu = pop[pos] * lam_d[pos] * c_d[pos]
+                pos, obs, pop_a = pos[mask], obs[mask], pop_a[mask]
+            mu = pop_a * lam_d[pos] * c_d[pos]         # city population as exposure
             pm.Poisson("city_like", mu=mu, observed=obs)
     return m
 

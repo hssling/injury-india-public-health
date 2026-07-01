@@ -49,8 +49,8 @@ def choropleth(gdf, col, title, path, cmap="viridis", pct_clip=99):
 
 def main(draws=1000, tune=1000, chains=2):
     OUT.mkdir(exist_ok=True); FIG.mkdir(exist_ok=True); TAB.mkdir(exist_ok=True)
-    geom = gpd.read_parquet(LOCAL / "districts_frame.parquet").reset_index()[
-        ["district_id", "geometry"]]
+    from meta_district_injury_atlas_india.src.model import _load_frame
+    geom = _load_frame()[["district_id", "geometry"]]
     all_est, conv = [], []
     for cause in CAUSES:
         idata, d = fit_cause(cause, draws=draws, tune=tune, chains=chains)
