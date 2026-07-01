@@ -52,6 +52,36 @@ N = dict(
     n_anchor=int(cv["n_cities"].iloc[0]) if cv is not None else 41,
 )
 
+
+def _iqr(cause, col="rate_mean"):
+    s = est[est.cause == cause][col]
+    return f"{s.quantile(.25):.0f}–{s.quantile(.75):.0f}"
+
+
+def _fused(cause):
+    return f"{int(t1.set_index('Cause').loc[cause, 'Fused true deaths']):,}"
+
+
+# extra derived quantities for the full-length manuscript
+falls_lt10 = int((est[est.cause == "falls"].completeness_mean < 0.10).sum())
+falls_n = int((est.cause == "falls").sum())
+ai_lt40 = int((est[est.cause == "all_injury"].completeness_mean < 0.40).sum())
+_sm = est[est.cause == "all_injury"].groupby("state_name").rate_mean.median().sort_values()
+E = dict(
+    ai_iqr=_iqr("all_injury"), road_iqr=_iqr("road"), suicide_iqr=_iqr("suicide"),
+    falls_iqr=_iqr("falls"),
+    ai_fused=_fused("all_injury"), road_fused=_fused("road"), suicide_fused=_fused("suicide"),
+    falls_fused=_fused("falls"), burns_fused=_fused("burns"), drown_fused=_fused("drowning"),
+    falls_lt10=falls_lt10, falls_n=falls_n, ai_lt40=ai_lt40,
+    hi_state=_sm.index[-1], hi_val=f"{_sm.iloc[-1]:.0f}",
+    hi2_state=_sm.index[-2], hi2_val=f"{_sm.iloc[-2]:.0f}",
+    lo_state=_sm.index[0], lo_val=f"{_sm.iloc[0]:.0f}",
+    lo2_state=_sm.index[1], lo2_val=f"{_sm.iloc[1]:.0f}",
+    burns_ratio=f"{t1.set_index('Cause').loc['burns','GBD/NCRB ratio']:.1f}",
+    road_ratio=f"{t1.set_index('Cause').loc['road','GBD/NCRB ratio']:.1f}",
+    suicide_ratio=f"{t1.set_index('Cause').loc['suicide','GBD/NCRB ratio']:.1f}",
+)
+
 # ---------------------------------------------------------------- doc helpers
 def base_doc():
     d = Document()
@@ -116,7 +146,7 @@ def title_page():
             "Medical Sciences and Research Hospital, Sira Road, Tumkur, Karnataka 572106, India. "
             "Email: hssling@gmail.com", spacing="single", after=12)
     para(d, "Article type: Original Research Article", spacing="single", after=2)
-    para(d, "Word count: abstract 238; main text ~1340", spacing="single", after=2)
+    para(d, "Word count: abstract 238; main text ~2380", spacing="single", after=2)
     para(d, "Tables: 3.  Figures: 3.  References: 30.  Supplementary: online only", spacing="single", after=2)
     para(d, "Financial support: None.  Conflicts of interest: None declared.", spacing="single", after=2)
     para(d, "Data and code availability: https://github.com/hssling/injury-india-public-health",
@@ -256,137 +286,235 @@ def main_manuscript():
     abstract_kw(d)
 
     heading(d, "Introduction")
-    para(d, "Injuries account for roughly one in ten deaths in India and a rising share of "
-            "disability as the country's epidemiological transition advances.[1,2] Prevention, "
-            "however, is administered locally: police, transport, health and disaster agencies act "
-            "at the district level, and recent national initiatives explicitly target high-risk "
-            "districts. The evidence base does not match this administrative reality. Subnational "
-            "injury estimates from the Global Burden of Disease (GBD) study stop at the State "
-            "level,[2,3] and the country's routine administrative counts — the National Crime "
-            "Records Bureau's Accidental Deaths and Suicides in India (ADSI) series — are compiled "
-            "and released by State and, for a handful of large cities, by metropolis.[4] No "
-            "district-resolution estimate of fatal injury exists for India.", cite=True)
-    para(d, "The two data streams also disagree. Modelled GBD death counts exceed police-reported "
-            f"ADSI counts nationally by {N['falls_ratio']}-fold for falls and by more than five-fold "
-            "for burns, while agreeing closely for drowning (Table 1). Such discordance is usually "
-            "discussed as a nuisance to be reconciled;[6,7] we instead treat it as signal. The gap "
-            "between what modelling implies and what administration records is itself a measurable "
-            "quantity — a surveillance-completeness surface — that tells prevention planners where "
-            "deaths are occurring but going uncounted.", cite=True)
-    para(d, "Bayesian small-area estimation is well established for downscaling survey outcomes to "
-            "Indian districts, but has been applied to fertility and all-cause or child mortality, "
-            "not to injury.[12,13] Downscaling injury poses a specific problem: unlike survey "
-            "outcomes, no district-level injury signal exists to smooth. We resolve this by "
-            "anchoring the model to the metropolitan-city records that ADSI does publish, which "
-            "correspond to districts and provide a partial, directly observed calibration set. "
-            "This study therefore contributes (i) the first district atlas of fatal injury in "
-            "India, (ii) a joint data-fusion-and-downscaling method that reconciles modelled and "
-            "administrative sources while estimating below the State level, and (iii) the first "
-            "sub-state map of injury surveillance completeness.", cite=True)
+    para(d, "Injuries account for roughly one in ten deaths in India and, as communicable and "
+            "childhood diseases recede, for a growing share of premature mortality and "
+            "disability.[1,2] Road crashes, self-harm, falls, drowning and burns together kill "
+            "several hundred thousand Indians each year, disproportionately among the young and "
+            "the economically active.[3,18] Unlike most non-communicable diseases, the immediate "
+            "causes of injury are external and, in principle, preventable through engineering, "
+            "enforcement, environmental modification and timely trauma care — interventions that "
+            "are delivered not by States but by districts. Police, transport authorities, health "
+            "departments and disaster-management agencies all operate at the district level, and "
+            "recent national policy has made the district the explicit unit of action, for "
+            "example by identifying high-fatality districts for road-safety intervention.", cite=True)
+    para(d, "The evidence base does not match this administrative reality. Subnational injury "
+            "estimates from the Global Burden of Disease (GBD) study, which have transformed "
+            "understanding of India's epidemiological transition, stop at the State level.[2,3] "
+            "The country's routine administrative record of external deaths — the National Crime "
+            "Records Bureau's Accidental Deaths and Suicides in India (ADSI) series — is compiled "
+            "from police returns and released by State, with cause detail for only a handful of "
+            "large cities.[4] Civil registration, though improving, still under-records rural "
+            "deaths and rarely assigns a medically certified cause outside large hospitals.[7,20] "
+            "The net result is that no district-resolution estimate of fatal injury exists for "
+            "India, and planners in the districts that carry the greatest burden have the least "
+            "reliable local data.", cite=True)
+    para(d, "The two national data streams also disagree, and the disagreement is highly "
+            f"structured. Modelled GBD death counts exceed police-reported ADSI counts nationally "
+            f"by {N['falls_ratio']}-fold for falls and {E['burns_ratio']}-fold for burns, by "
+            f"{E['road_ratio']}-fold for road injury and {E['suicide_ratio']}-fold for suicide, "
+            f"yet by only 1.3-fold for drowning (Table 1). This pattern is not random noise: it "
+            f"tracks how a death comes to official attention. Falls among older adults and fatal "
+            f"burns frequently occur at home and are certified, if at all, without police "
+            f"involvement, whereas road crashes and many suicides generate a police record almost "
+            f"by definition.[4,20] Such discordance is usually treated as a nuisance to be "
+            f"reconciled;[6,7] we instead treat it as signal. The gap between what modelling "
+            f"implies and what administration records is itself a measurable quantity — a "
+            f"surveillance-completeness surface — that reveals where deaths occur but go "
+            f"uncounted.", cite=True)
+    para(d, "Estimating below the State level is a small-area problem. Bayesian small-area "
+            "estimation is well established for downscaling survey outcomes to Indian districts, "
+            "but has been applied to fertility and all-cause or child mortality, where the "
+            "underlying survey itself yields a noisy district signal to be smoothed.[10,11,12,13] "
+            "Injury downscaling poses a harder problem: neither GBD nor ADSI provides any "
+            "district-level injury signal to anchor the estimates, so covariate-only "
+            "disaggregation would rest on an untestable assumption. We resolve this by exploiting "
+            "the one place ADSI does descend below the State: the metropolitan-city tables, whose "
+            "cities correspond to districts and supply a partial but directly observed calibration "
+            "and validation set.", cite=True)
+    para(d, "This study therefore makes three contributions. First, it provides the first "
+            "district-resolution atlas of fatal injury in India, with full uncertainty "
+            "quantification. Second, it introduces a joint model that fuses discordant modelled "
+            "and administrative sources while simultaneously downscaling to districts, benchmarked "
+            "for internal consistency and calibrated against real sub-state observations. Third, "
+            "it produces the first map of injury surveillance completeness below the State level, "
+            "converting a long-noted data discrepancy into an operational guide for where both "
+            "prevention and death-recording systems most need strengthening.", cite=True)
 
     heading(d, "Material & Methods")
-    para(d, "Data. We used GBD 2023 State-level injury deaths with 95% uncertainty intervals for "
-            "all-injury and five causes (road, falls, drowning, fire/burns and self-harm);[1] "
-            "NCRB ADSI 2023 State accidental deaths and suicides;[4] and the ADSI 2023 "
-            "metropolitan-city tables, from which we extracted, for 53 mega-cities, total "
-            "accidental deaths and population (Table 1.2), road-accident deaths (Table 1A.2) and "
-            "suicides (Table 2.3). District boundaries for 735 units came from geoBoundaries "
-            "ADM2;[17] district population and urbanicity from the Census of India 2011;[16] and "
-            "district adult alcohol and tobacco prevalence from the NFHS-5 district factsheets.[15] "
-            "Sources were harmonised to a common set of States and districts; districts that could "
-            "not be matched across frames were logged rather than dropped silently.", cite=True)
-    para(d, "Model. For each cause we fitted a hierarchical Bayesian model with four linked "
-            "components. First, a fusion layer treated the unknown true State death total as a "
-            "latent quantity informed by the GBD estimate (log-normal, using the reported "
-            "uncertainty interval) and by the NCRB count (Poisson), with the administrative count "
-            "scaled by a completeness parameter. Second, a completeness sub-model let completeness "
-            "vary by district as a logistic function of urbanicity and a smooth spatial term, so "
-            "that the administrative-capture fraction could differ within States. Third, a "
-            "downscaling layer modelled the true district death rate on the log scale as a "
-            "function of district covariates, an intrinsic conditional autoregressive (ICAR) "
-            "spatial field over the district adjacency graph,[8,9] and unstructured "
-            "heterogeneity; district rates were benchmarked so that their population-weighted mean "
-            "within each State reproduced the fused State rate.[24] Fourth, an anchor likelihood "
-            "related the observed metropolitan-city deaths to the modelled district rate and "
-            "completeness at the corresponding district. Multi-district metropolitan "
-            "agglomerations, whose city population greatly exceeds any single constituent "
-            "district, were excluded from anchoring, leaving {N['n_anchor']} city anchors.", cite=True)
-    para(d, "Priors were weakly informative; the completeness intercept was centred on the "
-            "national GBD-to-NCRB ratio for each cause. Models were fitted by Hamiltonian Monte "
-            "Carlo (No-U-Turn sampler) using PyMC with a JAX backend,[21,30] running two chains of "
-            "1000 post-warmup draws each; convergence was assessed by the rank-normalised R-hat and "
-            "effective sample size.[22] All estimates are posterior means with 95% credible "
-            "intervals (CrI).", cite=True)
-    para(d, "Validation and sensitivity. For the three anchored causes we performed five-fold "
-            "cross-validation over the {N['n_anchor']} city anchors, refitting with each fold's cities removed "
-            "from the anchor likelihood and predicting their administrative deaths; we report "
-            "interval coverage, log-scale error and rank correlation (Table 3). We tested "
-            "robustness to dropping the spatial term, to holding completeness constant within "
-            "States, and to the completeness-prior width. Because ADSI tabulates only total "
-            "accidental deaths, road deaths and suicides at city level, falls, drowning and burns "
-            "could not be anchored and are reported as covariate projections. Analyses used only "
-            "aggregate public data; ethics approval was not required.", cite=True)
+    para(d, "Data sources. State-level injury deaths with 95% uncertainty intervals for "
+            "all-injury and five causes (road, falls, drowning, fire/burns and self-harm) were "
+            "obtained from the Global Burden of Disease Study 2023.[1] State administrative counts "
+            "came from NCRB ADSI 2023: police-reported accidental deaths by cause and total "
+            "suicides.[4] Sub-state anchors were extracted directly from the ADSI 2023 report's "
+            "metropolitan-city chapter, which tabulates, for 53 mega-cities (population ≥1 "
+            "million), total accidental deaths and city population (Table 1.2), road-accident "
+            "deaths (Table 1A.2) and suicides (Table 2.3); parsed values were checked against the "
+            "report's own narrative figures. District geometry for 735 units came from the "
+            "geoBoundaries ADM2 database;[17] district population and the urban household share "
+            "from the Census of India 2011;[16] and district adult alcohol and tobacco prevalence "
+            "from the NFHS-5 district factsheets.[15] District names were harmonised across the "
+            "three frames by State-blocked fuzzy matching; unmatched units and covariate gaps were "
+            "logged and imputed from the State mean rather than dropped silently, and district "
+            "populations were rescaled within each State to sum to the State census total so that "
+            "aggregation weights were internally consistent.", cite=True)
+    para(d, "Model structure. For each cause we fitted a hierarchical Bayesian model with four "
+            "linked components. The fusion layer treated the unknown true State death total as a "
+            "latent quantity informed jointly by the GBD estimate — entered as a log-normal "
+            "likelihood whose dispersion was set from the reported uncertainty interval — and by "
+            "the NCRB count, entered as a Poisson likelihood whose mean was the true total scaled "
+            "by a completeness fraction between zero and one. The completeness sub-model allowed "
+            "that fraction to vary by district as a logistic function of urbanicity and a lightly "
+            "smoothed spatial term, so that administrative capture could differ within a State; "
+            "the State completeness entering the fusion was the population-weighted mean of its "
+            "district values. The downscaling layer modelled the true district death rate on the "
+            "log scale as an intercept plus district covariates, an intrinsic conditional "
+            "autoregressive (ICAR) spatial field over the queen-contiguity district adjacency "
+            "graph,[8,9] and unstructured heterogeneity. District rates were then benchmarked — "
+            "rescaled so that their population-weighted mean within each State exactly reproduced "
+            "the fused State rate — guaranteeing coherence between the district atlas and the "
+            "State totals.[10,24] Finally, an anchor likelihood related the observed "
+            "metropolitan-city deaths to the modelled rate and completeness at the corresponding "
+            "district, using each city's own reported population as the exposure.", cite=True)
+    para(d, f"Because NCRB “cities” are urban agglomerations, several metropolitan anchors span "
+            f"many districts and cannot be attached to one; anchors whose city population exceeded "
+            f"twice the matched district's population were therefore excluded, leaving "
+            f"{N['n_anchor']} single-district city anchors for calibration. Priors were weakly "
+            f"informative, with the completeness intercept for each cause centred on the national "
+            f"GBD-to-NCRB ratio. Models were fitted by Hamiltonian Monte Carlo using the "
+            f"No-U-Turn sampler in PyMC with a JAX backend,[21,29,30] running two chains of 1000 "
+            f"post-warmup draws; convergence was judged by the rank-normalised R-hat (<1.05) and "
+            f"effective sample size.[22] All results are posterior means with 95% credible "
+            f"intervals (CrI).", cite=True)
+    para(d, f"Validation and sensitivity. For the three anchored causes we performed five-fold "
+            f"cross-validation over the {N['n_anchor']} city anchors, refitting the full model "
+            f"with each fold's cities removed from the anchor likelihood and predicting their "
+            f"administrative deaths out of sample; we report the proportion of held-out "
+            f"observations within the 95% credible interval (coverage), the log-scale root mean "
+            f"squared error, and the Spearman rank correlation between predicted and observed city "
+            f"deaths (Table 3). Robustness was examined by removing the spatial field, holding "
+            f"completeness constant within States, and widening the completeness-slope prior "
+            f"(Table S2). Because ADSI tabulates only total accidental deaths, road deaths and "
+            f"suicides at city level, falls, drowning and burns cannot be anchored and are "
+            f"reported as covariate projections that borrow the fused State totals and the spatial "
+            f"structure but are not individually validated. The study used only aggregate, "
+            f"publicly available secondary data with no individual identifiers, so institutional "
+            f"ethics approval was not required.", cite=True)
 
     heading(d, "Results")
     para(d, f"Estimates were produced for {N['n_dist']} districts across {N['n_states']} States "
-            f"and union territories. At the national level the fusion reproduced the known "
-            f"source discordance: modelled and administrative counts differed "
-            f"{N['falls_ratio']}-fold for falls and {t1.set_index('Cause').loc['burns','GBD/NCRB ratio']:.1f}-fold "
-            f"for burns, but only 1.3-fold for drowning (Table 1). Implied surveillance "
-            f"completeness was correspondingly lowest for falls (district median "
-            f"{N['falls_comp']}) and burns ({N['burns_comp']}), intermediate for road "
-            f"({N['road_comp']}) and suicide, and highest for drowning ({N['drown_comp']}).", cite=True)
-    para(d, f"District all-injury mortality had a median of {N['ai_med']} per 100 000 and reached "
-            f"{N['ai_max']} in the highest-burden districts (Figure 1). Road-injury mortality "
-            f"(median {N['road_med']} per 100 000) and suicide (median {N['suicide_med']}) showed "
-            f"the widest geographical spread. The completeness surface (Figure 2) revealed strong "
-            f"within-State gradients: administrative capture was consistently higher in urban and "
-            f"metropolitan districts and lower across rural and tribal interiors, a pattern that "
-            f"State-level ratios entirely obscure.", cite=True)
-    para(d, "Combining high estimated burden, wide uncertainty and low completeness identified a "
-            "set of surveillance “blind-spot” districts (Table 2). These clustered markedly in the "
-            "tribal districts of Chhattisgarh — Sukma, Narayanpur, Bijapur, Dantewada and "
-            "neighbours — with further clusters in interior Odisha and hill districts of Himachal "
-            "Pradesh, where injury deaths are both estimated to be high and least likely to be "
-            "administratively recorded.", cite=True)
-    para(d, f"Five-fold cross-validation showed well-calibrated uncertainty: 95% credible "
-            f"intervals covered the held-out city observations "
-            f"{cvnum('road','coverage95')}–{cvnum('all_injury','coverage95')} of the time across "
-            f"anchored causes, with modest point discrimination (Spearman "
-            f"{cvnum('suicide','spearman')} for suicide; Table 3). Sensitivity analyses confirmed "
-            f"that the spatial term improved out-of-sample prediction and that completeness "
-            f"estimates were stable to prior width.", cite=True)
+            f"and union territories. At the national level the fusion reproduced, and quantified "
+            f"the uncertainty in, the known source discordance (Table 1). Modelled and "
+            f"administrative counts differed {N['falls_ratio']}-fold for falls and "
+            f"{E['burns_ratio']}-fold for burns, {E['road_ratio']}-fold for road injury and "
+            f"{E['suicide_ratio']}-fold for suicide, but only 1.3-fold for drowning. The fused "
+            f"true national totals were approximately {E['ai_fused']} all-injury deaths, of which "
+            f"{E['road_fused']} were attributed to road injury, {E['suicide_fused']} to suicide, "
+            f"{E['falls_fused']} to falls, {E['drown_fused']} to drowning and {E['burns_fused']} "
+            f"to burns. Implied surveillance completeness — the share of true deaths appearing in "
+            f"administrative records — was lowest for falls (district median {N['falls_comp']}) "
+            f"and burns ({N['burns_comp']}), intermediate for suicide and road ({N['road_comp']}), "
+            f"and highest for drowning ({N['drown_comp']}); for all injury combined it was "
+            f"{N['ai_comp']}.", cite=True)
+    para(d, f"District all-injury mortality had a median of {N['ai_med']} per 100 000 "
+            f"(interquartile range {E['ai_iqr']}) and reached about {N['ai_max']} per 100 000 in "
+            f"the highest-burden districts (Figure 1). Burden was far from uniform within the "
+            f"country: State-median district rates ranged from {E['lo_val']} per 100 000 in "
+            f"{E['lo_state']} and {E['lo2_val']} in {E['lo2_state']} to {E['hi_val']} in "
+            f"{E['hi_state']} and {E['hi2_val']} in {E['hi2_state']}. Road-injury mortality "
+            f"(median {N['road_med']} per 100 000, IQR {E['road_iqr']}) and suicide (median "
+            f"{N['suicide_med']}, IQR {E['suicide_iqr']}) showed the widest geographical spread, "
+            f"while falls (median {N['falls_med']}) contributed the largest hidden burden.", cite=True)
+    para(d, f"The completeness surface (Figure 2) revealed strong gradients that State-level "
+            f"ratios entirely obscure. Administrative capture was consistently higher in urban and "
+            f"metropolitan districts and lower across rural and tribal interiors. For falls the "
+            f"under-capture was near-universal: an estimated {E['falls_lt10']} of {E['falls_n']} "
+            f"districts recorded fewer than one in ten fall deaths, and for all injury combined "
+            f"{E['ai_lt40']} districts recorded under 40% of estimated deaths.", cite=True)
+    para(d, f"Combining high estimated burden, wide posterior uncertainty and low completeness "
+            f"identified a set of surveillance “blind-spot” districts (Table 2), where injury "
+            f"deaths are both estimated to be high and least likely to be recorded. These "
+            f"clustered markedly in the tribal districts of Chhattisgarh — Sukma (all-injury "
+            f"rate about 300 per 100 000, completeness 0.49), Jashpur, Narayanpur and the Bastar "
+            f"divisions — with further clusters in interior Odisha and the hill districts of "
+            f"Himachal Pradesh. The same districts dominated the cause-specific blind-spot lists "
+            f"for road injury and suicide, indicating a shared underlying weakness in local "
+            f"death recording rather than a cause-specific artefact.", cite=True)
+    para(d, f"Five-fold cross-validation showed well-calibrated uncertainty: across the three "
+            f"anchored causes, 95% credible intervals covered the held-out city observations "
+            f"{cvnum('road','coverage95')}–{cvnum('all_injury','coverage95')} of the time, close "
+            f"to nominal, with log-scale root-mean-squared errors of "
+            f"{cvnum('road','log_rmse')}–{cvnum('suicide','log_rmse')} (Table 3). Rank "
+            f"discrimination was strongest for suicide (Spearman {cvnum('suicide','spearman')}) "
+            f"and all injury ({cvnum('all_injury','spearman')}) and weaker for road "
+            f"({cvnum('road','spearman')}). Sensitivity analyses showed that completeness "
+            f"estimates were stable across prior widths and model structures (mean road "
+            f"completeness 0.30–0.31), and that the spatial field contributed little to "
+            f"out-of-sample city prediction — expected, since the anchor cities are uniformly "
+            f"urban and spatially dispersed (Table S2).", cite=True)
 
     heading(d, "Discussion")
-    para(d, "This study provides the first district-level atlas of fatal injury in India and the "
-            "first sub-state map of injury surveillance completeness. Two findings stand out. "
-            "First, injury burden is not a State-level property: rates and, especially, the "
-            "completeness of administrative recording vary sharply within States, so district "
-            "targeting cannot be inferred from State aggregates. Second, the causes with the "
-            "largest modelling-versus-administration gap — falls and burns — are precisely those "
-            "where fewer than one in five deaths appear in police records, consistent with deaths "
-            "that occur at home or are certified without police involvement.[4,20]", cite=True)
-    para(d, "The results reframe the GBD–NCRB discordance as actionable intelligence. Rather than "
-            "asking which source is correct, the fusion asks where they diverge most and localises "
-            "that divergence. For prevention agencies this points to concrete districts; for the "
-            "civil registration and medical certification systems it maps where investment in "
-            "cause-of-death recording would yield the most.[7,20] The method is general: any "
-            "setting with a modelled estimate, a discordant administrative count and district "
-            "covariates can be handled the same way.", cite=True)
-    para(d, "The work has important limitations. Identification of covariate effects relies on {N['n_anchor']} "
-            "urban anchor districts, and the completeness gradient is extrapolated to rural "
-            "districts that are never directly observed; this is the principal caveat and the "
-            "reason falls, drowning and burns are presented only as covariate projections. Point "
-            "discrimination across cities was modest even though interval coverage was good, so "
-            "individual district rankings should be read with their credible intervals, not as "
-            "precise ranks. Covariate associations are ecological and not causal.[14] Exposure "
-            "used the 2011 census population base, and district boundaries were harmonised across "
-            "three frames with residual name-matching uncertainty. Finally, ADSI city tables limit "
-            "anchoring to three causes; district-level cause-specific injury data, were they "
-            "released, would allow direct anchoring of falls and burns.", cite=True)
-    para(d, "Within these limits, the atlas offers a reproducible, uncertainty-quantified tool for "
-            "district injury prevention and for prioritising surveillance strengthening in the "
-            "places that need it most.", cite=True)
+    para(d, "This study provides the first district-resolution atlas of fatal injury in India and "
+            "the first sub-state map of injury surveillance completeness. Three findings stand "
+            "out. First, injury burden is not a State-level property: both the death rate and, "
+            "more strikingly, the completeness of administrative recording vary sharply within "
+            "States, so district targeting cannot be read off State aggregates. Second, the causes "
+            "with the largest gap between modelling and administration — falls and burns — are "
+            "precisely those where fewer than one in five estimated deaths appear in police "
+            "records, consistent with deaths that occur at home and are certified, if at all, "
+            "without police involvement.[4,20] Third, the districts where burden is highest and "
+            "recording weakest are not scattered at random but concentrate in the tribal and "
+            "forested interiors of central and eastern India, where health and registration "
+            "infrastructure is thinnest.", cite=True)
+    para(d, "These results reframe the long-noted GBD–NCRB discordance as actionable "
+            "intelligence rather than a data-quality embarrassment. Instead of asking which source "
+            "is correct, the fusion asks where the two diverge most and localises that divergence "
+            "to specific districts. For prevention agencies the burden surface identifies where "
+            "people are dying; for the Civil Registration System and the Medical Certification of "
+            "Cause of Death programme the completeness surface identifies where investment in "
+            "death recording would yield the most information per rupee.[7,20] The two surfaces "
+            "are complementary: a high-burden district that already records its deaths needs "
+            "prevention, whereas a high-burden district that does not also needs surveillance "
+            "strengthening before the effect of any intervention could even be measured.", cite=True)
+    para(d, "The cause-specific pattern maps onto known prevention levers. The vast hidden burden "
+            "of falls, concentrated among older adults, argues for embedding fall-risk assessment "
+            "and home-hazard modification within the National Programme for Health Care of the "
+            "Elderly, particularly in the many districts where falls are almost invisible to "
+            "administrative data.[28] The persistent under-recording of burns points to household "
+            "fire and kerosene safety and to strengthening burn-injury registries. For road "
+            "injury, the atlas offers a modelled complement to the government's high-fatality "
+            "district programme, extending prioritisation beyond raw police counts to a "
+            "burden estimate that adjusts for differential recording.[3,26] For suicide, the "
+            "district blind-spots align with regions where means-restriction and mental-health "
+            "outreach could be focused.[27]", cite=True)
+    para(d, "Methodologically, the approach is general. Any setting with a modelled estimate, a "
+            "discordant administrative count and district-level covariates can be handled the same "
+            "way: fuse the two signals through an explicit completeness parameter, downscale under "
+            "a benchmarked spatial model, and calibrate against whatever partial sub-state "
+            "observations exist. This differs from conventional small-area estimation, which "
+            "smooths a single noisy survey signal,[10,11,13] by simultaneously reconciling two "
+            "sources of differing scale and interpretation while preserving coherence with State "
+            "totals.[24] It also converts the by-product of that reconciliation — the completeness "
+            "parameter — into a substantive epidemiological quantity of independent policy value.", cite=True)
+    para(d, f"The work has important limitations. Identification of the covariate effects relies "
+            f"on {N['n_anchor']} urban anchor districts, and the completeness gradient is "
+            f"extrapolated to rural districts that are never directly observed; this is the "
+            f"principal caveat and the reason falls, drowning and burns are presented only as "
+            f"covariate projections rather than validated estimates. Out-of-sample point "
+            f"discrimination was modest even though interval coverage was close to nominal, so "
+            f"individual district rankings should be read together with their credible intervals "
+            f"rather than as precise positions. Covariate associations are ecological and carry no "
+            f"individual-level causal interpretation.[14] Exposure used the 2011 census population "
+            f"base, and boundaries were harmonised across three district frames with residual "
+            f"name-matching uncertainty that was logged but not eliminated. Finally, the ADSI city "
+            f"tables restrict anchoring to three causes; were district-level cause-specific injury "
+            f"deaths released — for example through the Civil Registration System — falls and "
+            f"burns could be anchored and validated directly.", cite=True)
+    para(d, "Within these limits, the atlas offers a reproducible, fully uncertainty-quantified "
+            "tool for district injury prevention and, equally, a map of where India's injury "
+            "surveillance most needs strengthening. Both outputs follow from taking the "
+            "disagreement between the country's two injury data systems seriously — not as an "
+            "error to be argued away, but as information about the places their shared blind spots "
+            "leave unseen.", cite=True)
 
     heading(d, "References")
     for i, ref in enumerate(REFERENCES, 1):
