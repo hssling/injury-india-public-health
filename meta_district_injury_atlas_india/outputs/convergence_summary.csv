@@ -1,0 +1,7 @@
+cause,max_rhat,min_ess,anchored
+all_injury,1.0,296.0,True
+road,1.01,228.0,True
+falls,1.01,735.0,False
+drowning,1.0,319.0,False
+burns,1.01,463.0,False
+suicide,1.01,335.0,True

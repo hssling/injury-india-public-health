@@ -19,7 +19,7 @@ import pymc as pm
 import pytensor.tensor as pt
 import arviz as az
 
-from meta_district_injury_atlas_india.config import LOCAL, OUT, ANCHOR_CAUSES
+from meta_district_injury_atlas_india.config import LOCAL, OUT, ANCHOR_CAUSES, CAUSES
 from meta_district_injury_atlas_india.src.state_inputs import state_inputs
 from meta_district_injury_atlas_india.src.build_districts import COVAR_COLS
 from meta_district_injury_atlas_india.src.extract_ncrb_cities import build as build_cities
@@ -103,9 +103,15 @@ def prep(cause):
     if cause in ANCHOR_CAUSES:
         adf = _anchor_positions(meta)
         obs = adf[cause].to_numpy(float)
-        keep = np.isfinite(obs) & np.isfinite(adf["pop_a"].to_numpy())
-        anchor = dict(pos=adf["pos"].to_numpy()[keep], obs=obs[keep],
-                      pop_a=adf["pop_a"].to_numpy(float)[keep])
+        distpop = meta.loc[adf["pos"], "pop_d"].to_numpy(float)
+        pa = adf["pop_a"].to_numpy(float)
+        # exclude multi-district metropolitan agglomerations: the NCRB "city" spans
+        # several districts and cannot be coherently attached to one (e.g. Delhi City
+        # -> tiny New Delhi district). Keep cities whose population ~ their district.
+        single = pa <= 2.0 * distpop
+        keep = np.isfinite(obs) & np.isfinite(pa) & single
+        anchor = dict(pos=adf["pos"].to_numpy()[keep], obs=obs[keep], pop_a=pa[keep],
+                      n_excluded=int((~single).sum()))
 
     return dict(meta=meta, states=states, sidx=sidx, pop=pop, X=X, urban=urban,
                 edges=edges, gbd=gbd, sig=sig, ncrb=ncrb, ncrb_mask=ncrb_mask,
@@ -162,8 +168,21 @@ def fit_cause(cause, draws=800, tune=800, chains=2, **kw):
     with build_model(cause, d=d, **kw):
         idata = pm.sample(draws=draws, tune=tune, chains=chains, target_accept=0.9,
                           nuts_sampler="numpyro", random_seed=42, progressbar=False)
+    OUT.mkdir(exist_ok=True)
     idata.to_netcdf(OUT / f"idata_{cause}.nc")
+    try:
+        import jax
+        jax.clear_caches()                 # free device buffers between sequential fits
+    except Exception:
+        pass
     return idata, d
+
+
+def fit_all(draws=1000, tune=1000, chains=2):
+    """Fit every cause and save idata only (no arviz post-processing -> no OOM)."""
+    for cause in CAUSES:
+        fit_cause(cause, draws=draws, tune=tune, chains=chains)
+        print(f"fitted {cause}", flush=True)
 
 
 if __name__ == "__main__":
