@@ -1,0 +1,7 @@
+Cause,GBD deaths,NCRB deaths,GBD/NCRB ratio,Fused true deaths,District completeness median (IQR),Anchored
+all_injury,896861,580432,1.55,978423,0.51 (0.40–0.64),Yes
+road,462017,164886,2.8,528388,0.28 (0.26–0.32),Yes
+falls,203999,23805,8.57,205900,0.09 (0.07–0.11),No (projected)
+drowning,47392,35927,1.32,54713,0.62 (0.55–0.70),No (projected)
+burns,36645,6755,5.42,35512,0.17 (0.16–0.19),No (projected)
+suicide,376165,159435,2.36,382800,0.29 (0.21–0.42),Yes
