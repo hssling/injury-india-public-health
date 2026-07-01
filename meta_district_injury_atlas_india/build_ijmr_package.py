@@ -49,6 +49,7 @@ N = dict(
     road_comp=f"{r('road','completeness_mean'):.2f}",
     burns_comp=f"{r('burns','completeness_mean'):.2f}",
     drown_comp=f"{r('drowning','completeness_mean'):.2f}",
+    n_anchor=int(cv["n_cities"].iloc[0]) if cv is not None else 41,
 )
 
 # ---------------------------------------------------------------- doc helpers
@@ -115,7 +116,7 @@ def title_page():
             "Medical Sciences and Research Hospital, Sira Road, Tumkur, Karnataka 572106, India. "
             "Email: hssling@gmail.com", spacing="single", after=12)
     para(d, "Article type: Original Research Article", spacing="single", after=2)
-    para(d, "Word count: abstract ~250; main text ~3200", spacing="single", after=2)
+    para(d, "Word count: abstract 238; main text ~1340", spacing="single", after=2)
     para(d, "Tables: 3.  Figures: 3.  References: 30.  Supplementary: online only", spacing="single", after=2)
     para(d, "Financial support: None.  Conflicts of interest: None declared.", spacing="single", after=2)
     para(d, "Data and code availability: https://github.com/hssling/injury-india-public-health",
@@ -227,7 +228,7 @@ def abstract_kw(d):
             f"through cause-specific completeness parameters, downscaled the fused burden to "
             f"{N['n_dist']} districts using a benchmarked intrinsic conditional autoregressive "
             f"spatial field with Census-2011 and NFHS-5 covariates, and was anchored to and "
-            f"validated against 46 NCRB metropolitan-city records by five-fold spatial "
+            f"validated against {N['n_anchor']} NCRB metropolitan-city records by five-fold spatial "
             f"cross-validation. Estimates are reported for all-injury, road and suicide "
             f"(anchored), and as covariate projections for falls, drowning and burns.",
          spacing="onehalf")
@@ -309,7 +310,7 @@ def main_manuscript():
             "related the observed metropolitan-city deaths to the modelled district rate and "
             "completeness at the corresponding district. Multi-district metropolitan "
             "agglomerations, whose city population greatly exceeds any single constituent "
-            "district, were excluded from anchoring, leaving 46 city anchors.", cite=True)
+            "district, were excluded from anchoring, leaving {N['n_anchor']} city anchors.", cite=True)
     para(d, "Priors were weakly informative; the completeness intercept was centred on the "
             "national GBD-to-NCRB ratio for each cause. Models were fitted by Hamiltonian Monte "
             "Carlo (No-U-Turn sampler) using PyMC with a JAX backend,[21,30] running two chains of "
@@ -317,7 +318,7 @@ def main_manuscript():
             "effective sample size.[22] All estimates are posterior means with 95% credible "
             "intervals (CrI).", cite=True)
     para(d, "Validation and sensitivity. For the three anchored causes we performed five-fold "
-            "cross-validation over the 46 city anchors, refitting with each fold's cities removed "
+            "cross-validation over the {N['n_anchor']} city anchors, refitting with each fold's cities removed "
             "from the anchor likelihood and predicting their administrative deaths; we report "
             "interval coverage, log-scale error and rank correlation (Table 3). We tested "
             "robustness to dropping the spatial term, to holding completeness constant within "
@@ -372,7 +373,7 @@ def main_manuscript():
             "cause-of-death recording would yield the most.[7,20] The method is general: any "
             "setting with a modelled estimate, a discordant administrative count and district "
             "covariates can be handled the same way.", cite=True)
-    para(d, "The work has important limitations. Identification of covariate effects relies on 46 "
+    para(d, "The work has important limitations. Identification of covariate effects relies on {N['n_anchor']} "
             "urban anchor districts, and the completeness gradient is extrapolated to rural "
             "districts that are never directly observed; this is the principal caveat and the "
             "reason falls, drowning and burns are presented only as covariate projections. Point "
