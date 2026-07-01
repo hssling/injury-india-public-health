@@ -1,0 +1,8 @@
+data_local/*.geojson
+data_local/*.pdf
+data_local/*.parquet
+data_local/*.npz
+data_local/census2011.csv
+data_local/gb.json
+outputs/*.nc
+outputs/*.log
