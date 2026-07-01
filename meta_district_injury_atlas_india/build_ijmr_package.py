@@ -105,7 +105,8 @@ def para(doc, text="", *, bold=False, italic=False, align="justify", spacing="do
         for m in CITE.finditer(text):
             if m.start() > pos:
                 run = p.add_run(text[pos:m.start()]); run.bold = bold; run.italic = italic; run.font.size = Pt(size)
-            sup = p.add_run(f"[{m.group(1)}]"); sup.font.superscript = True; sup.font.size = Pt(size)
+            # IJMR style: bare superscript number(s), no brackets
+            sup = p.add_run(m.group(1).strip()); sup.font.superscript = True; sup.font.size = Pt(size)
             pos = m.end()
         if pos < len(text):
             run = p.add_run(text[pos:]); run.bold = bold; run.italic = italic; run.font.size = Pt(size)
