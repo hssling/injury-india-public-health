@@ -198,7 +198,7 @@ def _write_title_page(d):
             "Email: hssling@gmail.com", spacing="single", after=12)
     para(d, "Article type: Original Research Article", spacing="single", after=2)
     para(d, "Word count: abstract 238; main text ~2380", spacing="single", after=2)
-    para(d, "Tables: 3.  Figures: 3.  References: 30.  Supplementary: online only", spacing="single", after=2)
+    para(d, "Tables: 3.  Figures: 3.  References: 29.  Supplementary: online only", spacing="single", after=2)
     para(d, "Financial support: None.  Conflicts of interest: None declared.", spacing="single", after=2)
     para(d, "Data and code availability: https://github.com/hssling/injury-india-public-health",
          spacing="single", after=2)
@@ -237,36 +237,35 @@ def declarations():
 
 
 REFERENCES = [
-    "GBD 2021 Diseases and Injuries Collaborators. Global incidence, prevalence, years lived with disability (YLDs), disability-adjusted life-years (DALYs), and healthy life expectancy (HALE) for 371 diseases and injuries in 204 countries and territories and 811 subnational locations, 1990–2021: a systematic analysis for the Global Burden of Disease Study 2021. Lancet 2024;403(10440):2133–61. doi:10.1016/S0140-6736(24)00757-8.",
+    "Global Burden of Disease Collaborative Network. Global Burden of Disease Study 2023 (GBD 2023) Results. Seattle, WA: Institute for Health Metrics and Evaluation (IHME); 2024. Available from: https://vizhub.healthdata.org/gbd-results/ (accessed 2 July 2026).",
     "India State-Level Disease Burden Initiative Collaborators. Nations within a nation: variations in epidemiological transition across the states of India, 1990–2016 in the Global Burden of Disease Study. Lancet 2017;390(10111):2437–60. doi:10.1016/S0140-6736(17)32804-0.",
+    "Gururaj G. Injury prevention and care: an important public health agenda for health, survival and safety of children. Indian J Pediatr 2013;80(Suppl 1):S100–8. doi:10.1007/s12098-012-0783-z.",
     "Dandona R, Kumar GA, Gururaj G, et al. Mortality due to road injuries in the states of India: the Global Burden of Disease Study 1990–2017. Lancet Public Health 2020;5(2):e86–98. doi:10.1016/S2468-2667(19)30246-4.",
+    "Menon GR, Singh L, Sharma P, et al. National burden estimates of healthy life lost in India, 2017: an analysis using direct mortality data and indirect disability data. Lancet Glob Health 2019;7(12):e1675–84. doi:10.1016/S2214-109X(19)30451-6.",
     "National Crime Records Bureau. Accidental Deaths & Suicides in India 2023. New Delhi: Ministry of Home Affairs, Government of India; 2024. Available from: https://www.ncrb.gov.in (accessed 2 July 2026).",
-    "Ministry of Road Transport and Highways. Road Accidents in India 2023. New Delhi: Government of India; 2024.",
-    "Jha P, Gajalakshmi V, Gupta PC, et al. Prospective study of one million deaths in India: rationale, design, and validation results. PLoS Med 2006;3(2):e18. doi:10.1371/journal.pmed.0030018.",
     "Rao C, Gupta M. The civil registration system is a potentially viable data source for reliable subnational mortality measurement in India. BMJ Glob Health 2020;5(8):e002586. doi:10.1136/bmjgh-2020-002586.",
-    "Besag J, York J, Mollié A. Bayesian image restoration, with two applications in spatial statistics. Ann Inst Stat Math 1991;43(1):1–20. doi:10.1007/BF00116466.",
-    "Riebler A, Sørbye SH, Simpson D, Rue H. An intuitive Bayesian spatial model for disease mapping that accounts for scaling. Stat Methods Med Res 2016;25(4):1145–65. doi:10.1177/0962280216660421.",
+    "Kumar GA, Dandona R, Dandona L. Completeness of death registration in the Civil Registration System, India, 2005 to 2015. Indian J Med Res 2019;149(6):740–7. doi:10.4103/ijmr.IJMR_1620_17.",
+    "Jha P, Gajalakshmi V, Gupta PC, et al. Prospective study of one million deaths in India: rationale, design, and validation results. PLoS Med 2006;3(2):e18. doi:10.1371/journal.pmed.0030018.",
     "Rao JNK, Molina I. Small Area Estimation. 2nd ed. Hoboken (NJ): Wiley; 2015. doi:10.1002/9781118735855.",
     "Pfeffermann D. New important developments in small area estimation. Stat Sci 2013;28(1):40–68. doi:10.1214/12-STS395.",
     "Mercer LH, Wakefield J, Pantazis A, et al. Space–time smoothing of complex survey data: small area estimation for child mortality. Ann Appl Stat 2015;9(4):1889–905. doi:10.1214/15-AOAS872.",
     "Dwivedi LK, Sharma A, Shukla A, et al. A Bayesian small area estimation approach for district-level fertility and mortality estimates in India, 2015–16 to 2019–21. Health Sci Rep 2026;9(2):e71789. doi:10.1002/hsr2.71789.",
-    "Wakefield J. Ecologic studies revisited. Annu Rev Public Health 2008;29:75–90. doi:10.1146/annurev.publhealth.29.020907.090821.",
-    "International Institute for Population Sciences (IIPS), ICF. National Family Health Survey (NFHS-5), 2019–21: India. Mumbai: IIPS; 2021.",
-    "Office of the Registrar General & Census Commissioner. Census of India 2011: Primary Census Abstract. New Delhi: Government of India; 2013.",
     "India Geodata / india-maps-data district boundary compilation, sourced from the Local Government Directory (Ministry of Panchayati Raj), Survey of India, Bhuvan (ISRO) and the DataMeet open-data community. Available from: https://github.com/udit-001/india-maps-data (accessed 2 July 2026).",
-    "Menon GR, Singh L, Sharma P, et al. National burden estimates of healthy life lost in India, 2017: an analysis using direct mortality data and indirect disability data. Lancet Glob Health 2019;7(12):e1675–84. doi:10.1016/S2214-109X(19)30451-6.",
-    "Dandona R, Kumar GA, Dhaliwal RS, et al. Gender differentials and state variations in suicide deaths in India: the Global Burden of Disease Study 1990–2016. Lancet Public Health 2018;3(10):e478–89. doi:10.1016/S2468-2667(18)30138-5.",
-    "Kumar GA, Dandona R, Dandona L. Completeness of death registration in the Civil Registration System, India, 2005 to 2015. Indian J Med Res 2019;149(6):740–7. doi:10.4103/ijmr.IJMR_1620_17.",
+    "Office of the Registrar General & Census Commissioner. Census of India 2011: Primary Census Abstract. New Delhi: Government of India; 2013.",
+    "International Institute for Population Sciences (IIPS), ICF. National Family Health Survey (NFHS-5), 2019–21: India. Mumbai: IIPS; 2021.",
+    "Besag J, York J, Mollié A. Bayesian image restoration, with two applications in spatial statistics. Ann Inst Stat Math 1991;43(1):1–20. doi:10.1007/BF00116466.",
+    "Riebler A, Sørbye SH, Simpson D, Rue H. An intuitive Bayesian spatial model for disease mapping that accounts for scaling. Stat Methods Med Res 2016;25(4):1145–65. doi:10.1177/0962280216660421.",
+    "Datta GS, Ghosh M, Steorts R, Maples J. Bayesian benchmarking with applications to small area estimation. Test 2011;20(3):574–88. doi:10.1007/s11749-011-0233-7.",
     "Hoffman MD, Gelman A. The No-U-Turn Sampler: adaptively setting path lengths in Hamiltonian Monte Carlo. J Mach Learn Res 2014;15:1593–623.",
+    "Abril-Pla O, Andreani V, Carroll C, et al. PyMC: a modern and comprehensive probabilistic programming framework in Python. PeerJ Comput Sci 2023;9:e1516. doi:10.7717/peerj-cs.1516.",
     "Vehtari A, Gelman A, Simpson D, Carpenter B, Bürkner PC. Rank-normalization, folding, and localization: an improved R-hat for assessing convergence of MCMC. Bayesian Anal 2021;16(2):667–718. doi:10.1214/20-BA1221.",
     "Gelman A, Carlin JB, Stern HS, et al. Bayesian Data Analysis. 3rd ed. Boca Raton (FL): CRC Press; 2013.",
-    "Datta GS, Ghosh M, Steorts R, Maples J. Bayesian benchmarking with applications to small area estimation. Test 2011;20(3):574–88. doi:10.1007/s11749-011-0233-7.",
-    "Gururaj G. Injury prevention and care: an important public health agenda for health, survival and safety of children. Indian J Pediatr 2013;80(Suppl 1):S100–8. doi:10.1007/s12098-012-0783-z.",
-    "World Health Organization. Global status report on road safety 2023. Geneva: WHO; 2023.",
-    "Patel V, Ramasundarahettige C, Vijayakumar L, et al. Suicide mortality in India: a nationally representative survey. Lancet 2012;379(9834):2343–51. doi:10.1016/S0140-6736(12)60606-0.",
     "Joseph A, Kumar D, Bagavandas M. A review of epidemiology of fall among elderly in India. Indian J Community Med 2019;44(2):166–8.",
-    "Carpenter B, Gelman A, Hoffman MD, et al. Stan: a probabilistic programming language. J Stat Softw 2017;76(1):1–32. doi:10.18637/jss.v076.i01.",
-    "Abril-Pla O, Andreani V, Carroll C, et al. PyMC: a modern and comprehensive probabilistic programming framework in Python. PeerJ Comput Sci 2023;9:e1516. doi:10.7717/peerj-cs.1516.",
+    "Ministry of Road Transport and Highways. Road Accidents in India 2023. New Delhi: Government of India; 2024.",
+    "World Health Organization. Global status report on road safety 2023. Geneva: WHO; 2023.",
+    "Dandona R, Kumar GA, Dhaliwal RS, et al. Gender differentials and state variations in suicide deaths in India: the Global Burden of Disease Study 1990–2016. Lancet Public Health 2018;3(10):e478–89. doi:10.1016/S2468-2667(18)30138-5.",
+    "Patel V, Ramasundarahettige C, Vijayakumar L, et al. Suicide mortality in India: a nationally representative survey. Lancet 2012;379(9834):2343–51. doi:10.1016/S0140-6736(12)60606-0.",
+    "Wakefield J. Ecologic studies revisited. Annu Rev Public Health 2008;29:75–90. doi:10.1146/annurev.publhealth.29.020907.090821.",
 ]
 
 
@@ -294,8 +293,9 @@ def abstract_kw(d):
             f"lowest for falls (median {N['falls_comp']}) and burns ({N['burns_comp']}), and "
             f"{N['ai_comp']} for all injury. Cross-validated 95% interval coverage was "
             f"{cvnum('road','coverage95')}–{cvnum('all_injury','coverage95')}. High-burden, "
-            f"low-completeness “blind-spot” districts clustered in the tribal districts of "
-            f"Chhattisgarh and adjoining States.", spacing="onehalf")
+            f"low-completeness “blind-spot” districts spread across the hill districts of "
+            f"Himachal Pradesh and the tribal belt of Madhya Pradesh, Chhattisgarh and Odisha.",
+         spacing="onehalf")
     para(d, "Interpretation & conclusions:", bold=True, align="left", after=2)
     para(d, "Injury burden and surveillance gaps vary sharply within States. Fusing modelled and "
             "administrative data and downscaling to districts yields actionable prevention and "
@@ -314,9 +314,9 @@ def main_manuscript():
     para(d, "Injuries account for roughly one in ten deaths in India and, as communicable and "
             "childhood diseases recede, for a growing share of premature mortality and "
             "disability, and are increasingly recognised as a core public health agenda in "
-            "their own right.[1,2,25] Road crashes, self-harm, falls, drowning and burns together kill "
+            "their own right.[1,2,3] Road crashes, self-harm, falls, drowning and burns together kill "
             "several hundred thousand Indians each year, disproportionately among the young and "
-            "the economically active.[3,18] Unlike most non-communicable diseases, the immediate "
+            "the economically active.[4,5] Unlike most non-communicable diseases, the immediate "
             "causes of injury are external and, in principle, preventable through engineering, "
             "enforcement, environmental modification and timely trauma care — interventions that "
             "are delivered not by States but by districts. Police, transport authorities, health "
@@ -325,12 +325,12 @@ def main_manuscript():
             "example by identifying high-fatality districts for road-safety intervention.", cite=True)
     para(d, "The evidence base does not match this administrative reality. Subnational injury "
             "estimates from the Global Burden of Disease (GBD) study, which have transformed "
-            "understanding of India's epidemiological transition, stop at the State level.[2,3] "
+            "understanding of India's epidemiological transition, stop at the State level.[2,4] "
             "The country's routine administrative record of external deaths — the National Crime "
             "Records Bureau's Accidental Deaths and Suicides in India (ADSI) series — is compiled "
             "from police returns and released by State, with cause detail for only a handful of "
-            "large cities.[4] Civil registration, though improving, still under-records rural "
-            "deaths and rarely assigns a medically certified cause outside large hospitals.[7,20] "
+            "large cities.[6] Civil registration, though improving, still under-records rural "
+            "deaths and rarely assigns a medically certified cause outside large hospitals.[7,8] "
             "The net result is that no district-resolution estimate of fatal injury exists for "
             "India, and planners in the districts that carry the greatest burden have the least "
             "reliable local data.", cite=True)
@@ -342,8 +342,8 @@ def main_manuscript():
             f"tracks how a death comes to official attention. Falls among older adults and fatal "
             f"burns frequently occur at home and are certified, if at all, without police "
             f"involvement, whereas road crashes and many suicides generate a police record almost "
-            f"by definition.[4,20] Such discordance is usually treated as a nuisance to be "
-            f"reconciled;[6,7] we instead treat it as signal. The gap between what modelling "
+            f"by definition.[6,8] Such discordance is usually treated as a nuisance to be "
+            f"reconciled;[7,9] we instead treat it as signal. The gap between what modelling "
             f"implies and what administration records is itself a measurable quantity — a "
             f"surveillance-completeness surface — that reveals where deaths occur but go "
             f"uncounted.", cite=True)
@@ -371,16 +371,16 @@ def main_manuscript():
             f"all-injury and five causes (road, falls, drowning, fire/burns and self-harm) were "
             f"obtained from the Global Burden of Disease Study 2023.[1] State administrative "
             f"counts came from NCRB ADSI 2023: police-reported accidental deaths by cause and "
-            f"total suicides.[4] Sub-state anchors were extracted directly from the ADSI 2023 "
+            f"total suicides.[6] Sub-state anchors were extracted directly from the ADSI 2023 "
             f"report's metropolitan-city chapter, which tabulates, for 53 mega-cities (population "
             f"≥1 million), total accidental deaths and city population (Table 1.2), road-accident "
             f"deaths (Table 1A.2) and suicides (Table 2.3); parsed values were checked against the "
             f"report's own narrative figures. District geometry, with current post-2014 State "
             f"boundaries (including the Telangana and Ladakh/Jammu and Kashmir splits), came from "
             f"an open compilation sourced from India's Local Government Directory, Survey of "
-            f"India, Bhuvan and the DataMeet open-data community;[17] district population and the "
-            f"urban household share came from the Census of India 2011;[16] and district adult "
-            f"alcohol and tobacco prevalence came from the NFHS-5 district factsheets.[15] "
+            f"India, Bhuvan and the DataMeet open-data community;[14] district population and the "
+            f"urban household share came from the Census of India 2011;[15] and district adult "
+            f"alcohol and tobacco prevalence came from the NFHS-5 district factsheets.[16] "
             f"District names were harmonised across the three frames by State-blocked fuzzy "
             f"matching, and a small number of exact-duplicate boundary records in the source "
             f"compilation were removed; unmatched units and covariate gaps were logged and imputed "
@@ -407,10 +407,10 @@ def main_manuscript():
             "district values. The downscaling layer modelled the true district death rate on the "
             "log scale as an intercept plus district covariates, an intrinsic conditional "
             "autoregressive (ICAR) spatial field over the queen-contiguity district adjacency "
-            "graph,[8,9] and unstructured heterogeneity. District rates were then benchmarked — "
+            "graph,[17,18] and unstructured heterogeneity. District rates were then benchmarked — "
             "rescaled so that their population-weighted mean within each State exactly reproduced "
             "the fused State rate — guaranteeing coherence between the district atlas and the "
-            "State totals.[10,24] Finally, an anchor likelihood related the observed "
+            "State totals.[10,19] Finally, an anchor likelihood related the observed "
             "metropolitan-city deaths to the modelled rate and completeness at the corresponding "
             "district, using each city's own reported population as the exposure.", cite=True)
     para(d, f"Because NCRB “cities” are urban agglomerations, several metropolitan anchors span "
@@ -419,7 +419,7 @@ def main_manuscript():
             f"{N['n_anchor']} single-district city anchors for calibration. Priors were weakly "
             f"informative, with the completeness intercept for each cause centred on the national "
             f"GBD-to-NCRB ratio. Models were fitted by Hamiltonian Monte Carlo using the "
-            f"No-U-Turn sampler in PyMC with a JAX backend,[21,29,30] running two chains of 1000 "
+            f"No-U-Turn sampler in PyMC with a JAX backend,[20,21] running two chains of 1000 "
             f"post-warmup draws; convergence was judged by the rank-normalised R-hat (<1.05) and "
             f"effective sample size.[22] All results are posterior means with 95% credible "
             f"intervals (CrI).[23]", cite=True)
@@ -468,23 +468,27 @@ def main_manuscript():
             f"under-capture was near-universal: an estimated {E['falls_lt10']} of {E['falls_n']} "
             f"districts recorded fewer than one in ten fall deaths, and for all injury combined "
             f"{E['ai_lt40']} districts recorded under 40% of estimated deaths.", cite=True)
-    para(d, f"Combining high estimated burden, wide posterior uncertainty and low completeness "
-            f"identified a set of surveillance “blind-spot” districts (Table 2), where injury "
-            f"deaths are both estimated to be high and least likely to be recorded. These "
-            f"clustered markedly in the tribal districts of Chhattisgarh — Sukma (all-injury "
-            f"rate about 300 per 100 000, completeness 0.49), Jashpur, Narayanpur and the Bastar "
-            f"divisions — with further clusters in interior Odisha and the hill districts of "
-            f"Himachal Pradesh. The same districts dominated the cause-specific blind-spot lists "
-            f"for road injury and suicide, indicating a shared underlying weakness in local "
-            f"death recording rather than a cause-specific artefact.", cite=True)
+    para(d, f"For each anchored cause we computed, from the joint posterior draws, the "
+            f"probability that a district is simultaneously above the national median burden "
+            f"and below a 50% completeness threshold — a genuine blind-spot probability rather "
+            f"than a deterministic ranking. High-probability blind-spot districts (Table 2) "
+            f"spread across the hill districts of Himachal Pradesh (Kinnaur, Chamba, Lahaul and "
+            f"Spiti, Kullu), the tribal belt spanning Madhya Pradesh (Dindori, Alirajpur) and "
+            f"Chhattisgarh (Jashpur, Mahasamund, Uttar Bastar Kanker), and interior Odisha "
+            f"(Nuapada, Malkangiri, Nabarangapur, Boudh), with individual all-injury blind-spot "
+            f"probabilities exceeding 0.92. Road-injury blind-spots concentrated in the same "
+            f"Madhya Pradesh–Chhattisgarh tribal belt, while suicide blind-spots additionally "
+            f"picked out the Sikkim Himalayan districts, indicating a shared underlying weakness "
+            f"in local death recording rather than a single cause-specific artefact.", cite=True)
     para(d, f"Five-fold cross-validation showed well-calibrated uncertainty: across the three "
             f"anchored causes, 95% credible intervals covered the held-out city observations "
             f"{cvnum('road','coverage95')}–{cvnum('all_injury','coverage95')} of the time, close "
             f"to nominal, with log-scale root-mean-squared errors of "
             f"{cvnum('road','log_rmse')}–{cvnum('suicide','log_rmse')} (Table 3). Rank "
-            f"discrimination was strongest for suicide (Spearman {cvnum('suicide','spearman')}) "
-            f"and all injury ({cvnum('all_injury','spearman')}) and weaker for road "
-            f"({cvnum('road','spearman')}). Sensitivity analyses showed that completeness "
+            f"discrimination was consistently strong across the three anchored causes "
+            f"(Spearman ρ {cvnum('all_injury','spearman')} for all injury, "
+            f"{cvnum('road','spearman')} for road, {cvnum('suicide','spearman')} for suicide). "
+            f"Sensitivity analyses showed that completeness "
             f"estimates were stable across prior widths and model structures (mean road "
             f"completeness 0.30–0.31), and that the spatial field contributed little to "
             f"out-of-sample city prediction — expected, since the anchor cities are uniformly "
@@ -499,7 +503,7 @@ def main_manuscript():
             "with the largest gap between modelling and administration — falls and burns — are "
             "precisely those where fewer than one in five estimated deaths appear in police "
             "records, consistent with deaths that occur at home and are certified, if at all, "
-            "without police involvement.[4,20] Third, the districts where burden is highest and "
+            "without police involvement.[6,8] Third, the districts where burden is highest and "
             "recording weakest are not scattered at random but concentrate in the tribal and "
             "forested interiors of central and eastern India, where health and registration "
             "infrastructure is thinnest.", cite=True)
@@ -509,7 +513,7 @@ def main_manuscript():
             "to specific districts. For prevention agencies the burden surface identifies where "
             "people are dying; for the Civil Registration System and the Medical Certification of "
             "Cause of Death programme the completeness surface identifies where investment in "
-            "death recording would yield the most information per rupee.[7,20] The two surfaces "
+            "death recording would yield the most information per rupee.[7,8] The two surfaces "
             "are complementary: a high-burden district that already records its deaths needs "
             "prevention, whereas a high-burden district that does not also needs surveillance "
             "strengthening before the effect of any intervention could even be measured.", cite=True)
@@ -517,15 +521,15 @@ def main_manuscript():
             "of falls, concentrated among older adults, argues for embedding fall-risk assessment "
             "and home-hazard modification within the National Programme for Health Care of the "
             "Elderly, particularly in the many districts where falls are almost invisible to "
-            "administrative data.[28] The persistent under-recording of burns points to household "
+            "administrative data.[24] The persistent under-recording of burns points to household "
             "fire and kerosene safety and to strengthening burn-injury registries. For road "
             "injury, the atlas offers a modelled complement to the government's high-fatality "
             "district programme, extending prioritisation beyond raw police counts, which "
-            "themselves show a distinct trend from independently modelled estimates,[5] to a "
-            "burden estimate that adjusts for differential recording.[3,26] For suicide, the "
+            "themselves show a distinct trend from independently modelled estimates,[25] to a "
+            "burden estimate that adjusts for differential recording.[4,26] For suicide, the "
             "district blind-spots align with regions where means-restriction and mental-health "
             "outreach could be focused, and with the State-level patterning of suicide burden "
-            "already described for India.[19,27]", cite=True)
+            "already described for India.[27,28]", cite=True)
     para(d, "Methodologically, the approach is general. Any setting with a modelled estimate, a "
             "discordant administrative count and district-level covariates can be handled the same "
             "way: fuse the two signals through an explicit completeness parameter, downscale under "
@@ -533,17 +537,18 @@ def main_manuscript():
             "observations exist. This differs from conventional small-area estimation, which "
             "smooths a single noisy survey signal,[10,11,13] by simultaneously reconciling two "
             "sources of differing scale and interpretation while preserving coherence with State "
-            "totals.[24] It also converts the by-product of that reconciliation — the completeness "
+            "totals.[19] It also converts the by-product of that reconciliation — the completeness "
             "parameter — into a substantive epidemiological quantity of independent policy value.", cite=True)
     para(d, f"The work has important limitations. Identification of the covariate effects relies "
             f"on {N['n_anchor']} urban anchor districts, and the completeness gradient is "
             f"extrapolated to rural districts that are never directly observed; this is the "
             f"principal caveat and the reason falls, drowning and burns are presented only as "
-            f"covariate projections rather than validated estimates. Out-of-sample point "
-            f"discrimination was modest even though interval coverage was close to nominal, so "
-            f"individual district rankings should be read together with their credible intervals "
-            f"rather than as precise positions. Covariate associations are ecological and carry no "
-            f"individual-level causal interpretation.[14] Exposure used the 2011 census population "
+            f"covariate projections rather than validated estimates. Although out-of-sample "
+            f"interval coverage and rank discrimination were both strong for the anchored causes "
+            f"(Table 3), individual district rankings should still be read together with their "
+            f"credible intervals rather than as precise positions, particularly for the "
+            f"unanchored, covariate-projected causes. Covariate associations are ecological and carry no "
+            f"individual-level causal interpretation.[29] Exposure used the 2011 census population "
             f"base, and boundaries were harmonised across three district frames with residual "
             f"name-matching uncertainty that was logged but not eliminated. Finally, the ADSI city "
             f"tables restrict anchoring to three causes; were district-level cause-specific injury "
@@ -557,8 +562,10 @@ def main_manuscript():
         f"offers alone: a burden map and a surveillance-completeness map that jointly identify "
         f"where prevention resources and where death-recording capacity should be targeted "
         f"first. Three practice implications follow directly. First, district health and road-"
-        f"safety authorities in the Chhattisgarh-centred blind-spot belt should treat both "
-        f"outcomes together — the same districts need active case-finding for unrecorded deaths "
+        f"safety authorities across the identified blind-spot belt — spanning Himachal "
+        f"Pradesh's hill districts and the Madhya Pradesh-Chhattisgarh-Odisha tribal corridor "
+        f"— should treat both outcomes together — the same districts need active case-finding "
+        f"for unrecorded deaths "
         f"and intensified prevention, not one without the other. Second, the near-total "
         f"invisibility of fall deaths nationally argues for linking fall injuries to the "
         f"existing elderly-care and primary-care platforms rather than waiting for police-based "
@@ -599,10 +606,15 @@ def main_manuscript():
               "projected causes rely on covariate downscaling only.")
     b = pd.read_csv(SUB / "Table_2_blindspots.csv")
     b2 = b[b.Cause == "all_injury"].head(10).drop(columns="Cause")
-    add_table(d, b2, "Table 2. Leading all-injury surveillance blind-spot districts (highest "
-              "burden × uncertainty × under-reporting), India 2023.",
+    add_table(d, b2, "Table 2. Leading all-injury surveillance blind-spot districts, ranked by "
+              "posterior blind-spot probability, India 2023.",
               "Rate is posterior mean per 100 000 (95% credible interval). Completeness = "
-              "estimated administrative/true deaths.")
+              "estimated administrative/true deaths. P(blind spot) is the joint posterior "
+              "probability, from paired draws, that a district's rate exceeds the national "
+              "median AND its completeness is below 0.5 in the same draw; districts sharing a "
+              "single pooled union-territory estimate (see Material & Methods) are excluded "
+              "from this ranking as their identical values would not reflect independent "
+              "district-level evidence.")
     if cv is not None:
         t3 = cv.copy()
         t3.columns = ["Cause", "Anchor cities", "95% coverage", "log-RMSE", "log-MAE", "Spearman ρ"]
@@ -614,13 +626,8 @@ def main_manuscript():
 
     para(d, "", after=2)
     heading(d, "Figure legends")
-    para(d, f"Figure 1. District all-injury mortality rate per 100 000 population (posterior mean, "
-            f"GBD/NCRB-fused), {N['n_dist']} Indian districts, 2023.", spacing="single", align="left")
-    para(d, "Figure 2. Estimated injury surveillance completeness (administrative/true deaths) by "
-            "district for anchored causes; green indicates near-complete recording, red severe "
-            "under-capture.", spacing="single", align="left")
-    para(d, "Figure 3. Posterior uncertainty (width of the 95% credible interval) in district "
-            "all-injury mortality rate.", spacing="single", align="left")
+    for _png, _cap in FIGURE_LEGENDS:
+        para(d, _cap.format(n_dist=N["n_dist"]), spacing="single", align="left")
     d.save(SUB / "03_main_manuscript_IJMR.docx")
 
 
@@ -632,18 +639,38 @@ def _add_fig(d, png, cap):
     para(d, cap, spacing="single", after=12, align="left", size=11)
 
 
+FIGURE_LEGENDS = [
+    ("map_all_injury_rate.png",
+     "Figure 1. District-level all-injury mortality rate per 100 000 population "
+     "(posterior mean, GBD/NCRB-fused), across all {n_dist} Indian districts, 2023. Darker "
+     "(higher-value) shading identifies the highest-burden districts, concentrated in a "
+     "tribal corridor spanning Madhya Pradesh, Chhattisgarh and Maharashtra. Twelve districts "
+     "in small union territories that share a single pooled national estimate (no separate "
+     "GBD figure exists for them) are shown at that shared value and footnoted on the figure "
+     "rather than left blank, so that every Indian district, including Jammu and Kashmir, "
+     "Ladakh and Telangana, is depicted."),
+    ("map_all_injury_completeness.png",
+     "Figure 2. Estimated injury surveillance completeness (administrative NCRB deaths "
+     "divided by the fused, GBD-informed true death estimate) by district, for the three "
+     "anchored causes (all-injury, road, suicide) that can be validated against real sub-state "
+     "records. Green indicates near-complete administrative recording; red indicates severe "
+     "under-capture. The map reveals within-State gradients — generally higher completeness "
+     "in urbanised districts and lower completeness across the eastern and north-eastern "
+     "interior — that are invisible in State-level statistics."),
+    ("map_all_injury_uncertainty.png",
+     "Figure 3. Posterior uncertainty in the district all-injury mortality rate, shown as the "
+     "width of the 95% credible interval. Wider intervals mark districts where the fused "
+     "estimate is least precise, chiefly small-population and thinly-anchored districts; "
+     "these should be interpreted with their full interval rather than the point estimate "
+     "alone."),
+]
+
+
 def figures_doc():
     d = base_doc()
     para(d, "Figures", bold=True, align="center", after=10)
-    _add_fig(d, "map_all_injury_rate.png",
-             f"Figure 1. District all-injury mortality rate per 100 000 (posterior mean, "
-             f"GBD/NCRB-fused), {N['n_dist']} districts, 2023.")
-    _add_fig(d, "map_all_injury_completeness.png",
-             "Figure 2. Estimated injury surveillance completeness (administrative/true deaths) "
-             "by district, all-injury; red indicates severe under-capture.")
-    _add_fig(d, "map_all_injury_uncertainty.png",
-             "Figure 3. Posterior uncertainty (95% credible-interval width) in district "
-             "all-injury mortality rate.")
+    for png, cap in FIGURE_LEGENDS:
+        _add_fig(d, png, cap.format(n_dist=N["n_dist"]))
     d.save(SUB / "04_figures_IJMR.docx")
 
     # figures folder with all high-res panels
@@ -663,12 +690,21 @@ def supplementary():
             "centred on the GBD estimate with scale set from the reported 95% uncertainty "
             "interval. The administrative count was modelled as Poisson with mean T[s]·c[s], where "
             "c[s] is the population-weighted mean of district completeness c[d]. District "
-            "completeness followed logit(c[d]) = γ + η·urbanicity[d] + w[d], with w a lightly "
-            "smoothed term. The true district rate followed log λ[d] = α + Xβ + τ·φ[d] + v[d], "
-            "with φ an ICAR field on the queen-contiguity district graph and v unstructured "
-            "heterogeneity; λ[d] was rescaled within each State so that the population-weighted "
-            "mean equalled the fused State rate. City anchors contributed a Poisson likelihood "
-            "with mean pop_city·λ[d]·c[d].", spacing="onehalf")
+            "completeness followed logit(c[d]) = γ + η·urbanicity[d] + w[d]. The true district "
+            "rate followed log λ[d] = α + Xβ + τ·φ[d] + v[d], with φ an ICAR field on the "
+            "queen-contiguity district graph and v unstructured heterogeneity; λ[d] was "
+            "rescaled within each State (or GBD-reporting bucket) so that the population-"
+            "weighted mean equalled the fused State rate. City anchors contributed a Poisson "
+            "likelihood with mean pop_city·λ[d]·c[d]. The priors on w and v were scaled per "
+            "district by sqrt(pop[d] / median population), clipped to [0.15, 2.0], so that "
+            "small-population districts — whose own heterogeneity term is only weakly "
+            "constrained by the population-weighted benchmarking constraint — are shrunk more "
+            "strongly toward the covariate/spatial structure, preventing implausible rates in "
+            "thinly-populated districts. For the twelve districts in small union territories "
+            "that GBD reports as a single pooled unit and that have no city anchor, the shared "
+            "bucket-level R[state] and c[state] posterior draws are reported directly as the "
+            "district estimate, rather than an unsupported district-specific "
+            "disaggregation.", spacing="onehalf")
 
     heading(d, "S2. Convergence")
     conv = pd.read_csv(HERE / "outputs" / "convergence_summary.csv")
@@ -692,15 +728,48 @@ def supplementary():
     loo_path = TAB / "model_comparison_loo.csv"
     if loo_path.exists():
         loo = pd.read_csv(loo_path)
+        low_reliability = (loo["pct_bad_or_worse_k"] > 30).any() if "pct_bad_or_worse_k" in loo.columns else False
+        n_div_total = int(loo["n_divergences"].sum()) if "n_divergences" in loo.columns else None
+        para(d, "As a secondary check on the five-fold cross-validation reported in Table 3 "
+                "and Table S2, we also computed PSIS-LOO on the held-out city-anchor likelihood "
+                f"for the spatial and non-spatial road models (n={int(loo['n_obs'].iloc[0]) if 'n_obs' in loo.columns else 45} "
+                "anchor observations). Because the initial fits showed a poor Pareto-k "
+                "reliability diagnostic, we explicitly tested whether this reflected inadequate "
+                "sampling: both models were refitted with four chains, 2000 tuning and 2000 "
+                "post-warm-up draws and a target acceptance rate of 0.995. This eliminated "
+                f"divergent transitions entirely ({n_div_total if n_div_total is not None else 0} "
+                "across both refitted models) but did not improve the Pareto-k diagnostic "
+                "(Table S3), indicating that the unreliability is a structural consequence of "
+                "comparing district-level models on only 45 anchor observations rather than an "
+                "artefact of insufficient sampling. " +
+                ("We therefore report this PSIS-LOO comparison as exploratory only; the "
+                 "five-fold cross-validation in Table S2, which measures genuine held-out "
+                 "predictive error directly rather than relying on the PSIS approximation, "
+                 "remains the primary evidence that the spatial term adds little to "
+                 "out-of-sample prediction for this cause." if low_reliability else
+                 "The Pareto-k reliability diagnostic was adequate, supporting the LOO "
+                 "comparison as confirmatory evidence alongside Table S2."),
+             spacing="onehalf")
         loo_show = loo.copy()
-        for c in ["elpd_loo", "se", "p_loo", "elpd_diff", "dse"]:
+        for c in ["elpd_loo", "se", "elpd_diff", "dse"]:
             if c in loo_show.columns:
                 loo_show[c] = loo_show[c].round(2)
+        rename = {"pct_good_k": "Pareto k<=0.7 (%)", "pct_bad_or_worse_k": "Pareto k>0.7 (%)",
+                  "n_obs": "n anchors", "n_divergences": "Divergences (refitted)"}
+        loo_show = loo_show.rename(columns=rename)
         add_table(d, loo_show, "Table S3. PSIS-LOO comparison of the spatial (ICAR) and "
                   "non-spatial (covariates only) district models, road cause.",
                   "elpd_loo: expected log pointwise predictive density (higher is better); "
-                  "elpd_diff/dse: difference from the best model and its standard error, "
-                  "evaluated on the held-out metropolitan-city anchor likelihood only.")
+                  "elpd_diff/dse: difference from the best model and its standard error. "
+                  "Pareto k diagnoses the reliability of the PSIS-LOO approximation at each "
+                  "held-out point; values above 0.7 indicate the approximation may be "
+                  "unreliable. Divergences (refitted) confirms the poor Pareto-k values are not "
+                  "attributable to inadequate sampling: both models were refitted with four "
+                  "chains and a 0.995 target acceptance rate and produced zero divergent "
+                  "transitions, yet Pareto-k did not improve, most likely reflecting the small "
+                  "anchor sample rather than a model or sampling failure. Evaluated on the "
+                  "held-out metropolitan-city anchor "
+                  "likelihood only.")
     else:
         para(d, "Formal LOO/WAIC comparison pending completion of the model-comparison run.",
              italic=True)

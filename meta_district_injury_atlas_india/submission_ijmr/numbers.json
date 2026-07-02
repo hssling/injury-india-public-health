@@ -1,37 +1,37 @@
 {
-  "n_districts": 702,
-  "ai_rate_median": 72.8,
+  "n_districts": 711,
+  "ai_rate_median": 75.7,
   "ai_rate_iqr": [
-    49.3,
-    108.0
+    46.0,
+    114.0
   ],
-  "ratio_falls": 8.6,
-  "falls_completeness_median": 0.09,
-  "ai_completeness_median": 0.51,
+  "ratio_falls": 8.8,
+  "falls_completeness_median": 0.08,
+  "ai_completeness_median": 0.52,
   "cv": [
     {
       "cause": "all_injury",
-      "n_cities": 46,
-      "coverage95": 0.957,
-      "log_rmse": 1.247,
-      "log_mae": 0.972,
-      "spearman": 0.38
+      "n_cities": 45,
+      "coverage95": 0.956,
+      "log_rmse": 0.577,
+      "log_mae": 0.411,
+      "spearman": 0.751
     },
     {
       "cause": "road",
-      "n_cities": 46,
+      "n_cities": 45,
       "coverage95": 0.978,
-      "log_rmse": 1.099,
-      "log_mae": 0.828,
-      "spearman": 0.431
+      "log_rmse": 0.496,
+      "log_mae": 0.391,
+      "spearman": 0.692
     },
     {
       "cause": "suicide",
-      "n_cities": 46,
-      "coverage95": 0.957,
-      "log_rmse": 1.352,
-      "log_mae": 1.02,
-      "spearman": 0.532
+      "n_cities": 45,
+      "coverage95": 0.933,
+      "log_rmse": 0.959,
+      "log_mae": 0.686,
+      "spearman": 0.72
     }
   ]
 }

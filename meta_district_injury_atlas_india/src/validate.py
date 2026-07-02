@@ -29,6 +29,10 @@ def cv_cause(cause, k=5, draws=600, tune=600):
         with build_model(cause, d=d, hold_out_pos=ho):
             idata = pm.sample(draws=draws, tune=tune, chains=2, target_accept=0.9,
                               nuts_sampler="numpyro", random_seed=1, progressbar=False)
+        try:
+            import jax; jax.clear_caches()   # avoid OOM across sequential fold fits
+        except Exception:
+            pass
         lam = idata.posterior["lambda_d"].stack(s=("chain", "draw")).values
         cdd = idata.posterior["c_d"].stack(s=("chain", "draw")).values
         for j in f:

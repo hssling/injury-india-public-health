@@ -33,6 +33,10 @@ def cv_rmse(cause, kw, k=5, draws=500, tune=500):
         with build_model(cause, d=d, hold_out_pos=pos[f], **kw):
             idata = pm.sample(draws=draws, tune=tune, chains=2, target_accept=0.9,
                               nuts_sampler="numpyro", random_seed=3, progressbar=False)
+        try:
+            import jax; jax.clear_caches()   # avoid OOM across sequential fold fits
+        except Exception:
+            pass
         lam = idata.posterior["lambda_d"].stack(s=("chain", "draw")).values
         cdd = idata.posterior["c_d"].stack(s=("chain", "draw")).values
         comp.append(cdd.mean())

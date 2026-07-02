@@ -1,46 +1,46 @@
-Cause,District,State,Rate per 100k (95% CrI),Completeness
-road,Sukma,Chhattisgarh,272.4 (13.7–733.8),0.28
-all_injury,Sukma,Chhattisgarh,300.5 (19.1–940.3),0.49
-suicide,Sukma,Chhattisgarh,198.9 (4.5–755.0),0.28
-all_injury,Jashpur,Chhattisgarh,269.6 (83.7–605.2),0.36
-all_injury,Narayanpur,Chhattisgarh,222.6 (24.5–674.5),0.46
-all_injury,Hamirpur,Himachal Pradesh,238.8 (64.4–569.5),0.37
-all_injury,Balrampur,Chhattisgarh,254.7 (69.8–640.3),0.49
-all_injury,Debagarh,Odisha,215.4 (54.8–560.5),0.34
-suicide,Jashpur,Chhattisgarh,175.2 (32.6–480.6),0.18
-suicide,Balrampur,Chhattisgarh,178.6 (35.0–503.2),0.28
-all_injury,Surajpur,Chhattisgarh,242.0 (71.3–565.8),0.5
-all_injury,Kinnaur,Himachal Pradesh,195.3 (50.4–466.0),0.27
-all_injury,Dakshin Bastar Dantewada,Chhattisgarh,218.2 (37.8–581.6),0.51
-suicide,Surajpur,Chhattisgarh,161.0 (24.1–490.9),0.28
-all_injury,Chhatarpur,Madhya Pradesh,249.5 (93.0–519.0),0.5
-all_injury,Bastar,Chhattisgarh,203.0 (41.8–499.0),0.43
-all_injury,Gadchiroli,Maharashtra,202.0 (56.2–479.2),0.38
-suicide,Narayanpur,Chhattisgarh,140.5 (7.3–513.4),0.26
-all_injury,Tikamgarh,Madhya Pradesh,218.5 (70.9–501.0),0.44
-all_injury,Bhandara,Maharashtra,218.2 (65.2–528.9),0.49
-all_injury,Satna,Madhya Pradesh,240.5 (90.6–515.7),0.5
-road,Narayanpur,Chhattisgarh,159.9 (19.3–426.8),0.27
-suicide,Dakshin Bastar Dantewada,Chhattisgarh,129.9 (10.4–486.6),0.3
-road,Dakshin Bastar Dantewada,Chhattisgarh,148.9 (24.3–372.9),0.28
-suicide,Hamirpur,Himachal Pradesh,125.2 (21.8–345.9),0.17
-road,Bastar,Chhattisgarh,147.3 (29.8–331.6),0.27
-suicide,Bilaspur,Chhattisgarh,123.4 (19.4–414.0),0.34
-road,Jashpur,Chhattisgarh,144.4 (43.1–325.7),0.25
-suicide,Tikamgarh,Madhya Pradesh,121.1 (24.5–353.0),0.23
-suicide,Bastar,Chhattisgarh,115.1 (12.2–343.4),0.22
-suicide,Dhemaji,Assam,99.2 (5.1–346.5),0.16
-road,Dindori,Madhya Pradesh,126.7 (34.9–306.9),0.23
-road,Dhemaji,Assam,105.5 (7.0–321.4),0.24
-suicide,Debagarh,Odisha,99.7 (15.8–311.3),0.17
-suicide,Chhatarpur,Madhya Pradesh,121.4 (34.3–306.7),0.28
-suicide,Satna,Madhya Pradesh,118.1 (29.3–306.1),0.27
-suicide,Sidhi,Madhya Pradesh,106.0 (23.3–293.7),0.18
-road,Nagapattinam,Tamil Nadu,105.5 (22.5–312.3),0.29
-road,Surajpur,Chhattisgarh,113.1 (32.7–275.5),0.28
-road,Kondagaon,Chhattisgarh,115.7 (23.3–256.8),0.28
-road,Pashchimi Singhbhum,Jharkhand,100.1 (8.9–261.6),0.26
-road,Mandla,Madhya Pradesh,105.5 (28.3–255.6),0.26
-road,Gadchiroli,Maharashtra,99.4 (28.6–235.7),0.25
-road,Viluppuram,Tamil Nadu,105.2 (32.6–232.0),0.27
-road,Seoni,Madhya Pradesh,96.0 (26.1–240.0),0.26
+Cause,District,State,Rate per 100k (95% CrI),Completeness,P(blind spot)
+road,Jashpur,Chhattisgarh,141.6 (65.1–248.5),0.28,1.0
+road,Dindori,Madhya Pradesh,162.4 (80.2–282.4),0.28,1.0
+road,Anuppur,Madhya Pradesh,147.7 (68.2–270.4),0.3,1.0
+road,Surajpur,Chhattisgarh,106.8 (53.5–187.7),0.3,1.0
+road,Umaria,Madhya Pradesh,105.0 (56.6–179.4),0.29,1.0
+all_injury,Kinnaur,Himachal Pradesh,287.0 (107.6–581.9),0.3,1.0
+road,Koriya,Chhattisgarh,93.3 (48.8–154.1),0.3,1.0
+road,Perambalur,Tamil Nadu,90.7 (51.8–147.9),0.29,1.0
+all_injury,Dindori,Madhya Pradesh,358.9 (135.2–695.5),0.34,1.0
+road,Ariyalur,Tamil Nadu,96.0 (50.8–159.5),0.28,1.0
+road,Thiruvarur,Tamil Nadu,121.4 (56.2–225.2),0.29,1.0
+road,Mandla,Madhya Pradesh,154.9 (63.1–308.8),0.29,1.0
+road,Nagapattinam,Tamil Nadu,129.7 (58.2–251.4),0.3,1.0
+road,Gadchiroli,Maharashtra,118.9 (52.2–231.6),0.28,1.0
+road,Kodagu,Karnataka,98.9 (49.4–177.7),0.29,1.0
+road,Pudukkottai,Tamil Nadu,104.7 (47.2–202.6),0.3,0.99
+road,Alirajpur,Madhya Pradesh,137.6 (55.6–268.6),0.28,0.99
+suicide,South Sikkim,Sikkim,110.6 (31.1–240.5),0.37,0.99
+suicide,Jashpur,Chhattisgarh,156.5 (25.9–462.5),0.2,0.98
+all_injury,Chamba,Himachal Pradesh,178.4 (77.1–313.3),0.38,0.98
+suicide,West Sikkim,Sikkim,108.8 (21.5–264.4),0.37,0.98
+all_injury,Jashpur,Chhattisgarh,298.5 (125.9–574.1),0.39,0.98
+suicide,Surajpur,Chhattisgarh,120.3 (21.5–359.3),0.3,0.98
+suicide,North Sikkim,Sikkim,104.1 (20.6–249.8),0.37,0.97
+all_injury,Alirajpur,Madhya Pradesh,308.7 (110.7–655.3),0.39,0.97
+suicide,Rajnandgaon,Chhattisgarh,94.8 (18.5–260.9),0.29,0.97
+suicide,Baloda Bazar,Chhattisgarh,94.2 (18.2–275.1),0.3,0.97
+suicide,Dindori,Madhya Pradesh,109.6 (17.8–332.5),0.16,0.97
+suicide,Surguja,Chhattisgarh,116.7 (18.3–320.3),0.22,0.97
+all_injury,Nuapada,Odisha,156.6 (61.5–321.7),0.36,0.96
+suicide,East Sikkim,Sikkim,96.1 (17.8–247.0),0.37,0.96
+suicide,Dhamtari,Chhattisgarh,85.6 (17.0–247.8),0.29,0.96
+suicide,Aurangabad,Bihar,80.9 (56.2–115.3),0.37,0.96
+suicide,Gariaband,Chhattisgarh,104.1 (18.0–336.0),0.3,0.96
+all_injury,Dang,Gujarat,147.7 (61.7–276.4),0.42,0.96
+suicide,Alirajpur,Madhya Pradesh,132.8 (18.1–456.6),0.2,0.96
+all_injury,Lahaul and Spiti,Himachal Pradesh,117.5 (60.5–196.5),0.3,0.96
+suicide,Bametara,Chhattisgarh,83.9 (16.9–239.7),0.3,0.96
+all_injury,Kullu,Himachal Pradesh,126.3 (60.4–217.4),0.41,0.94
+all_injury,Malkangiri,Odisha,192.1 (50.4–462.3),0.38,0.93
+all_injury,Mahasamund,Chhattisgarh,164.5 (66.2–327.7),0.41,0.93
+all_injury,Nabarangapur,Odisha,189.5 (72.7–387.1),0.39,0.92
+all_injury,Wayanad,Kerala,129.9 (47.7–244.0),0.35,0.92
+all_injury,Uttar Bastar Kanker,Chhattisgarh,138.2 (59.9–255.1),0.42,0.92
+all_injury,Boudh,Odisha,115.5 (53.2–216.0),0.35,0.92

@@ -44,7 +44,8 @@ def main():
     est = pd.concat(all_est, ignore_index=True)
     est.to_csv(TAB / "district_estimates.csv", index=False)
     pd.DataFrame(conv).to_csv(OUT / "convergence_summary.csv", index=False)
-    a = est[est.cause.isin(ANCHOR_CAUSES)].copy()
+    # pooled-UT districts share one identical bucket-level estimate; excluded from ranking
+    a = est[est.cause.isin(ANCHOR_CAUSES) & ~est.get("is_pooled_ut", False)].copy()
     (a.sort_values("p_blindspot", ascending=False).groupby("cause").head(15)
      [["cause", "district_name", "state_name", "rate_mean", "rate_lo", "rate_hi",
        "completeness_mean", "p_blindspot"]]).to_csv(TAB / "blind_spots.csv", index=False)

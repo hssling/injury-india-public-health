@@ -123,7 +123,9 @@ def main(draws=1000, tune=1000, chains=2):
     # --- policy artifact: surveillance blind-spots (anchored causes) ---
     # Ranked by p_blindspot: the joint posterior probability (from paired draws) that
     # a district is simultaneously above-median burden and below-threshold completeness.
-    a = est[est.cause.isin(ANCHOR_CAUSES)].copy()
+    # Pooled-UT districts share one identical bucket-level estimate (see summarize()), so
+    # ranking them individually would not reflect independent district-level evidence.
+    a = est[est.cause.isin(ANCHOR_CAUSES) & ~est.get("is_pooled_ut", False)].copy()
     blind = (a.sort_values("p_blindspot", ascending=False)
              .groupby("cause").head(15)
              [["cause", "district_name", "state_name", "rate_mean", "rate_lo", "rate_hi",
