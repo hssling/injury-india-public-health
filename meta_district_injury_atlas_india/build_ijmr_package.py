@@ -200,6 +200,33 @@ def _write_cover_letter(d):
     para(d, "Dr Siddalingaiah H S", spacing="single", after=0)
 
 
+def _write_declarations(d, spacing="single"):
+    para(d, "Financial support & sponsorship:", bold=True, align="left", after=2)
+    para(d, "None.", spacing=spacing, after=6)
+    para(d, "Conflicts of interest:", bold=True, align="left", after=2)
+    para(d, "None declared.", spacing=spacing, after=6)
+    para(d, "Ethical approval:", bold=True, align="left", after=2)
+    para(d, "This study used only aggregate, publicly available secondary data (GBD 2023, NCRB "
+            "ADSI 2023, NFHS-5 district factsheets, Census of India 2011, and open district "
+            "boundary data) with no individual identifiers; institutional ethics approval was "
+            "therefore not required.", spacing=spacing, after=6)
+    para(d, "Data and code availability:", bold=True, align="left", after=2)
+    para(d, "All input data are public. Derived tables and the full, reproducible analysis code "
+            "are available at https://github.com/hssling/injury-india-public-health.",
+         spacing=spacing, after=6)
+    para(d, "Author contributions:", bold=True, align="left", after=2)
+    para(d, "SHS conceived the study, performed the analysis, and wrote the manuscript.",
+         spacing=spacing, after=6)
+    para(d, "Use of artificial intelligence (AI):", bold=True, align="left", after=2)
+    para(d, "AI-assisted tools (a large language model coding assistant) were used to draft and "
+            "debug statistical/analysis code and to assist with manuscript formatting under the "
+            "author's direct instruction and continuous review; no AI tool is listed as an "
+            "author, generated the scientific conclusions, or was used to fabricate or alter "
+            "data or results. The author verified all analyses, results and interpretations and "
+            "is solely responsible for the content, in line with ICMJE guidance on the use of "
+            "AI-assisted technologies.", spacing=spacing, after=6)
+
+
 def _write_title_page(d):
     para(d, TITLE, bold=True, align="center", after=12)
     para(d, "Siddalingaiah H S", align="center", after=2)
@@ -212,10 +239,9 @@ def _write_title_page(d):
             "Email: hssling@gmail.com", spacing="single", after=12)
     para(d, "Article type: Original Research Article", spacing="single", after=2)
     para(d, "Word count: abstract 226; main text ~2700", spacing="single", after=2)
-    para(d, "Tables: 3.  Figures: 3.  References: 29.  Supplementary: online only", spacing="single", after=2)
-    para(d, "Financial support: None.  Conflicts of interest: None declared.", spacing="single", after=2)
-    para(d, "Data and code availability: https://github.com/hssling/injury-india-public-health",
-         spacing="single", after=2)
+    para(d, "Tables: 3.  Figures: 3.  References: 29.  Supplementary: online only", spacing="single", after=12)
+    heading(d, "Declarations")
+    _write_declarations(d)
 
 
 # ================================================================ 00 COVER LETTER + TITLE PAGE (one file)
@@ -231,23 +257,7 @@ def cover_letter_and_title_page():
 def declarations():
     d = base_doc()
     heading(d, "Declarations")
-    para(d, "Financial support & sponsorship:", bold=True, align="left", after=2)
-    para(d, "None.")
-    para(d, "Conflicts of interest:", bold=True, align="left", after=2)
-    para(d, "None declared.")
-    para(d, "Ethical approval:", bold=True, align="left", after=2)
-    para(d, "This study used only aggregate, publicly available secondary data (GBD 2023, NCRB "
-            "ADSI 2023, NFHS-5 district factsheets, Census of India 2011, and open district "
-            "boundary data) with no individual "
-            "identifiers; institutional ethics approval was therefore not required.")
-    para(d, "Data and code availability:", bold=True, align="left", after=2)
-    para(d, "All input data are public. Derived tables and the full, reproducible analysis code "
-            "are available at https://github.com/hssling/injury-india-public-health.")
-    para(d, "Author contributions:", bold=True, align="left", after=2)
-    para(d, "SHS conceived the study, performed the analysis, and wrote the manuscript.")
-    para(d, "Use of AI tools:", bold=True, align="left", after=2)
-    para(d, "Statistical code was drafted with computational assistance; the author verified all "
-            "analyses, results, and interpretations and is solely responsible for the content.")
+    _write_declarations(d)
     d.save(SUB / "02_declarations_IJMR.docx")
 
 
@@ -255,16 +265,16 @@ REFERENCES = [
     "Global Burden of Disease Collaborative Network. Global Burden of Disease Study 2023 (GBD 2023) Results. Seattle, WA: Institute for Health Metrics and Evaluation (IHME); 2024. Available from: https://vizhub.healthdata.org/gbd-results/ (accessed 2 July 2026).",
     "India State-Level Disease Burden Initiative Collaborators. Nations within a nation: variations in epidemiological transition across the states of India, 1990–2016 in the Global Burden of Disease Study. Lancet 2017;390(10111):2437–60. doi:10.1016/S0140-6736(17)32804-0.",
     "Gururaj G. Injury prevention and care: an important public health agenda for health, survival and safety of children. Indian J Pediatr 2013;80(Suppl 1):S100–8. doi:10.1007/s12098-012-0783-z.",
-    "Dandona R, Kumar GA, Gururaj G, et al. Mortality due to road injuries in the states of India: the Global Burden of Disease Study 1990–2017. Lancet Public Health 2020;5(2):e86–98. doi:10.1016/S2468-2667(19)30246-4.",
-    "Menon GR, Singh L, Sharma P, et al. National burden estimates of healthy life lost in India, 2017: an analysis using direct mortality data and indirect disability data. Lancet Glob Health 2019;7(12):e1675–84. doi:10.1016/S2214-109X(19)30451-6.",
+    "Dandona R, Kumar GA, Gururaj G, James S, Chakma JK, Thakur JS, et al. Mortality due to road injuries in the states of India: the Global Burden of Disease Study 1990–2017. Lancet Public Health 2020;5(2):e86–98. doi:10.1016/S2468-2667(19)30246-4.",
+    "Menon GR, Singh L, Sharma P, Yadav P, Sharma S, Kalaskar S, et al. National burden estimates of healthy life lost in India, 2017: an analysis using direct mortality data and indirect disability data. Lancet Glob Health 2019;7(12):e1675–84. doi:10.1016/S2214-109X(19)30451-6.",
     "National Crime Records Bureau. Accidental Deaths & Suicides in India 2023. New Delhi: Ministry of Home Affairs, Government of India; 2024. Available from: https://www.ncrb.gov.in (accessed 2 July 2026).",
     "Rao C, Gupta M. The civil registration system is a potentially viable data source for reliable subnational mortality measurement in India. BMJ Glob Health 2020;5(8):e002586. doi:10.1136/bmjgh-2020-002586.",
     "Kumar GA, Dandona R, Dandona L. Completeness of death registration in the Civil Registration System, India, 2005 to 2015. Indian J Med Res 2019;149(6):740–7. doi:10.4103/ijmr.IJMR_1620_17.",
-    "Jha P, Gajalakshmi V, Gupta PC, et al. Prospective study of one million deaths in India: rationale, design, and validation results. PLoS Med 2006;3(2):e18. doi:10.1371/journal.pmed.0030018.",
+    "Jha P, Gajalakshmi V, Gupta PC, Kumar R, Mony P, Dhingra N, et al. Prospective study of one million deaths in India: rationale, design, and validation results. PLoS Med 2006;3(2):e18. doi:10.1371/journal.pmed.0030018.",
     "Rao JNK, Molina I. Small Area Estimation. 2nd ed. Hoboken (NJ): Wiley; 2015. doi:10.1002/9781118735855.",
     "Pfeffermann D. New important developments in small area estimation. Stat Sci 2013;28(1):40–68. doi:10.1214/12-STS395.",
-    "Mercer LH, Wakefield J, Pantazis A, et al. Space–time smoothing of complex survey data: small area estimation for child mortality. Ann Appl Stat 2015;9(4):1889–905. doi:10.1214/15-AOAS872.",
-    "Dwivedi LK, Sharma A, Shukla A, et al. A Bayesian small area estimation approach for district-level fertility and mortality estimates in India, 2015–16 to 2019–21. Health Sci Rep 2026;9(2):e71789. doi:10.1002/hsr2.71789.",
+    "Mercer LD, Wakefield J, Pantazis A, Lutambi AM, Masanja H, Clark S. Space–time smoothing of complex survey data: small area estimation for child mortality. Ann Appl Stat 2015;9(4):1889–905. doi:10.1214/15-AOAS872.",
+    "Dwivedi LK, Jana S, Chauhan S, Arora P, Dixit P, Bhatia M. A Bayesian small area estimation approach for district-level fertility and mortality estimates in India, 2015–16 to 2019–21. Health Sci Rep 2026;9(2):e71789. doi:10.1002/hsr2.71789.",
     "India Geodata / india-maps-data district boundary compilation, sourced from the Local Government Directory (Ministry of Panchayati Raj), Survey of India, Bhuvan (ISRO) and the DataMeet open-data community. Available from: https://github.com/udit-001/india-maps-data (accessed 2 July 2026).",
     "Office of the Registrar General & Census Commissioner. Census of India 2011: Primary Census Abstract. New Delhi: Government of India; 2013.",
     "International Institute for Population Sciences (IIPS), ICF. National Family Health Survey (NFHS-5), 2019–21: India. Mumbai: IIPS; 2021.",
@@ -272,14 +282,14 @@ REFERENCES = [
     "Riebler A, Sørbye SH, Simpson D, Rue H. An intuitive Bayesian spatial model for disease mapping that accounts for scaling. Stat Methods Med Res 2016;25(4):1145–65. doi:10.1177/0962280216660421.",
     "Datta GS, Ghosh M, Steorts R, Maples J. Bayesian benchmarking with applications to small area estimation. Test 2011;20(3):574–88. doi:10.1007/s11749-011-0233-7.",
     "Hoffman MD, Gelman A. The No-U-Turn Sampler: adaptively setting path lengths in Hamiltonian Monte Carlo. J Mach Learn Res 2014;15:1593–623.",
-    "Abril-Pla O, Andreani V, Carroll C, et al. PyMC: a modern and comprehensive probabilistic programming framework in Python. PeerJ Comput Sci 2023;9:e1516. doi:10.7717/peerj-cs.1516.",
+    "Abril-Pla O, Andreani V, Carroll C, Dong L, Fonnesbeck CJ, Kochurov M, et al. PyMC: a modern and comprehensive probabilistic programming framework in Python. PeerJ Comput Sci 2023;9:e1516. doi:10.7717/peerj-cs.1516.",
     "Vehtari A, Gelman A, Simpson D, Carpenter B, Bürkner PC. Rank-normalization, folding, and localization: an improved R-hat for assessing convergence of MCMC. Bayesian Anal 2021;16(2):667–718. doi:10.1214/20-BA1221.",
-    "Gelman A, Carlin JB, Stern HS, et al. Bayesian Data Analysis. 3rd ed. Boca Raton (FL): CRC Press; 2013.",
+    "Gelman A, Carlin JB, Stern HS, Dunson DB, Vehtari A, Rubin DB. Bayesian Data Analysis. 3rd ed. Boca Raton (FL): CRC Press; 2013.",
     "Joseph A, Kumar D, Bagavandas M. A review of epidemiology of fall among elderly in India. Indian J Community Med 2019;44(2):166–8.",
     "Ministry of Road Transport and Highways. Road Accidents in India 2023. New Delhi: Government of India; 2024.",
     "World Health Organization. Global status report on road safety 2023. Geneva: WHO; 2023.",
-    "Dandona R, Kumar GA, Dhaliwal RS, et al. Gender differentials and state variations in suicide deaths in India: the Global Burden of Disease Study 1990–2016. Lancet Public Health 2018;3(10):e478–89. doi:10.1016/S2468-2667(18)30138-5.",
-    "Patel V, Ramasundarahettige C, Vijayakumar L, et al. Suicide mortality in India: a nationally representative survey. Lancet 2012;379(9834):2343–51. doi:10.1016/S0140-6736(12)60606-0.",
+    "Dandona R, Kumar GA, Dhaliwal RS, Naghavi M, Vos T, Shukla DK, et al. Gender differentials and state variations in suicide deaths in India: the Global Burden of Disease Study 1990–2016. Lancet Public Health 2018;3(10):e478–89. doi:10.1016/S2468-2667(18)30138-5.",
+    "Patel V, Ramasundarahettige C, Vijayakumar L, Thakur JS, Gajalakshmi V, Gururaj G, et al. Suicide mortality in India: a nationally representative survey. Lancet 2012;379(9834):2343–51. doi:10.1016/S0140-6736(12)60606-0.",
     "Wakefield J. Ecologic studies revisited. Annu Rev Public Health 2008;29:75–90. doi:10.1146/annurev.publhealth.29.020907.090821.",
 ]
 
@@ -607,6 +617,14 @@ def main_manuscript():
     para(d, "Data and code availability: All input data are public. Derived tables and the full, "
             "reproducible analysis code are available at "
             "https://github.com/hssling/injury-india-public-health.",
+         spacing="single", after=4, align="left")
+    para(d, "Use of artificial intelligence (AI): AI-assisted tools (a large language model "
+            "coding assistant) were used to draft and debug statistical/analysis code and to "
+            "assist with manuscript formatting under the author's direct instruction and "
+            "continuous review; no AI tool is listed as an author, generated the scientific "
+            "conclusions, or was used to fabricate or alter data or results. The author verified "
+            "all analyses, results and interpretations and is solely responsible for the "
+            "content, in line with ICMJE guidance on the use of AI-assisted technologies.",
          spacing="single", after=8, align="left")
 
     heading(d, "References")
