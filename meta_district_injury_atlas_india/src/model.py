@@ -25,8 +25,8 @@ from meta_district_injury_atlas_india.src.build_districts import COVAR_COLS
 from meta_district_injury_atlas_india.src.extract_ncrb_cities import build as build_cities
 
 # national GBD/NCRB ratio -> completeness prior mean (c = 1/ratio)
-NAT_RATIO = {"all_injury": 1.55, "road": 2.80, "falls": 8.57,
-             "drowning": 1.32, "burns": 5.42, "suicide": 2.36}
+NAT_RATIO = {"all_injury": 1.57, "road": 1.42, "falls": 8.75,
+             "drowning": 1.32, "burns": 5.45, "suicide": 1.17}
 NAT_RATE = {"all_injury": 90e-5, "road": 18e-5, "falls": 8e-5,
             "drowning": 3e-5, "burns": 2e-5, "suicide": 14e-5}  # per-capita, weak prior
 

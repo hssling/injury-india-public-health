@@ -6,3 +6,13 @@ data_local/census2011.csv
 data_local/gb.json
 outputs/*.nc
 outputs/*.log
+
+# manuscript/submission assets: not part of the public code repo
+submission_ijmr/
+manuscript/
+*.zip
+~$*.docx
+
+# build artifacts
+__pycache__/
+*.pyc

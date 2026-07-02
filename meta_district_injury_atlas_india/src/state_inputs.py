@@ -11,6 +11,14 @@ from meta_district_injury_atlas_india.config import DATA_PROCESSED, DATA_INTERIM
 
 GBD_MAP = {"all_injury": "all_injuries", "road": "road", "falls": "falls",
            "drowning": "drowning", "burns": "burns", "suicide": "self_harm"}
+# Within a cause_group the master dataset stores BOTH the aggregate cause and its
+# GBD sub-categories (e.g. cause_group "road" holds "Road injuries" plus pedestrian/
+# cyclist/motorcyclist/motor-vehicle/other; "self_harm" holds "Self-harm" plus its
+# sub-means). Summing the whole group double-counts the aggregate. Select only the
+# aggregate ("parent") cause_gbd label per cause so deaths are counted once.
+GBD_PARENT = {"all_injury": "Injuries", "road": "Road injuries", "falls": "Falls",
+              "drowning": "Drowning", "burns": "Fire, heat, and hot substances",
+              "suicide": "Self-harm"}
 NCRB_ACC = {"road": "road_accidents", "falls": "falls", "drowning": "drowning",
             "burns": "fire_burns"}
 # NCRB reports J&K/Ladakh and the small UTs separately; GBD reports them as
@@ -30,7 +38,10 @@ def _gbd():
           (d.metric_type == "Number") & (d.year == 2023)]
     rows = []
     for cause, cg in GBD_MAP.items():
-        sub = d[d.cause_group == cg].groupby("state_name_harmonized").agg(
+        grp = d[d.cause_group == cg]
+        # keep only the aggregate cause row, not its sub-categories (avoids double count)
+        grp = grp[grp.cause_gbd == GBD_PARENT[cause]]
+        sub = grp.groupby("state_name_harmonized").agg(
             gbd_deaths=("value", "sum"), gbd_lower=("lower_ui", "sum"),
             gbd_upper=("upper_ui", "sum")).reset_index()
         sub["cause"] = cause
