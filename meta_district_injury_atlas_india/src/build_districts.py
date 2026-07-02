@@ -1,8 +1,14 @@
 """Canonical district analytic frame + ICAR adjacency.
 
-Frame = geoBoundaries IND ADM2 (735 polygons) so every modelled unit has
-geometry (needed for the spatial term). Onto it we join:
-  * harmonized state (spatial join to india_states.geojson, name-harmonized)
+Frame = udit-001/india-maps-data district polygons (759 units; current
+post-2014 Telangana split and current Ladakh/J&K split; state name given
+directly by the source, sourced from LGD/Survey of India/Bhuvan/DataMeet).
+Onto it we join:
+  * harmonized state, mapped to the granularity GBD 2023 reports at (GBD
+    reports Jammu & Kashmir and Ladakh as one combined unit, and the five
+    smallest union territories as a single "Other Union Territories" unit;
+    districts in those states are tagged accordingly so the fusion stage
+    has a matching state-level GBD/NCRB estimate to downscale)
   * pop_d and pct_urban  (Census 2011 district table, fuzzy name+state match)
   * NFHS-5 alcohol/tobacco covariates (fuzzy name match)
 Unmatched joins are state-mean imputed and logged. District populations are
@@ -19,14 +25,20 @@ from meta_district_injury_atlas_india.config import DATA_RAW, LOCAL, OUT
 
 warnings.filterwarnings("ignore")
 
-# old geojson state spelling -> harmonized (master_dataset) spelling
+# source st_nm -> the state-level unit GBD 2023 actually reports (fusion granularity)
 STATE_HARM = {
-    "Orissa": "Odisha", "Uttaranchal": "Uttarakhand",
-    "Jammu and Kashmir": "Jammu & Kashmir", "Andaman and Nicobar": "Andaman & Nicobar Islands",
-    "Dadra and Nagar Haveli": "Dadra & Nagar Haveli and Daman & Diu",
-    "Daman and Diu": "Dadra & Nagar Haveli and Daman & Diu",
-    "Puducherry": "Puducherry", "Delhi": "Delhi",
+    "Jammu and Kashmir": "Jammu & Kashmir and Ladakh",
+    "Ladakh": "Jammu & Kashmir and Ladakh",
+    "Andaman and Nicobar Islands": "Other Union Territories",
+    "Chandigarh": "Other Union Territories",
+    "Dadra and Nagar Haveli and Daman and Diu": "Other Union Territories",
+    "Lakshadweep": "Other Union Territories",
+    "Puducherry": "Other Union Territories",
 }
+# small UTs with no separate GBD estimate: modelled off the pooled national
+# "Other Union Territories" rate; flagged (not silently blank) on the maps.
+POOLED_UT_STATES = {"Andaman and Nicobar Islands", "Chandigarh",
+                    "Dadra and Nagar Haveli and Daman and Diu", "Lakshadweep", "Puducherry"}
 NFHS_COVARS = {
     "Women age 15 years and above who consume alcohol (%)": "alc_f",
     "Men age 15 years and above who consume alcohol (%)": "alc_m",
@@ -47,31 +59,32 @@ def _fuzzy(names, choices, cutoff=86):
 
 
 def build(save=True):
-    g = gpd.read_file(LOCAL / "districts_adm2.geojson").to_crs(4326).reset_index(drop=True)
-    g = g.rename(columns={"shapeName": "district_name"})[["district_name", "geometry"]]
+    g = gpd.read_file(LOCAL / "districts_v2.geojson").to_crs(4326).reset_index(drop=True)
+    g = g.rename(columns={"district": "district_name", "st_nm": "admin_state_name"})
+    g = g[g["district_name"].notna()]  # source carries one unnamed (dt_code=null) row per state
+    dt_col = "dt_code" if "dt_code" in g.columns else None
+    dedup_key = [dt_col] if dt_col else ["district_name", "admin_state_name"]
+    g = g.drop_duplicates(subset=dedup_key, keep="first")  # source repeats a few single-district UTs
+    g = g[["district_name", "admin_state_name", "geometry"]].copy()
+    g["geometry"] = g.geometry.buffer(0)  # fix any invalid rings
 
-    # --- state via representative-point spatial join, then snap strays to nearest ---
-    st = gpd.read_file(DATA_RAW / "india_states.geojson").to_crs(4326)[["NAME_1", "geometry"]]
-    cent = g.copy(); cent["geometry"] = cent.geometry.representative_point()
-    j = gpd.sjoin(cent, st, how="left", predicate="within").drop(columns="index_right")
-    miss = j["NAME_1"].isna()
-    if miss.any():
-        for i in j[miss].index:
-            d = st.distance(cent.geometry[i])
-            j.loc[i, "NAME_1"] = st.loc[d.idxmin(), "NAME_1"]
-    g["state_name"] = j["NAME_1"].replace(STATE_HARM).values
+    # state_name = the level GBD 2023 reports at (fusion granularity);
+    # admin_state_name = the real administrative state (used for census/NFHS matching
+    # and for map footnoting of pooled union territories).
+    g["state_name"] = g["admin_state_name"].replace(STATE_HARM)
+    g["is_pooled_ut"] = g["admin_state_name"].isin(POOLED_UT_STATES)
 
-    # --- Census 2011: population + pct_urban + fuzzy match on name within state ---
+    # --- Census 2011: population + pct_urban + fuzzy match on name within admin state ---
     cen = pd.read_csv(LOCAL / "census2011.csv")
     cen["pct_urban"] = 100 * cen["Urban_Households"] / (
         cen["Urban_Households"] + cen["Rural_Households"]).replace(0, np.nan)
     cen["state_h"] = cen["State name"].str.title().replace({
         "Orissa": "Odisha", "Uttarakhand": "Uttarakhand", "Nct Of Delhi": "Delhi",
-        "Jammu And Kashmir": "Jammu & Kashmir",
-        "Andaman And Nicobar Islands": "Andaman & Nicobar Islands"})
+        "Jammu And Kashmir": "Jammu and Kashmir",
+        "Andaman And Nicobar Islands": "Andaman and Nicobar Islands",
+        "Dadra And Nagar Haveli And Daman And Diu": "Dadra and Nagar Haveli and Daman and Diu"})
     cen_pop, cen_urb = {}, {}
-    g["_cid"] = None
-    for stt, sub in g.groupby("state_name"):
+    for stt, sub in g.groupby("admin_state_name"):
         pool = cen[cen["state_h"].str.lower() == str(stt).lower()]
         if len(pool) == 0:
             pool = cen
@@ -92,21 +105,21 @@ def build(save=True):
     for c in NFHS_COVARS.values():
         g[c] = [nfhs_lut[c].get(m, np.nan) if m else np.nan for m in match]
 
-    # --- impute (state mean -> national mean), log coverage ---
+    # --- impute (admin-state mean -> national mean), log coverage ---
     cov = {"census_pop": g["pop_d"].notna().mean(), "nfhs": g["alc_m"].notna().mean()}
     for col in ["pop_d", "pct_urban"] + list(NFHS_COVARS.values()):
-        g[col] = g.groupby("state_name")[col].transform(lambda s: s.fillna(s.mean()))
+        g[col] = g.groupby("admin_state_name")[col].transform(lambda s: s.fillna(s.mean()))
         g[col] = g[col].fillna(g[col].mean())
 
-    # --- rescale district pop within state to sum to state census total ---
+    # --- rescale district pop within admin state to sum to state census total ---
     state_tot = cen.groupby("state_h")["Population"].sum()
     def _rescale(sub):
-        stt = sub["state_name"].iloc[0]
+        stt = sub["admin_state_name"].iloc[0]
         tgt = state_tot.get(stt, sub["pop_d"].sum())
         return sub["pop_d"] * (tgt / sub["pop_d"].sum())
-    g["pop_d"] = g.groupby("state_name", group_keys=False).apply(_rescale)
+    g["pop_d"] = g.groupby("admin_state_name", group_keys=False).apply(_rescale)
 
-    g = g.drop(columns="_cid").reset_index(drop=True)
+    g = g.reset_index(drop=True)
     g.index.name = "district_id"
 
     # --- queen adjacency, reconnect islands, symmetric binary ---

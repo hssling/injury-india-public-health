@@ -13,6 +13,15 @@ GBD_MAP = {"all_injury": "all_injuries", "road": "road", "falls": "falls",
            "drowning": "drowning", "burns": "burns", "suicide": "self_harm"}
 NCRB_ACC = {"road": "road_accidents", "falls": "falls", "drowning": "drowning",
             "burns": "fire_burns"}
+# NCRB reports J&K/Ladakh and the small UTs separately; GBD reports them as
+# combined units. Collapse NCRB to the same granularity before fusion so both
+# sources describe the identical population (must match build_districts.STATE_HARM).
+_UT_HARM = {
+    "Jammu & Kashmir": "Jammu & Kashmir and Ladakh", "Ladakh": "Jammu & Kashmir and Ladakh",
+    "Andaman & Nicobar Islands": "Other Union Territories", "Chandigarh": "Other Union Territories",
+    "Dadra & Nagar Haveli and Daman & Diu": "Other Union Territories",
+    "Lakshadweep": "Other Union Territories", "Puducherry": "Other Union Territories",
+}
 
 
 def _gbd():
@@ -33,6 +42,10 @@ def _ncrb():
     acc = pd.read_csv(DATA_INTERIM / "ncrb_accidental_deaths_2023.csv")
     suic = pd.read_csv(DATA_INTERIM / "ncrb_suicides_2023.csv").rename(
         columns={"suicide_deaths_n": "ncrb_deaths"})[["state_name_harmonized", "ncrb_deaths"]]
+    acc["state_name_harmonized"] = acc["state_name_harmonized"].replace(_UT_HARM)
+    suic["state_name_harmonized"] = suic["state_name_harmonized"].replace(_UT_HARM)
+    acc = acc.groupby(["state_name_harmonized", "cause_ncrb"], as_index=False)["deaths_n"].sum()
+    suic = suic.groupby("state_name_harmonized", as_index=False)["ncrb_deaths"].sum()
     suic["cause"] = "suicide"
     tot = acc[acc.cause_ncrb == "total_accidental"][["state_name_harmonized", "deaths_n"]].copy()
 

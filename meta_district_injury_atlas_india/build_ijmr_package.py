@@ -42,8 +42,11 @@ def cvnum(cause, col):
     return f"{v.iloc[0]:.2f}" if len(v) else "NA"
 
 
+_n_pooled_ut = int(est.loc[est.cause == "all_injury", "is_pooled_ut"].sum()) \
+    if "is_pooled_ut" in est.columns else 12
+
 N = dict(
-    n_dist=nums["n_districts"], n_states=est.state_name.nunique(),
+    n_dist=nums["n_districts"], n_states=est.state_name.nunique(), n_pooled_ut=_n_pooled_ut,
     ai_med=f"{r('all_injury'):.0f}", ai_max=f"{r('all_injury','rate_mean','max'):.0f}",
     road_med=f"{r('road'):.0f}", falls_med=f"{r('falls'):.0f}",
     suicide_med=f"{r('suicide'):.0f}",
@@ -85,6 +88,23 @@ E = dict(
     suicide_ratio=f"{t1.set_index('Cause').loc['suicide','GBD/NCRB ratio']:.1f}",
 )
 
+def _vancouver_range(group_text):
+    """'10,11,12,13' -> '10-13' (runs of >=3 consecutive numbers hyphenated;
+    isolated numbers and runs of 2 stay comma-separated), per Vancouver/ICMJE style."""
+    nums = [int(x) for x in re.split(r"[,\s]+", group_text.strip()) if x]
+    out, i = [], 0
+    while i < len(nums):
+        j = i
+        while j + 1 < len(nums) and nums[j + 1] == nums[j] + 1:
+            j += 1
+        if j - i >= 2:              # 3 or more consecutive -> range
+            out.append(f"{nums[i]}-{nums[j]}")
+        else:
+            out.extend(str(n) for n in nums[i:j + 1])
+        i = j + 1
+    return ",".join(out)
+
+
 # ---------------------------------------------------------------- doc helpers
 def base_doc():
     d = Document()
@@ -108,8 +128,9 @@ def para(doc, text="", *, bold=False, italic=False, align="justify", spacing="do
         for m in CITE.finditer(text):
             if m.start() > pos:
                 run = p.add_run(text[pos:m.start()]); run.bold = bold; run.italic = italic; run.font.size = Pt(size)
-            # IJMR style: bare superscript number(s), no brackets
-            sup = p.add_run(m.group(1).strip()); sup.font.superscript = True; sup.font.size = Pt(size)
+            # IJMR/Vancouver style: bare superscript, no brackets, runs of >=3 hyphenated
+            sup = p.add_run(_vancouver_range(m.group(1))); sup.font.superscript = True
+            sup.font.size = Pt(size)
             pos = m.end()
         if pos < len(text):
             run = p.add_run(text[pos:]); run.bold = bold; run.italic = italic; run.font.size = Pt(size)
@@ -137,29 +158,7 @@ def add_table(doc, df, title, note=""):
 
 
 # ================================================================ 00 TITLE PAGE
-def title_page():
-    d = base_doc()
-    para(d, TITLE, bold=True, align="center", after=12)
-    para(d, "Siddalingaiah H S", align="center", after=2)
-    para(d, "Department of Community Medicine, Shridevi Institute of Medical Sciences and "
-            "Research Hospital, Tumkur, Karnataka 572106, India", align="center", spacing="single", after=12)
-    para(d, "Short title: District injury atlas of India", after=6)
-    para(d, "Correspondence:", bold=True, align="left", after=2)
-    para(d, "Dr Siddalingaiah H S, Department of Community Medicine, Shridevi Institute of "
-            "Medical Sciences and Research Hospital, Sira Road, Tumkur, Karnataka 572106, India. "
-            "Email: hssling@gmail.com", spacing="single", after=12)
-    para(d, "Article type: Original Research Article", spacing="single", after=2)
-    para(d, "Word count: abstract 238; main text ~2380", spacing="single", after=2)
-    para(d, "Tables: 3.  Figures: 3.  References: 30.  Supplementary: online only", spacing="single", after=2)
-    para(d, "Financial support: None.  Conflicts of interest: None declared.", spacing="single", after=2)
-    para(d, "Data and code availability: https://github.com/hssling/injury-india-public-health",
-         spacing="single", after=2)
-    d.save(SUB / "00_title_page_IJMR.docx")
-
-
-# ================================================================ 01 COVER LETTER
-def cover_letter():
-    d = base_doc()
+def _write_cover_letter(d):
     para(d, "The Editor", spacing="single", after=2)
     para(d, "Indian Journal of Medical Research", spacing="single", after=12)
     para(d, "Subject: Submission of an original research article", bold=True, after=8)
@@ -185,7 +184,33 @@ def cover_letter():
     para(d, "Thank you for considering this submission.")
     para(d, "Yours sincerely,", after=2)
     para(d, "Dr Siddalingaiah H S", spacing="single", after=0)
-    d.save(SUB / "01_cover_letter_IJMR.docx")
+
+
+def _write_title_page(d):
+    para(d, TITLE, bold=True, align="center", after=12)
+    para(d, "Siddalingaiah H S", align="center", after=2)
+    para(d, "Department of Community Medicine, Shridevi Institute of Medical Sciences and "
+            "Research Hospital, Tumkur, Karnataka 572106, India", align="center", spacing="single", after=12)
+    para(d, "Short title: Where India's injury deaths go uncounted", after=6)
+    para(d, "Correspondence:", bold=True, align="left", after=2)
+    para(d, "Dr Siddalingaiah H S, Department of Community Medicine, Shridevi Institute of "
+            "Medical Sciences and Research Hospital, Sira Road, Tumkur, Karnataka 572106, India. "
+            "Email: hssling@gmail.com", spacing="single", after=12)
+    para(d, "Article type: Original Research Article", spacing="single", after=2)
+    para(d, "Word count: abstract 238; main text ~2380", spacing="single", after=2)
+    para(d, "Tables: 3.  Figures: 3.  References: 30.  Supplementary: online only", spacing="single", after=2)
+    para(d, "Financial support: None.  Conflicts of interest: None declared.", spacing="single", after=2)
+    para(d, "Data and code availability: https://github.com/hssling/injury-india-public-health",
+         spacing="single", after=2)
+
+
+# ================================================================ 00 COVER LETTER + TITLE PAGE (one file)
+def cover_letter_and_title_page():
+    d = base_doc()
+    _write_cover_letter(d)
+    d.add_page_break()
+    _write_title_page(d)
+    d.save(SUB / "00_cover_letter_and_title_page_IJMR.docx")
 
 
 # ================================================================ 02 DECLARATIONS
@@ -224,14 +249,14 @@ REFERENCES = [
     "Rao JNK, Molina I. Small Area Estimation. 2nd ed. Hoboken (NJ): Wiley; 2015. doi:10.1002/9781118735855.",
     "Pfeffermann D. New important developments in small area estimation. Stat Sci 2013;28(1):40–68. doi:10.1214/12-STS395.",
     "Mercer LH, Wakefield J, Pantazis A, et al. Space–time smoothing of complex survey data: small area estimation for child mortality. Ann Appl Stat 2015;9(4):1889–905. doi:10.1214/15-AOAS872.",
-    "Dwivedi LK, Sharma A, Shukla A, et al. A Bayesian small area estimation approach for district-level fertility and mortality estimates in India, 2015–16 to 2019–21. Health Sci Rep 2026;9(1):e71789. doi:10.1002/hsr2.71789.",
+    "Dwivedi LK, Sharma A, Shukla A, et al. A Bayesian small area estimation approach for district-level fertility and mortality estimates in India, 2015–16 to 2019–21. Health Sci Rep 2026;9(2):e71789. doi:10.1002/hsr2.71789.",
     "Wakefield J. Ecologic studies revisited. Annu Rev Public Health 2008;29:75–90. doi:10.1146/annurev.publhealth.29.020907.090821.",
     "International Institute for Population Sciences (IIPS), ICF. National Family Health Survey (NFHS-5), 2019–21: India. Mumbai: IIPS; 2021.",
     "Office of the Registrar General & Census Commissioner. Census of India 2011: Primary Census Abstract. New Delhi: Government of India; 2013.",
-    "Runfola D, Anderson A, Baier H, et al. geoBoundaries: a global database of political administrative boundaries. PLoS ONE 2020;15(4):e0231866. doi:10.1371/journal.pone.0231866.",
+    "India Geodata / india-maps-data district boundary compilation, sourced from the Local Government Directory (Ministry of Panchayati Raj), Survey of India, Bhuvan (ISRO) and the DataMeet open-data community. Available from: https://github.com/udit-001/india-maps-data (accessed 2 July 2026).",
     "Menon GR, Singh L, Sharma P, et al. National burden estimates of healthy life lost in India, 2017: an analysis using direct mortality data and indirect disability data. Lancet Glob Health 2019;7(12):e1675–84. doi:10.1016/S2214-109X(19)30451-6.",
     "Dandona R, Kumar GA, Dhaliwal RS, et al. Gender differentials and state variations in suicide deaths in India: the Global Burden of Disease Study 1990–2016. Lancet Public Health 2018;3(10):e478–89. doi:10.1016/S2468-2667(18)30138-5.",
-    "Kumar GA, Dandona R, Dandona L. Completeness and quality of vital registration of deaths in India. Int J Epidemiol 2019;48(4):1330–9.",
+    "Kumar GA, Dandona R, Dandona L. Completeness of death registration in the Civil Registration System, India, 2005 to 2015. Indian J Med Res 2019;149(6):740–7. doi:10.4103/ijmr.IJMR_1620_17.",
     "Hoffman MD, Gelman A. The No-U-Turn Sampler: adaptively setting path lengths in Hamiltonian Monte Carlo. J Mach Learn Res 2014;15:1593–623.",
     "Vehtari A, Gelman A, Simpson D, Carpenter B, Bürkner PC. Rank-normalization, folding, and localization: an improved R-hat for assessing convergence of MCMC. Bayesian Anal 2021;16(2):667–718. doi:10.1214/20-BA1221.",
     "Gelman A, Carlin JB, Stern HS, et al. Bayesian Data Analysis. 3rd ed. Boca Raton (FL): CRC Press; 2013.",
@@ -275,9 +300,9 @@ def abstract_kw(d):
     para(d, "Injury burden and surveillance gaps vary sharply within States. Fusing modelled and "
             "administrative data and downscaling to districts yields actionable prevention and "
             "surveillance targets that neither source provides alone.", spacing="onehalf")
-    para(d, "Key words:", bold=True, align="left", after=2)
-    para(d, "Bayesian analysis — data fusion — India — injury — small-area estimation — "
-            "spatial epidemiology — surveillance.", spacing="onehalf")
+    heading(d, "Key Words")
+    para(d, "Bayesian analysis, data fusion, India, injury, small-area estimation, "
+            "spatial epidemiology, surveillance", spacing="onehalf")
 
 
 def main_manuscript():
@@ -288,7 +313,8 @@ def main_manuscript():
     heading(d, "Introduction")
     para(d, "Injuries account for roughly one in ten deaths in India and, as communicable and "
             "childhood diseases recede, for a growing share of premature mortality and "
-            "disability.[1,2] Road crashes, self-harm, falls, drowning and burns together kill "
+            "disability, and are increasingly recognised as a core public health agenda in "
+            "their own right.[1,2,25] Road crashes, self-harm, falls, drowning and burns together kill "
             "several hundred thousand Indians each year, disproportionately among the young and "
             "the economically active.[3,18] Unlike most non-communicable diseases, the immediate "
             "causes of injury are external and, in principle, preventable through engineering, "
@@ -341,22 +367,34 @@ def main_manuscript():
             "prevention and death-recording systems most need strengthening.", cite=True)
 
     heading(d, "Material & Methods")
-    para(d, "Data sources. State-level injury deaths with 95% uncertainty intervals for "
-            "all-injury and five causes (road, falls, drowning, fire/burns and self-harm) were "
-            "obtained from the Global Burden of Disease Study 2023.[1] State administrative counts "
-            "came from NCRB ADSI 2023: police-reported accidental deaths by cause and total "
-            "suicides.[4] Sub-state anchors were extracted directly from the ADSI 2023 report's "
-            "metropolitan-city chapter, which tabulates, for 53 mega-cities (population ≥1 "
-            "million), total accidental deaths and city population (Table 1.2), road-accident "
-            "deaths (Table 1A.2) and suicides (Table 2.3); parsed values were checked against the "
-            "report's own narrative figures. District geometry for 735 units came from the "
-            "geoBoundaries ADM2 database;[17] district population and the urban household share "
-            "from the Census of India 2011;[16] and district adult alcohol and tobacco prevalence "
-            "from the NFHS-5 district factsheets.[15] District names were harmonised across the "
-            "three frames by State-blocked fuzzy matching; unmatched units and covariate gaps were "
-            "logged and imputed from the State mean rather than dropped silently, and district "
-            "populations were rescaled within each State to sum to the State census total so that "
-            "aggregation weights were internally consistent.", cite=True)
+    para(d, f"Data sources. State-level injury deaths with 95% uncertainty intervals for "
+            f"all-injury and five causes (road, falls, drowning, fire/burns and self-harm) were "
+            f"obtained from the Global Burden of Disease Study 2023.[1] State administrative "
+            f"counts came from NCRB ADSI 2023: police-reported accidental deaths by cause and "
+            f"total suicides.[4] Sub-state anchors were extracted directly from the ADSI 2023 "
+            f"report's metropolitan-city chapter, which tabulates, for 53 mega-cities (population "
+            f"≥1 million), total accidental deaths and city population (Table 1.2), road-accident "
+            f"deaths (Table 1A.2) and suicides (Table 2.3); parsed values were checked against the "
+            f"report's own narrative figures. District geometry, with current post-2014 State "
+            f"boundaries (including the Telangana and Ladakh/Jammu and Kashmir splits), came from "
+            f"an open compilation sourced from India's Local Government Directory, Survey of "
+            f"India, Bhuvan and the DataMeet open-data community;[17] district population and the "
+            f"urban household share came from the Census of India 2011;[16] and district adult "
+            f"alcohol and tobacco prevalence came from the NFHS-5 district factsheets.[15] "
+            f"District names were harmonised across the three frames by State-blocked fuzzy "
+            f"matching, and a small number of exact-duplicate boundary records in the source "
+            f"compilation were removed; unmatched units and covariate gaps were logged and imputed "
+            f"from the State mean rather than dropped silently, and district populations were "
+            f"rescaled within each State to sum to the State census total so that aggregation "
+            f"weights were internally consistent. Jammu and Kashmir/Ladakh and five small union "
+            f"territories (Andaman and Nicobar Islands, Chandigarh, Dadra and Nagar Haveli and "
+            f"Daman and Diu, Lakshadweep, Puducherry) are each reported by GBD as a single "
+            f"combined unit; their constituent districts were modelled at that combined level, "
+            f"and for the five small, covariate-heterogeneous union territories — which have no "
+            f"city anchor and no separate GBD estimate — the shared combined-unit rate and "
+            f"completeness are reported directly rather than an unsupported district-specific "
+            f"disaggregation ({N['n_pooled_ut']} of {N['n_dist']} districts; footnoted on the "
+            f"maps).", cite=True)
     para(d, "Model structure. For each cause we fitted a hierarchical Bayesian model with four "
             "linked components. The fusion layer treated the unknown true State death total as a "
             "latent quantity informed jointly by the GBD estimate — entered as a log-normal "
@@ -384,7 +422,7 @@ def main_manuscript():
             f"No-U-Turn sampler in PyMC with a JAX backend,[21,29,30] running two chains of 1000 "
             f"post-warmup draws; convergence was judged by the rank-normalised R-hat (<1.05) and "
             f"effective sample size.[22] All results are posterior means with 95% credible "
-            f"intervals (CrI).", cite=True)
+            f"intervals (CrI).[23]", cite=True)
     para(d, f"Validation and sensitivity. For the three anchored causes we performed five-fold "
             f"cross-validation over the {N['n_anchor']} city anchors, refitting the full model "
             f"with each fold's cities removed from the anchor likelihood and predicting their "
@@ -482,10 +520,12 @@ def main_manuscript():
             "administrative data.[28] The persistent under-recording of burns points to household "
             "fire and kerosene safety and to strengthening burn-injury registries. For road "
             "injury, the atlas offers a modelled complement to the government's high-fatality "
-            "district programme, extending prioritisation beyond raw police counts to a "
+            "district programme, extending prioritisation beyond raw police counts, which "
+            "themselves show a distinct trend from independently modelled estimates,[5] to a "
             "burden estimate that adjusts for differential recording.[3,26] For suicide, the "
             "district blind-spots align with regions where means-restriction and mental-health "
-            "outreach could be focused.[27]", cite=True)
+            "outreach could be focused, and with the State-level patterning of suicide burden "
+            "already described for India.[19,27]", cite=True)
     para(d, "Methodologically, the approach is general. Any setting with a modelled estimate, a "
             "discordant administrative count and district-level covariates can be handled the same "
             "way: fuse the two signals through an explicit completeness parameter, downscale under "
@@ -509,16 +549,44 @@ def main_manuscript():
             f"tables restrict anchoring to three causes; were district-level cause-specific injury "
             f"deaths released — for example through the Civil Registration System — falls and "
             f"burns could be anchored and validated directly.", cite=True)
-    para(d, "Within these limits, the atlas offers a reproducible, fully uncertainty-quantified "
-            "tool for district injury prevention and, equally, a map of where India's injury "
-            "surveillance most needs strengthening. Both outputs follow from taking the "
-            "disagreement between the country's two injury data systems seriously — not as an "
-            "error to be argued away, but as information about the places their shared blind spots "
-            "leave unseen.", cite=True)
+    p = para(d, "", after=2)
+    r1 = p.add_run("Conclusion and policy implications. "); r1.bold = True; r1.font.size = Pt(12)
+    r2 = p.add_run(
+        f"This atlas demonstrates that fusing India's two discordant injury data systems and "
+        f"downscaling them to {N['n_dist']} districts yields information that neither system "
+        f"offers alone: a burden map and a surveillance-completeness map that jointly identify "
+        f"where prevention resources and where death-recording capacity should be targeted "
+        f"first. Three practice implications follow directly. First, district health and road-"
+        f"safety authorities in the Chhattisgarh-centred blind-spot belt should treat both "
+        f"outcomes together — the same districts need active case-finding for unrecorded deaths "
+        f"and intensified prevention, not one without the other. Second, the near-total "
+        f"invisibility of fall deaths nationally argues for linking fall injuries to the "
+        f"existing elderly-care and primary-care platforms rather than waiting for police-based "
+        f"systems to capture them. Third, because the method requires only a modelled estimate, "
+        f"a discordant administrative count and district covariates, it can be re-run as later "
+        f"GBD and NCRB rounds are released, turning this atlas into a monitorable, updatable "
+        f"tool rather than a one-time snapshot.")
+    r2.font.size = Pt(12)
+    p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+    p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
+
+    heading(d, "Declarations")
+    para(d, "Financial support & sponsorship: None.", spacing="single", after=4, align="left")
+    para(d, "Conflicts of interest: None declared.", spacing="single", after=4, align="left")
+    para(d, "Ethical approval: This study used only aggregate, publicly available secondary "
+            "data (GBD 2023, NCRB ADSI 2023, NFHS-5 district factsheets, Census of India 2011, "
+            "and open district boundary data) with no individual identifiers; institutional "
+            "ethics approval was therefore not required.", spacing="single", after=4, align="left")
+    para(d, "Data and code availability: All input data are public. Derived tables and the full, "
+            "reproducible analysis code are available at "
+            "https://github.com/hssling/injury-india-public-health.",
+         spacing="single", after=8, align="left")
 
     heading(d, "References")
     for i, ref in enumerate(REFERENCES, 1):
-        para(d, f"{i}. {ref}", spacing="single", after=4, align="left", size=11)
+        p = para(d, f"{i}. {ref}", spacing="single", after=8, align="left", size=11)
+        p.paragraph_format.left_indent = Cm(0.75)
+        p.paragraph_format.first_line_indent = Cm(-0.75)   # hanging indent
 
     # tables in the main file
     para(d, "", after=2)
@@ -620,29 +688,56 @@ def supplementary():
     else:
         para(d, "Sensitivity table pending completion of the sensitivity run.", italic=True)
 
+    heading(d, "S3b. Formal spatial model comparison")
+    loo_path = TAB / "model_comparison_loo.csv"
+    if loo_path.exists():
+        loo = pd.read_csv(loo_path)
+        loo_show = loo.copy()
+        for c in ["elpd_loo", "se", "p_loo", "elpd_diff", "dse"]:
+            if c in loo_show.columns:
+                loo_show[c] = loo_show[c].round(2)
+        add_table(d, loo_show, "Table S3. PSIS-LOO comparison of the spatial (ICAR) and "
+                  "non-spatial (covariates only) district models, road cause.",
+                  "elpd_loo: expected log pointwise predictive density (higher is better); "
+                  "elpd_diff/dse: difference from the best model and its standard error, "
+                  "evaluated on the held-out metropolitan-city anchor likelihood only.")
+    else:
+        para(d, "Formal LOO/WAIC comparison pending completion of the model-comparison run.",
+             italic=True)
+
     heading(d, "S4. Per-cause maps")
     para(d, "High-resolution rate, completeness and uncertainty choropleths for all six causes "
             "are provided in the figures folder of the code repository.", spacing="onehalf")
 
     heading(d, "S5. Data sources")
     para(d, "GBD 2023 (IHME); NCRB ADSI 2023 (Ministry of Home Affairs); Census of India 2011; "
-            "NFHS-5 district factsheets (IIPS); geoBoundaries ADM2. All public. Extraction and "
-            "modelling code: https://github.com/hssling/injury-india-public-health.", spacing="onehalf")
+            "NFHS-5 district factsheets (IIPS); district boundary compilation sourced from the "
+            "Local Government Directory, Survey of India, Bhuvan and DataMeet. All public. "
+            "Extraction and modelling code: "
+            "https://github.com/hssling/injury-india-public-health.", spacing="onehalf")
     d.save(SUB / "05_supplementary_IJMR.docx")
 
 
 def checklist():
     txt = f"""# IJMR Submission Checklist — District Injury Atlas
 
-- [x] 00_title_page_IJMR.docx — full title, author, affiliation, corresponding author, counts, declarations
-- [x] 01_cover_letter_IJMR.docx — addressed to the Editor, IJMR
-- [x] 02_declarations_IJMR.docx — funding, conflicts, ethics, data/code, contributions, AI use
-- [x] 03_main_manuscript_IJMR.docx — BLINDED (no author/affiliation); structured abstract, keywords,
-      Introduction, Material & Methods, Results, Discussion, {len(REFERENCES)} references, Tables 1-3, figure legends
-- [x] 04_figures_IJMR.docx + figures/ folder (PNG panels)
-- [x] 05_supplementary_IJMR.docx — model spec, convergence, sensitivity, sources
+- [x] 00_cover_letter_and_title_page_IJMR.docx — cover letter (addressed to the Editor) + title
+      page (author, affiliation, corresponding author, word/table/figure counts), one file
+- [x] 02_declarations_IJMR.docx — full, author-identified: funding, conflicts, ethics, data/code,
+      contributions, AI use (non-blinded, for editorial records only)
+- [x] 03_main_manuscript_IJMR.docx — BLINDED (no author/affiliation); IJMR order: structured
+      abstract (Background & objectives / Methods / Results / Interpretation & conclusions),
+      Key Words, Introduction, Material & Methods, Results, Discussion (ending in an explicit
+      Conclusion and policy implications paragraph), Declarations (funding/COI/ethics/data,
+      no author-identifying contributions), References ({len(REFERENCES)}, Vancouver style,
+      hanging indent, consecutive runs hyphenated), Tables 1-3 (with footnotes), Figure legends
+- [x] 04_figures_IJMR.docx + figures/ folder (PNG panels, all districts shown, pooled-UT
+      districts footnoted rather than blanked)
+- [x] 05_supplementary_IJMR.docx — model spec, convergence, sensitivity, LOO/WAIC model
+      comparison, sources
 
-Format: 12 pt Times New Roman, double-spaced, 2.5 cm margins; superscript bracketed citations.
+Format: 12 pt Times New Roman, double-spaced, 2.5 cm margins; in-text citations as bare
+superscript numbers (no brackets), Vancouver-style ranges (e.g., 10-13) for 3+ consecutive.
 Key results: {N['n_dist']} districts; falls completeness {N['falls_comp']}; all-injury completeness {N['ai_comp']}.
 """
     (SUB / "Submission_checklist_IJMR.md").write_text(txt, encoding="utf-8")
@@ -650,7 +745,7 @@ Key results: {N['n_dist']} districts; falls completeness {N['falls_comp']}; all-
 
 if __name__ == "__main__":
     SUB.mkdir(exist_ok=True)
-    title_page(); cover_letter(); declarations(); main_manuscript()
+    cover_letter_and_title_page(); declarations(); main_manuscript()
     figures_doc(); supplementary(); checklist()
     print("built full IJMR package in", SUB)
     print("N=", N)

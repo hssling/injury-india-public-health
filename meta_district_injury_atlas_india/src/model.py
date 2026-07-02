@@ -125,6 +125,17 @@ def build_model(cause, d=None, hold_out_pos=None, eta_sd=0.5, fix_eta=False, use
     sidx = d["sidx"]; pop = d["pop"]; e0, e1 = d["edges"]
     logit0 = np.log((1 / NAT_RATIO[cause]) / (1 - 1 / NAT_RATIO[cause]))
 
+    # Population-informed shrinkage on the unstructured heterogeneity terms (w, v).
+    # The benchmarking constraint is a population-weighted average within each
+    # state/fusion-bucket, so a small-population district's own heterogeneity term
+    # is barely penalised by that constraint yet is fully exponentiated into its own
+    # rate -- left unchecked, tiny-population districts (e.g. isolated island or
+    # union-territory districts sharing a thin pooled bucket) can swing to
+    # implausible rates. Analogous to Poisson sampling variance (~1/population),
+    # we scale each district's heterogeneity prior SD by sqrt(pop_d / median pop),
+    # clipped so no district is shrunk to a point mass or left unconstrained.
+    pop_scale = np.clip(np.sqrt(pop / np.median(pop)), 0.15, 2.0)
+
     with pm.Model() as m:
         # ---- fusion: true state deaths ----
         T = pm.LogNormal("T", mu=np.log(d["gbd"]), sigma=d["sig"], shape=len(d["states"]))
@@ -132,15 +143,15 @@ def build_model(cause, d=None, hold_out_pos=None, eta_sd=0.5, fix_eta=False, use
         # ---- completeness sub-model ----
         gamma = pm.Normal("gamma", logit0, 0.5)
         eta = pm.Data("eta", 0.0) if fix_eta else pm.Normal("eta", 0.0, eta_sd)
-        w = pm.Normal("w", 0.0, 0.3, shape=len(pop))
+        w = pm.Normal("w", 0.0, 0.3 * pop_scale, shape=len(pop))
         c_d = pm.Deterministic("c_d", pm.math.sigmoid(gamma + eta * d["urban"] + w))
-        c_state = pt.dot(Mw, c_d)
+        c_state = pm.Deterministic("c_state", pt.dot(Mw, c_d))
         nm = d["ncrb_mask"]
         pm.Poisson("ncrb_like", mu=(T * c_state)[nm], observed=d["ncrb"][nm])
         # ---- downscaling (true rate), benchmarked ----
         alpha = pm.Normal("alpha", np.log(NAT_RATE[cause]), 1.0)
         beta = pm.Normal("beta", 0.0, 0.5, shape=d["X"].shape[1])
-        v = pm.Normal("v", 0.0, 0.3, shape=len(pop))
+        v = pm.Normal("v", 0.0, 0.3 * pop_scale, shape=len(pop))
         raw = alpha + pt.dot(d["X"], beta) + v
         if use_icar:
             tau = pm.HalfNormal("tau", 1.0)
@@ -179,9 +190,22 @@ def fit_cause(cause, draws=800, tune=800, chains=2, **kw):
 
 
 def fit_all(draws=1000, tune=1000, chains=2):
-    """Fit every cause and save idata only (no arviz post-processing -> no OOM)."""
+    """Fit every cause, one fresh subprocess per cause.
+
+    JAX device-memory buffers are not fully released between sequential
+    pm.sample() calls in the same long-running process (jax.clear_caches()
+    is insufficient and repeatedly caused an out-of-memory crash partway
+    through the 6-cause loop). A fresh Python process per cause guarantees
+    the OS reclaims all device memory before the next fit starts.
+    """
+    import subprocess, sys
     for cause in CAUSES:
-        fit_cause(cause, draws=draws, tune=tune, chains=chains)
+        code = (f"from meta_district_injury_atlas_india.src.model import fit_cause; "
+               f"fit_cause('{cause}', draws={draws}, tune={tune}, chains={chains})")
+        r = subprocess.run([sys.executable, "-c", code])
+        if r.returncode != 0:
+            raise RuntimeError(f"fit_all: subprocess for cause '{cause}' failed "
+                              f"(exit {r.returncode})")
         print(f"fitted {cause}", flush=True)
 
 

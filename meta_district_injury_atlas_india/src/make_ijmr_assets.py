@@ -49,7 +49,9 @@ def build():
     b["Rate per 100k (95% CrI)"] = [fmt_ci(m, lo, hi) for m, lo, hi in
                                     zip(b.rate_mean, b.rate_lo, b.rate_hi)]
     b["Completeness"] = b.completeness_mean.round(2)
-    t2 = (b[["cause", "district_name", "state_name", "Rate per 100k (95% CrI)", "Completeness"]]
+    b["P(blind spot)"] = b.p_blindspot.round(2)
+    t2 = (b[["cause", "district_name", "state_name", "Rate per 100k (95% CrI)",
+             "Completeness", "P(blind spot)"]]
           .rename(columns={"cause": "Cause", "district_name": "District", "state_name": "State"}))
     t2.to_csv(SUB / "Table_2_blindspots.csv", index=False)
 
@@ -65,13 +67,16 @@ def build():
         pd.concat(parts, ignore_index=True).to_csv(SUB / "Table_3_validation.csv", index=False)
 
     # ---- figure legends ----
+    n_dist = int(est.district_id.nunique())
+    n_pooled = int(est.get("is_pooled_ut", pd.Series(dtype=bool)).sum()) if "is_pooled_ut" in est.columns else 0
     (SUB / "figure_legends.md").write_text(
-        "**Figure 1.** District all-injury mortality rate per 100,000 (posterior mean, "
-        "GBD/NCRB-fused), 702 districts.\n\n"
-        "**Figure 2.** Surveillance completeness surface (NCRB administrative / fused true "
-        "deaths) for anchored causes (all-injury, road, suicide); green = complete, red = "
-        "severe under-capture.\n\n"
-        "**Figure 3.** Posterior uncertainty (95% credible-interval width) by district.\n",
+        f"**Figure 1.** District all-injury mortality rate per 100,000 (posterior mean, "
+        f"GBD/NCRB-fused), {n_dist} districts. Districts in small union territories that share "
+        f"a single pooled national estimate are footnoted, not blanked.\n\n"
+        f"**Figure 2.** Surveillance completeness surface (NCRB administrative / fused true "
+        f"deaths) for anchored causes (all-injury, road, suicide); green = complete, red = "
+        f"severe under-capture.\n\n"
+        f"**Figure 3.** Posterior uncertainty (95% credible-interval width) by district.\n",
         encoding="utf-8")
 
     # ---- key numbers ----
