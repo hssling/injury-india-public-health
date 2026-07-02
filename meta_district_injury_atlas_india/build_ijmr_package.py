@@ -19,6 +19,9 @@ SUB = HERE / "submission_ijmr"
 FIG = HERE / "figures"
 CITE = re.compile(r"\[([0-9,\-–\s]+)\]")
 
+TITLE = ("Where India's injury deaths go uncounted: a district atlas of fatal injury "
+         "burden and surveillance completeness")
+
 # ---------------------------------------------------------------- live numbers
 est = pd.read_csv(TAB / "district_estimates.csv")
 t1 = pd.read_csv(SUB / "Table_1_state_fusion.csv")
@@ -136,8 +139,7 @@ def add_table(doc, df, title, note=""):
 # ================================================================ 00 TITLE PAGE
 def title_page():
     d = base_doc()
-    para(d, "A Bayesian data-fusion atlas of fatal injury across India's districts, with the "
-            "first sub-state map of surveillance completeness", bold=True, align="center", after=12)
+    para(d, TITLE, bold=True, align="center", after=12)
     para(d, "Siddalingaiah H S", align="center", after=2)
     para(d, "Department of Community Medicine, Shridevi Institute of Medical Sciences and "
             "Research Hospital, Tumkur, Karnataka 572106, India", align="center", spacing="single", after=12)
@@ -162,10 +164,8 @@ def cover_letter():
     para(d, "Indian Journal of Medical Research", spacing="single", after=12)
     para(d, "Subject: Submission of an original research article", bold=True, after=8)
     para(d, "Dear Editor,")
-    para(d, "I am pleased to submit an original research article entitled “A Bayesian "
-            "data-fusion atlas of fatal injury across India's districts, with the first sub-state "
-            "map of surveillance completeness” for consideration by the Indian Journal of "
-            "Medical Research.")
+    para(d, f"I am pleased to submit an original research article entitled “{TITLE}” for "
+            f"consideration by the Indian Journal of Medical Research.")
     para(d, f"India's injury evidence, and its two principal data streams — the modelled "
             f"Global Burden of Disease (GBD) estimates and the administrative National Crime "
             f"Records Bureau (NCRB) counts — stop at the State level, even though injury "
@@ -282,8 +282,7 @@ def abstract_kw(d):
 
 def main_manuscript():
     d = base_doc()
-    para(d, "A Bayesian data-fusion atlas of fatal injury across India's districts, with the "
-            "first sub-state map of surveillance completeness", bold=True, align="center", after=10)
+    para(d, TITLE, bold=True, align="center", after=10)
     abstract_kw(d)
 
     heading(d, "Introduction")
@@ -589,8 +588,7 @@ def figures_doc():
 def supplementary():
     d = base_doc()
     para(d, "Supplementary Material", bold=True, align="center", after=10)
-    para(d, "A Bayesian data-fusion atlas of fatal injury across India's districts", italic=True,
-         align="center", after=12)
+    para(d, TITLE, italic=True, align="center", after=12)
 
     heading(d, "S1. Model specification")
     para(d, "For cause k and State s, the true death count T[s] followed a log-normal prior "
